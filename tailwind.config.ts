@@ -20,7 +20,7 @@ export default {
   				md: '100%',
   				tab: '100%',
   				lg: '1024px',
-  				xl: '1245px'
+  				xl: '1277px'
   			},
   			padding: {
   				DEFAULT: '1rem',
@@ -28,13 +28,19 @@ export default {
   			}
   		},
   		colors: {
-  			'main-primary': '#02BF6C',
-  			'main-primary-dark': '#00854b',
-  			'main-secondary': '#EA244E',
-  			'main-light-gray': '#EFF3F4',
-  			'main-smoky-black': '#0D0D0D',
-  			'main-secondary-dark': '#bc1a3d',
-  			'main-bg-primary': '#02BF6C',
+  			'main-primary': '#242D65', // Dark Purple
+  			'main-secondary': '#F68C25', // Orange
+  			'lightBlue': '#EFF3F4',
+			'greyLight': '#F2F2F2',
+			'pureBlack': '#000000',
+			'black': '#0D121F',
+			'charcoalGray': '#363739',
+			'darkGray': '#6B6B6B',
+			'mediumGray': '#9B9B9C',
+			'lightGray': '#CDCDCD',
+			'softGray': '#E6E6E6',
+			'pureWhite': '#EFF0EF',
+			'forestWhite': '#FCFCFD',
   			primary: {
   				DEFAULT: 'hsl(var(--primary))',
   				foreground: 'hsl(var(--primary-foreground))'

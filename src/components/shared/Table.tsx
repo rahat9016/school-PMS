@@ -50,7 +50,7 @@ export interface IDataTableProps<T> {
   pageCount: number;
   isSearch?: boolean;
   setSearch?: React.Dispatch<React.SetStateAction<string>>;
-  createFn?: () => void
+  createFn?: () => void;
 }
 
 export function DataTable<T>({
@@ -65,7 +65,7 @@ export function DataTable<T>({
   pageCount,
   isSearch = true,
   setSearch,
-  createFn
+  createFn,
 }: IDataTableProps<T>) {
   const [sorting, setSorting] = React.useState<SortingState>([]);
   const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>(
@@ -96,15 +96,17 @@ export function DataTable<T>({
   return (
     <div className="w-full">
       <div className="flex items-center justify-between py-4">
-        {isSearch &&<div className="flex items-center gap-2 bg-main-light-gray rounded-xl px-4 h-[40px] w-full max-w-64">
-          <Search className="w-5 h-5 text-gray-500" />
-          <Input
-            type="text"
-            placeholder="Search..."
-            className="border-none bg-transparent placeholder-gray-400 shadow-none py-1"
-            onChange={(event) => setSearch && setSearch(event.target.value)}
-          />
-        </div>}
+        {isSearch && (
+          <div className="flex items-center gap-2 bg-main-light-gray rounded-xl px-4 h-[40px] w-full max-w-64">
+            <Search className="w-5 h-5 text-gray-500" />
+            <Input
+              type="text"
+              placeholder="Search..."
+              className="border-none bg-transparent placeholder-gray-400 shadow-none py-1"
+              onChange={(event) => setSearch && setSearch(event.target.value)}
+            />
+          </div>
+        )}
         <div className="flex items-center gap-3 ml-auto">
           {!isColumnsShow && (
             <DropdownMenu>
@@ -134,7 +136,10 @@ export function DataTable<T>({
               </DropdownMenuContent>
             </DropdownMenu>
           )}
-          <Button onClick={createFn} className="bg-main-secondary hover:bg-main-secondary font-poppins text-sm font-normal flex items-center gap-2 px-6 py-3">
+          <Button
+            onClick={createFn}
+            className="bg-main-secondary hover:bg-main-secondary font-poppins text-sm font-normal flex items-center gap-2 px-6 py-3"
+          >
             {" "}
             <Plus />
             Create
