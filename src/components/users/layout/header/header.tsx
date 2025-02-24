@@ -4,7 +4,9 @@ import { Menu, Search } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
 import Logo from "../../../../../public/logo.png";
+import Logo2 from "../../../../../public/logoWhite.png";
 import logoIcon from "../../../../../public/logoIcon.png";
+import logoIconWhite from "../../../../../public/logoIconWhite.png";
 import { useState } from "react";
 import { Input } from "@/components/ui/input";
 // import {
@@ -123,7 +125,7 @@ const Header = () => {
               <div className="flex items-center justify-center">
                 <div className="h-[60px]">
                   <Image
-                    src={logoIcon}
+                    src={isHovered ? logoIconWhite : logoIcon}
                     alt="PAN ASIA"
                     width={159}
                     height={49}
@@ -131,7 +133,7 @@ const Header = () => {
                   />
                 </div>
                 <Image
-                  src={Logo}
+                  src={isHovered ? Logo2 : Logo}
                   alt="PAN ASIA"
                   width={159}
                   height={59}

@@ -52,7 +52,7 @@ const Footer = () => {
   return (
     <footer>
       {!pathname.startsWith("/admin") && (
-        <div className="bg-pureWhite py-10">
+        <div className="bg-pureWhite py-10 border-t border-main-secondary">
           <div className="container flex flex-col md:flex-row">
             <div className="w-full md:w-[45%]">
               <Image
