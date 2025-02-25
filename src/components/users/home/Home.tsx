@@ -3,8 +3,11 @@ import AboutSection from './components/AboutSection'
 import FacilitiesSection from './components/FacilitiesSection'
 import PreRegister from './components/PreRegister'
 import AdmissionsProcessSection from './components/AdmissionsProcessSection'
+import PAISGoalsSection from './components/PAISGoalsSection'
+import GallerySection from './components/GallerySection'
 
 export default function Home() {
+
   return (
     <div>
         {/* <HeroSection/> */}
@@ -12,6 +15,8 @@ export default function Home() {
         <FacilitiesSection/>
         <PreRegister/>
         <AdmissionsProcessSection/>
+        <PAISGoalsSection/>
+        <GallerySection />
     </div>
   )
 }

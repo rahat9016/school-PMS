@@ -20,18 +20,14 @@ import { Input } from "@/components/ui/input";
 const navlinks = [
   {
     label: "About",
-    href: "/",
+    href: "/about",
   },
   {
     label: "Academic",
-    href: "/",
+    href: "/curriculumOverview",
   },
   {
     label: "Admission",
-    href: "/",
-  },
-  {
-    label: "About",
     href: "/",
   },
 ];
@@ -94,7 +90,7 @@ const Header = () => {
   const [isHovered, setIsHovered] = useState(false);
   // const [menuOpen, setMenuOpen] = useState(false);
   const [showSearch, setShowSearch] = useState(false)
-  console.log(isHovered);
+
   return (
     <header
       className={`group ${pathname.startsWith("/admin") ? "" : "pb-[91px]"} `}
@@ -113,7 +109,7 @@ const Header = () => {
                 </div>
                 <nav className="hidden lg:flex space-x-5 uppercase font-poppins font-medium">
                   {navlinks.map((link, index) => (
-                    <Link key={index} href={`/`} className="group/nav">
+                    <Link key={index} href={link.href} className="group/nav">
                       <span className="relative cursor-pointer block font-medium group-hover:text-white">
                         {link.label}
                         <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-main-secondary transition-all duration-300 group-hover/nav:w-full"></span>

@@ -185,11 +185,21 @@ export default {
           "0%, 100%": { transform: "scale(1)" },
           "50%": { transform: "scale(1.2)" },
         },
+        floatUp: {
+          "0%": { transform: "translateY(100px)" },
+          "100%": { transform: "translateY(0)"},
+        },
+        floatDown: {
+          "0%": { transform: "translateY(-100px)" },
+          "100%": { transform: "translateY(0)" },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
         "zoom-in-out": "zoomInOut 4s ease-in-out infinite",
+        floatUp: "floatUp 4s ease-out infinite",
+        floatDown: "floatDown 4s ease-out infinite",
       },
     },
   },

@@ -6,7 +6,7 @@ import img3 from "../../../../../public/admission/icon3.png";
 import icon1 from "../../../../../public/admission/1.png";
 import icon2 from "../../../../../public/admission/2.png";
 import icon3 from "../../../../../public/admission/3.png";
-
+import bg from "../../../../../public/admission/bg.png"
 const AdmissionsData = [
   {
     bgColor: "#EDF8FC",
@@ -16,7 +16,7 @@ const AdmissionsData = [
     description:
       "You will receive a confirmation email with instructions to complete your application.",
     href: "/",
-    buttonLabel: "Request Info"
+    buttonLabel: "Request Info",
   },
   {
     bgColor: "#F1EEFF",
@@ -26,7 +26,7 @@ const AdmissionsData = [
     description:
       "You are always welcome to visit us in person. This is the best way to learn about Pan-Asia.",
     href: "/",
-    buttonLabel: "Schedule a visit "
+    buttonLabel: "Schedule a visit",
   },
   {
     bgColor: "#EBF9EF",
@@ -36,19 +36,34 @@ const AdmissionsData = [
     description:
       "Applicants will be required to sit for aptitude tests as well as attend an interview.",
     href: "/",
-    buttonLabel: "Apply Now"
+    buttonLabel: "Apply Now",
   },
 ];
 
 export default function AdmissionsProcessSection() {
   return (
-    <div className="bg-white">
+    <div className="bg-white pt-[104px] pb-[276px] bg-no-repeat bg-contain bg-bottom" style={{
+      backgroundImage: `url(${bg.src})`,
+    }}>
       <div className="container">
-      <div className="grid grid-cols-3 gap-4">
-      {
-        AdmissionsData.map((adm, index) => <AdmissionsProcessCard key={index} {...adm}/>)
-      }
-      </div>
+        <div className="text-center w-7/12 mx-auto">
+          <p className="text-sm font-poppins font-medium text-main-secondary mb-4">
+            Facilities
+          </p>
+          <h1 className="text-black font-poppins font-semibold text-2xl lg:text-5xl mb-6">
+            Admissions Process
+          </h1>
+          <p className="text-sm font-poppins font-light text-darkGray mt-[18px] mb-[88px]">
+            Admission is open to all students of any nationality who fulfill our
+            admissions criteria.Students may be admitted at any time during the
+            school year.
+          </p>
+        </div>
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
+          {AdmissionsData.map((adm, index) => (
+            <AdmissionsProcessCard key={index} {...adm} />
+          ))}
+        </div>
       </div>
     </div>
   );
