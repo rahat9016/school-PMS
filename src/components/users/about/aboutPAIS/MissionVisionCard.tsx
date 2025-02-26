@@ -9,10 +9,10 @@ export default function MissionVisionCard({
 }) {
   return (
     <div>
-      <h1 className="font-poppins text-xl lg:text-3xl font-semibold text-black mb-10">
+      <h1 className="font-poppins text-lg lg:text-3xl font-semibold text-black mb-0 md:mb-4 xl:mb-10">
         {title}
       </h1>
-      <p className="text-base font-light font-poppins text-darkGray">
+      <p className="text-sm xl:text-base font-light font-poppins text-darkGray">
         {description}
       </p>
     </div>

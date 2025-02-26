@@ -93,7 +93,7 @@ const Header = () => {
 
   return (
     <header
-      className={`group ${pathname.startsWith("/admin") ? "" : "pb-[91px]"} `}
+      className={`group ${pathname.startsWith("/admin") ? "" : "pb-[70px] md:pb-[91px]"} `}
     >
       {!pathname.startsWith("/admin") && (
         <div
@@ -120,14 +120,16 @@ const Header = () => {
               </div>
               <div className="flex items-center justify-center">
                 <div className="h-[60px]">
+                  <Link href={'/'}>
                   <Image
                     src={isHovered ? logoIconWhite : logoIcon}
                     alt="PAN ASIA"
                     width={159}
                     height={49}
                     className="block md:hidden w-full h-[60px]"
-                  />
+                  /></Link>
                 </div>
+                <Link href={'/'}>
                 <Image
                   src={isHovered ? Logo2 : Logo}
                   alt="PAN ASIA"
@@ -135,6 +137,8 @@ const Header = () => {
                   height={59}
                   className="hidden md:block"
                 />
+                </Link>
+                
               </div>
               <div className="flex items-center justify-end gap-8">
                 <nav className="hidden md:flex space-x-5 uppercase font-poppins font-medium">
