@@ -28,7 +28,7 @@ const navlinks = [
   },
   {
     label: "Admission",
-    href: "/",
+    href: "/admission-overview",
   },
 ];
 // const navlinks2 = [

@@ -20,7 +20,7 @@ export default function HeroSection({
       }}
       className="bg-no-repeat h-[410px] md:h-[520px] lg:h-[620px] w-full object-cover bg-center bg"
     >
-      <div className="w-full h-full bg-gradient-to-t from-[#242D65] to-transparent">
+      <div className="w-full h-full bg-gradient-to-t from-[#242d658f] to-transparent">
         <div className="container flex flex-col justify-end h-full">
           <HeroTitleTag title={title} />
           {description && (

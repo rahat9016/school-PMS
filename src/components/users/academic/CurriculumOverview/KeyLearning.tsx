@@ -1,34 +1,88 @@
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion'
-import React from 'react'
+import React from "react";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
+import { data } from "./data";
+import KeyPoints from "../../../shared/KeyPoints";
+
 
 export default function KeyLearning() {
   return (
-    <div className='bg-white  py-20'>
-<div className="space-y-4">
-<Accordion type="single" collapsible className="w-full">
-      <AccordionItem value="item-1">
-        <AccordionTrigger>Is it accessible?</AccordionTrigger>
-        <AccordionContent>
-          Yes. It adheres to the WAI-ARIA design pattern.
-        </AccordionContent>
-      </AccordionItem>
-      <AccordionItem value="item-2">
-        <AccordionTrigger>Is it styled?</AccordionTrigger>
-        <AccordionContent>
-          Yes. It comes with default styles that matches the other
-          components&apos; aesthetic.
-        </AccordionContent>
-      </AccordionItem>
-      <AccordionItem value="item-3">
-        <AccordionTrigger>Is it animated?</AccordionTrigger>
-        <AccordionContent>
-          Yes. It&apos;s animated by default, but you can disable it if you
-          prefer.
-        </AccordionContent>
-      </AccordionItem>
-    </Accordion>
+    <div className="bg-white  py-20">
+      <div className="container">
+        <Accordion
+          defaultValue="item-1"
+          type="single"
+          collapsible
+          className="w-full"
+        >
+          {data?.map((content, index) => {
+            return (
+              <AccordionItem
+                key={index}
+                value={`item-${index + 1}`}
+                className="mb-3 border-[0px]"
+              >
+                <AccordionTrigger
+                  style={{
+                    background: `${content.bg}`,
+                    border: `1px solid ${content.border}`,
+                  }}
+                  className="p-4 rounded-lg text-[#002D37] text-base font-medium hover:no-underline"
+                >
+                  {content.title}
+                </AccordionTrigger>
+                <AccordionContent className="bg-forestWhite mt-1 py-4 px-6 pb-14 rounded-lg border border-[#E6E6E6]">
+                  <KeyPoints points={content?.content} />
+                  {content?.groups && (
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                      <div className="flex flex-col gap-6">
+                        {content?.groups.slice(0, 3).map((group, index) => {
+                          return (
+                            <div key={index}>
+                              <h3 className="text-main-primary font-poppins font-medium text-base underline mb-2">
+                                {group?.title}
+                              </h3>
+                              <div className="pl-3">
+                                <KeyPoints points={group?.subjects} />
+                              </div>
+                            </div>
+                          );
+                        })}
+                      </div>
+                      <div className="flex flex-col gap-6">
+                        {content?.groups.slice(3, 6).map((group, index) => {
+                          return (
+                            <div key={index}>
+                              <h3 className="text-main-primary font-poppins font-medium text-base underline mb-2">
+                                {group?.title}
+                              </h3>
+                              <div className="pl-3">
+                                <KeyPoints points={group?.subjects} />
+                              </div>
+                            </div>
+                          );
+                        })}
+                        {content.coreElements && (
+                          <div>
+                            <h3 className="text-main-primary font-poppins font-medium text-base underline mb-2">{content?.coreElements?.title}</h3>
+                            <div className="pl-3">
+                                <KeyPoints points={content?.coreElements?.subjects} />
+                              </div>
+                          </div>
+                        )}
+                      </div>
+                    </div>
+                  )}
+                </AccordionContent>
+              </AccordionItem>
+            );
+          })}
+        </Accordion>
+      </div>
     </div>
-
-    </div>
-  )
+  );
 }
