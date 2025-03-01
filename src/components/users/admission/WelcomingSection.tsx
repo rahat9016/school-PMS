@@ -6,7 +6,7 @@ import KeyPoints from "@/components/shared/KeyPoints";
 export default function WelcomingSection() {
   return (
     <div
-      className="bg-[#F2FBFD] bg-no-repeat bg-contain bg-center pt-10 pb-[140px]"
+      className="bg-[#F2FBFD] bg-no-repeat bg-contain bg-center pt-10  pb-10 lg:pb-[140px]"
       style={{
         backgroundImage: `url(${bg.src})`,
       }}

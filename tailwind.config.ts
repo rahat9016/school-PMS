@@ -203,5 +203,5 @@ export default {
       },
     },
   },
-  plugins: [require("tailwindcss-animate"), require('tailwindcss-filters')],
+  plugins: [require("tailwindcss-animate"), require('tailwindcss-filters'),  require('tailwind-scrollbar-hide')],
 } satisfies Config;
