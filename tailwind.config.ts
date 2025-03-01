@@ -163,6 +163,7 @@ export default {
       filter: {
         "custom-filter":
           "brightness(0) saturate(0%) invert(37%) sepia(77%) saturate(597%) hue-rotate(-8deg) brightness(137%) contrast(160%)",
+        "white-filter": "brightness(0) saturate(100%) invert(100%)"
       },
       keyframes: {
         "accordion-down": {

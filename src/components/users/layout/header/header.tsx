@@ -4,9 +4,7 @@ import { Menu, Search } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
 import Logo from "../../../../../public/logo.png";
-import Logo2 from "../../../../../public/logoWhite.png";
 import logoIcon from "../../../../../public/logoIcon.png";
-import logoIconWhite from "../../../../../public/logoIconWhite.png";
 import { useState } from "react";
 import { Input } from "@/components/ui/input";
 // import {
@@ -87,20 +85,16 @@ const navlinks = [
 
 const Header = () => {
   const pathname = usePathname();
-  const [isHovered, setIsHovered] = useState(false);
-  // const [menuOpen, setMenuOpen] = useState(false);
-  const [showSearch, setShowSearch] = useState(false)
+  const [showSearch, setShowSearch] = useState(false);
 
   return (
     <header
-      className={`group ${pathname.startsWith("/admin") ? "" : "pb-[70px] md:pb-[91px]"} `}
+      className={`group ${
+        pathname.startsWith("/admin") ? "" : "pb-[70px] md:pb-[91px]"
+      } `}
     >
       {!pathname.startsWith("/admin") && (
-        <div
-          onMouseEnter={() => setIsHovered(true)}
-          onMouseLeave={() => setIsHovered(false)}
-          className="border-b bg-light-gray top-0 w-full fixed z-50 shadow-sm h-[70px] md:h-[91px] flex items-center group-hover:bg-main-primary duration-150 border-main-secondary"
-        >
+        <div className="border-b bg-light-gray top-0 w-full fixed z-50 shadow-sm h-[70px] md:h-[91px] flex items-center group-hover:bg-main-primary duration-150 border-main-secondary">
           <div className="container py-4 ">
             <div className="grid grid-cols-3 lg:gap-4 place-content-center relative">
               <div className="flex items-center lg:gap-[30px]">
@@ -120,25 +114,25 @@ const Header = () => {
               </div>
               <div className="flex items-center justify-center">
                 <div className="h-[60px]">
-                  <Link href={'/'}>
+                  <Link href={"/"}>
+                    <Image
+                      src={logoIcon}
+                      alt="PAN ASIA"
+                      width={159}
+                      height={49}
+                      className="block md:hidden w-full h-[60px] group-hover:filter-white-filter"
+                    />
+                  </Link>
+                </div>
+                <Link href={"/"}>
                   <Image
-                    src={isHovered ? logoIconWhite : logoIcon}
+                    src={Logo}
                     alt="PAN ASIA"
                     width={159}
-                    height={49}
-                    className="block md:hidden w-full h-[60px]"
-                  /></Link>
-                </div>
-                <Link href={'/'}>
-                <Image
-                  src={isHovered ? Logo2 : Logo}
-                  alt="PAN ASIA"
-                  width={159}
-                  height={59}
-                  className="hidden md:block"
-                />
+                    height={59}
+                    className="hidden md:block group-hover:filter-white-filter"
+                  />
                 </Link>
-                
               </div>
               <div className="flex items-center justify-end gap-8">
                 <nav className="hidden md:flex space-x-5 uppercase font-poppins font-medium">
@@ -155,7 +149,10 @@ const Header = () => {
                     </span>
                   </Link>
                 </nav>
-                <div onClick={() => setShowSearch(!showSearch)} className="lg:hidden">
+                <div
+                  onClick={() => setShowSearch(!showSearch)}
+                  className="lg:hidden"
+                >
                   <Search className="w-7 h-7 text-mediumGray group-hover:text-white ml-auto" />
                 </div>
                 <div className="hidden lg:flex items-center gap-2 border rounded-xl px-4 h-[40px] w-full max-w-64">
@@ -169,17 +166,19 @@ const Header = () => {
                 </div>
               </div>
             </div>
-            {showSearch && <div className="lg:hidden absolute -bottom-[40px] w-full left-0 shadow-lg">
-              <div className="flex items-center gap-2 px-4 h-[40px] w-full bg-white">
-                <Search className="w-5 h-5 text-mediumGray " />
-                <Input
-                  type="text"
-                  placeholder="Search..."
-                  className="border-none bg-transparent placeholder-gray-400 shadow-none py-1 placeholder:text-[#646464] "
-                  // onChange={(event) => setSearch && setSearch(event.target.value)}
-                />
+            {showSearch && (
+              <div className="lg:hidden absolute -bottom-[40px] w-full left-0 shadow-lg">
+                <div className="flex items-center gap-2 px-4 h-[40px] w-full bg-white">
+                  <Search className="w-5 h-5 text-mediumGray " />
+                  <Input
+                    type="text"
+                    placeholder="Search..."
+                    className="border-none bg-transparent placeholder-gray-400 shadow-none py-1 placeholder:text-[#646464] "
+                    // onChange={(event) => setSearch && setSearch(event.target.value)}
+                  />
+                </div>
               </div>
-            </div>}
+            )}
             {/* <NavigationMenu
               className={`md:flex ${
                 menuOpen ? "flex" : "hidden"
