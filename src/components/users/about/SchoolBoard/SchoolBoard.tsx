@@ -4,6 +4,7 @@ import herobg from "../../../../../public/about/SchoolBoardHeroBg.jpg";
 import bgShape from "../../../../../public/about/bgShape.png";
 import img from "../.../../../../../../public/about/SchoolBoardImg.jpg"
 import Image from "next/image";
+
 export default function SchoolBoard() {
   return (
     <div>
