@@ -13,22 +13,31 @@ import {
 
 const menuData = [
   {
-    title: "Components",
+    title: "About",
     items: [
-      { title: "Button", href: "/components/button" },
-      { title: "Card", href: "/components/card" },
-      { title: "Modal", href: "/components/modal" },
+      { title: "About PAIS", href: "/about" },
+      { title: "Accreditation & Membership", href: "/accreditation-membership" },
+      { title: "School Board", href: "/school-board" },
+      { title: "Facilities & Safety", href: "/facilities-safety" },
+      { title: "ESLRs", href: "/ESLRs" },
     ],
   },
   {
-    title: "Utilities",
+    title: "Academic & Admission",
     items: [
       { title: "Hooks", href: "/utilities/hooks" },
       { title: "Helpers", href: "/utilities/helpers" },
     ],
   },
   {
-    title: "Documentation",
+    title: "Student Life",
+    items: [
+      { title: "Getting Started", href: "/docs/getting-started" },
+      { title: "API Reference", href: "/docs/api" },
+    ],
+  },
+  {
+    title: "News & Events",
     items: [
       { title: "Getting Started", href: "/docs/getting-started" },
       { title: "API Reference", href: "/docs/api" },

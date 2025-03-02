@@ -1,6 +1,6 @@
 "use client";
 import { usePathname } from "next/navigation";
-import { Menu, Search } from "lucide-react";
+import { Menu, Search, X } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
 import Logo from "../../../../../public/logo.png";
@@ -30,64 +30,10 @@ const navlinks = [
     href: "/admission-overview",
   },
 ];
-// const navlinks2 = [
-//   {
-//     label: "About",
-//     children: [
-//       {
-//         label: "Academic",
-//         href: "/",
-//       },
-//       {
-//         label: "Academic",
-//         href: "/",
-//       },
-//       {
-//         label: "Academic",
-//         href: "/",
-//       },
-//     ],
-//   },
-//   {
-//     label: "About",
-//     children: [
-//       {
-//         label: "Academic",
-//         href: "/",
-//       },
-//       {
-//         label: "Academic",
-//         href: "/",
-//       },
-//       {
-//         label: "Academic",
-//         href: "/",
-//       },
-//     ],
-//   },
-//   {
-//     label: "About",
-//     children: [
-//       {
-//         label: "Academic",
-//         href: "/",
-//       },
-//       {
-//         label: "Academic",
-//         href: "/",
-//       },
-//       {
-//         label: "Academic",
-//         href: "/",
-//       },
-//     ],
-//   },
-// ];
-
 const Header = () => {
   const pathname = usePathname();
   const [showSearch, setShowSearch] = useState(false);
-
+  const [showMenu, setShowMenu] = useState(false);
   return (
     <header
       className={`group ${
@@ -100,8 +46,15 @@ const Header = () => {
             <div className="container py-4 ">
               <div className="grid grid-cols-3 lg:gap-4 place-content-center relative">
                 <div className="flex items-center lg:gap-[30px]">
-                  <div className="w-10 h-10 flex items-center ">
-                    <Menu className="group-hover:text-white text-2xl" />
+                  <div
+                    onClick={() => setShowMenu(!showMenu)}
+                    className="w-10 h-10 flex items-center cursor-pointer"
+                  >
+                    {!showMenu ? (
+                      <Menu className="group-hover:text-white text-2xl" />
+                    ) : (
+                      <X className="group-hover:text-white text-2xl" />
+                    )}
                   </div>
                   <nav className="hidden lg:flex space-x-5 uppercase font-poppins font-medium">
                     {navlinks.map((link, index) => (
@@ -183,11 +136,13 @@ const Header = () => {
               )}
             </div>
           </div>
-          <div className=" bg-white shadow-md">
-            <div className="container h-[60px]">
-            <NavigationMenuDemo />
+          {showMenu && (
+            <div className="hidden lg:block bg-white shadow-md">
+              <div className="container h-[60px]">
+                <NavigationMenuDemo />
+              </div>
             </div>
-          </div>
+          )}
         </div>
       )}
     </header>

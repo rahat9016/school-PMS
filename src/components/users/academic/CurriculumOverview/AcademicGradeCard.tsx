@@ -12,9 +12,8 @@ interface IGradeInfo {
 }
 
 export default function AcademicGradeCard({ img, title, points }: IGradeInfo) {
-  console.log(points);
   return (
-    <div className="bg-forestWhite p-10 rounded-xl border border-light hover:shadow-md hover:-translate-y-5 duration-300">
+    <div className="bg-forestWhite p-10 rounded-xl border border-light hover:shadow-md hover:-translate-y-5 duration-500">
       <Image
         src={img.src}
         alt="AcademicGrade"
