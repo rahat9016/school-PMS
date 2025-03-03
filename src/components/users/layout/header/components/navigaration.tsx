@@ -25,8 +25,8 @@ const menuData = [
   {
     title: "Academic & Admission",
     items: [
-      { title: "Hooks", href: "/utilities/hooks" },
-      { title: "Helpers", href: "/utilities/helpers" },
+      { title: "Curriculum Overview", href: "/curriculumOverview" },
+      { title: "Kindergarten & Primary", href: "/kindergarten-primary" },
     ],
   },
   {

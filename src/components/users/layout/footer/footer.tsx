@@ -162,7 +162,7 @@ const Footer = () => {
                     alt="Brand"
                     width={50}
                     height={60}
-                    className="w-auto h-auto"
+                    className="w-1/2 md:w-9/12 lg:w-auto h-auto mx-auto"
                   />
                 ))}
               </div>

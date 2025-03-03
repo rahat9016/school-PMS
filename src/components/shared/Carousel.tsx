@@ -65,13 +65,14 @@ const Carousel = ({ slides }: {slides: StaticImageData[]}) => {
               src: string | StaticImport,
               index: React.Key | null | undefined
             ) => (
-              <div className="flex-shrink-0 w-full" key={index}>
+              <div className="flex-shrink-0 w-full " key={index}>
                 <Image
                   src={src}
                   alt={`Slide ${index}`}
                   layout="responsive"
                   width={800}
                   height={600}
+                  className="rounded-xl"
                 />
               </div>
             )

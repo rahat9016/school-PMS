@@ -8,7 +8,7 @@ import KeyLearning from "@/components/users/academic/CurriculumOverview/KeyLearn
 export default function CurriculumOverviewPage() {
   return (
     <div>
-      <HeroSection img={herobg} title="Curriculum Overview" />
+      <HeroSection img={herobg} title="Curriculum Overview" className="bg-cover" />
       <AcademicGradeSection />
       <Independent />
       <KeyLearning />

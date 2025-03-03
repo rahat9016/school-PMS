@@ -11,6 +11,7 @@ export default function AboutPage() {
         img={herobg}
         title="About PAIS"
         description="Pan-Asia is one of Thailand’s Best International Schools. We are a focal point for the surrounding neighborhoods, offering a place for community social events and learning opportunities."
+        // className="bg-cover"
       />
       <ChairmanMessageSection/>
       <HistorySection/>
