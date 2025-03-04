@@ -7,7 +7,8 @@ import Logo from "../../../../../public/logo.png";
 import logoIcon from "../../../../../public/logoIcon.png";
 import { useState } from "react";
 import { Input } from "@/components/ui/input";
-import { NavigationMenuDemo } from "./components/navigaration";
+import { HeaderNavigationMenu } from "./components/navigaration";
+
 // import {
 //   NavigationMenu,
 //   NavigationMenuContent,
@@ -139,7 +140,7 @@ const Header = () => {
           {showMenu && (
             <div className="hidden lg:block bg-white shadow-md">
               <div className="container h-[60px]">
-                <NavigationMenuDemo />
+                <HeaderNavigationMenu />
               </div>
             </div>
           )}

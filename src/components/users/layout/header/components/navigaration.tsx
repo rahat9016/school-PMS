@@ -27,6 +27,7 @@ const menuData = [
     items: [
       { title: "Curriculum Overview", href: "/curriculumOverview" },
       { title: "Kindergarten & Primary", href: "/kindergarten-primary" },
+      { title: "Secondary & IB Programs", href: "/secondary-ib-programs" },
     ],
   },
   {
@@ -44,7 +45,7 @@ const menuData = [
     ],
   },
 ];
-export function NavigationMenuDemo() {
+export function HeaderNavigationMenu() {
   return (
     <NavigationMenu>
       <NavigationMenuList>
