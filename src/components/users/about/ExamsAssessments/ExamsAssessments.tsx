@@ -12,8 +12,9 @@ export default function ExamsAssessments() {
         title="Exams & Assessments"
         className="bg-cover h-[280px]"
       />
-      <NweaMapExamsKeyPoints/>
-      <OctopusCampSection/>
+      <NweaMapExamsKeyPoints />
+      <OctopusCampSection />
+      
     </div>
   );
 }
