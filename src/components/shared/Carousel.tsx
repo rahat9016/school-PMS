@@ -3,7 +3,11 @@ import React from "react";
 import Image from "next/image";
 import useEmblaCarousel from "embla-carousel-react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import { StaticImageData, StaticImport } from "next/dist/shared/lib/get-img-props";
+import {
+  StaticImageData,
+  StaticImport,
+} from "next/dist/shared/lib/get-img-props";
+import { cn } from "@/lib/utils";
 
 export const PrevButton = ({ onClick }: { onClick: () => void }) => (
   <button
@@ -39,8 +43,13 @@ export const DotButton = ({
 );
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-const Carousel = ({ slides }: {slides: StaticImageData[]}) => {
-  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true });
+const Carousel = ({ slides, className }: { slides: StaticImageData[]; className?: string }) => {
+  const [emblaRef, emblaApi] = useEmblaCarousel({
+    loop: true,
+    // align: "start", 
+    // slidesToScroll: 1,
+    // containScroll: "trim",
+  });
 
   const [selectedIndex, setSelectedIndex] = React.useState<number>(0);
   const [scrollSnaps, setScrollSnaps] = React.useState<number[]>([]);
@@ -57,7 +66,7 @@ const Carousel = ({ slides }: {slides: StaticImageData[]}) => {
   const scrollTo = (index: number) => emblaApi && emblaApi.scrollTo(index);
 
   return (
-    <div className="relative w-full max-w-4xl mx-auto">
+    <div className="relative w-full mx-auto">
       <div className="overflow-hidden" ref={emblaRef}>
         <div className="flex">
           {slides.map(
@@ -65,7 +74,7 @@ const Carousel = ({ slides }: {slides: StaticImageData[]}) => {
               src: string | StaticImport,
               index: React.Key | null | undefined
             ) => (
-              <div className="flex-shrink-0 w-full " key={index}>
+              <div className={cn(`flex-shrink-0 w-full px-2`, className)} key={index}>
                 <Image
                   src={src}
                   alt={`Slide ${index}`}

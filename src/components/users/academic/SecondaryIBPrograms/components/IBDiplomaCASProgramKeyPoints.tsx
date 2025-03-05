@@ -28,18 +28,18 @@ export default function IBDiplomaCASProgramKeyPoints() {
                   background: `${content.bg}`,
                   border: `1px solid ${content.border}`,
                 }}
-                className="p-4 rounded-lg text-[#002D37] text-base font-medium hover:no-underline"
+                className="p-4 rounded-lg text-[#002D37] text-sm lg:text-base font-medium hover:no-underline"
               >
                 {content.title}
               </AccordionTrigger>
               <AccordionContent className="bg-forestWhite mt-1 py-4 px-6 pb-14 rounded-lg border border-[#E6E6E6]">
                 {content.desc1 && (
-                  <p className="text-base font-poppins text-black-dark font-normal mb-6">
+                  <p className="text-sm lg:text-base font-poppins text-black-dark font-normal mb-6">
                     {content.desc1}
                   </p>
                 )}
                 {content.important && (
-                  <p className="text-base font-poppins text-main-secondary font-normal mb-7 mt-9">
+                  <p className="text-sm lg:text-base font-poppins text-main-secondary font-normal mb-7 mt-9">
                     {content.important}
                   </p>
                 )}
@@ -48,11 +48,11 @@ export default function IBDiplomaCASProgramKeyPoints() {
                   content.programsPoints.map((curriculum, index) => {
                     return (
                         <div key={index}>
-                          <h3 className="text-main-primary font-medium text-base font-poppins mb-3">
+                          <h3 className="text-main-primary font-medium text-sm lg:text-base font-poppins mb-3">
                             {curriculum.key}
                           </h3>
                           {curriculum?.desc && (
-                            <p className={`text-base font-poppins text-black-dark font-light mb-6 lg:mb-12`}>
+                            <p className={`text-sm lg:text-base font-poppins text-black-dark font-light mb-6 lg:mb-12`}>
                               {curriculum?.desc}
                             </p>
                           )}

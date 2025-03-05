@@ -28,13 +28,13 @@ export default function IBDiplomaProgramKeyPoints() {
                   background: `${content.bg}`,
                   border: `1px solid ${content.border}`,
                 }}
-                className="p-4 rounded-lg text-[#002D37] text-base font-medium hover:no-underline"
+                className="p-4 rounded-lg text-[#002D37] text-sm lg:text-base font-medium hover:no-underline"
               >
                 {content.title}
               </AccordionTrigger>
               <AccordionContent className="bg-forestWhite mt-1 py-4 px-6 pb-14 rounded-lg border border-[#E6E6E6]">
                 {content.desc1 && (
-                  <p className="text-base font-poppins text-black-dark font-normal mb-6">
+                  <p className="text-sm lg:text-base font-poppins text-black-dark font-normal mb-6">
                     {content.desc1}
                   </p>
                 )}
@@ -43,11 +43,11 @@ export default function IBDiplomaProgramKeyPoints() {
                   content.curriculumPoints.map((curriculum, index) => {
                     return (
                         <div key={index}>
-                          <h3 className="text-main-primary font-medium text-base font-poppins mb-3">
+                          <h3 className="text-main-primary font-medium text-sm lg:text-base font-poppins mb-3">
                             {curriculum.key}
                           </h3>
                           {curriculum?.desc && (
-                            <p className={`text-base font-poppins text-black-dark font-light mb-12`}>
+                            <p className={`text-sm lg:text-base font-poppins text-black-dark font-light mb-12`}>
                               {curriculum?.desc}
                             </p>
                           )}
@@ -55,7 +55,7 @@ export default function IBDiplomaProgramKeyPoints() {
                             <ul>
                               {curriculum?.curriculumPoints?.map((value, index) => (
                                 <li
-                                  className="font-poppins text-base text-black-dark mb-2"
+                                  className="font-poppins text-sm lg:text-base text-black-dark mb-2"
                                   key={index}
                                 >
                                   <span className="text-black-dark font-normal">
@@ -73,7 +73,7 @@ export default function IBDiplomaProgramKeyPoints() {
                     <ul>
                       {content?.diplomaPoints?.map((value, index) => (
                         <li
-                          className="font-poppins text-base text-black-dark mb-2"
+                          className="font-poppins text-sm lg:text-base text-black-dark mb-2"
                           key={index}
                         >
                           <span className="text-black-dark font-normal">

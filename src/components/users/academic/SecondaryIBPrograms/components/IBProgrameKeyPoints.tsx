@@ -36,35 +36,35 @@ export default function IBProgramKeyPoints() {
               </AccordionTrigger>
               <AccordionContent className="bg-forestWhite mt-1 py-2 lg:py-4 px-3 lg:px-6 pb-6 lg:pb-14 rounded-lg border border-[#E6E6E6]">
                 {content.desc1 && (
-                  <p className="text-base font-poppins text-black-dark font-normal mb-3 lg:mb-6">
+                  <p className="text-sm lg:text-base font-poppins text-black-dark font-normal mb-3 lg:mb-6">
                     {content.desc1}
                   </p>
                 )}
                 {content.desc2 && (
-                  <p className="text-base font-poppins text-black-dark font-normal mb-3 lg:mb-6">
+                  <p className="text-sm lg:text-base font-poppins text-black-dark font-normal mb-3 lg:mb-6">
                     {content.desc2}
                   </p>
                 )}
                 {content.desc3 && (
-                  <p className="text-base font-poppins text-black-dark font-normal mb-3 lg:mb-6">
+                  <p className="text-sm lg:text-base font-poppins text-black-dark font-normal mb-3 lg:mb-6">
                     {content.desc3}
                   </p>
                 )}
                 {content.img && <Image src={content?.img} alt="Approaches" className="w-full lg:w-7/12" />}
                 <KeyPoints points={content?.content} />
                 {content.desc4 && (
-                  <p className="text-base font-poppins text-black-dark font-normal mt-7 lg:mt-14 mb-3 lg:mb-6">
+                  <p className="text-sm lg:text-base font-poppins text-black-dark font-normal mt-7 lg:mt-14 mb-3 lg:mb-6">
                     {content.desc4}
                   </p>
                 )}
                 {content.desc5 && (
-                  <p className="text-base font-poppins text-black-dark font-normal mb-3 lg:mb-6">
+                  <p className="text-sm lg:text-base font-poppins text-black-dark font-normal mb-3 lg:mb-6">
                     {content.desc5}
                   </p>
                 )}
                 <div>
                     <ul>
-                        {content?.keyPoints?.map((key, index) => <li className="font-poppins text-base text-black-dark mb-2" key={index}><span className="text-main-primary font-medium">{key?.key}</span> <span className="text-black-dark font-normal">{key?.value}</span></li>)}
+                        {content?.keyPoints?.map((key, index) => <li className="font-poppins text-sm lg:text-base text-black-dark mb-2" key={index}><span className="text-main-primary font-medium">{key?.key}</span> <span className="text-black-dark font-normal">{key?.value}</span></li>)}
                     </ul>
                 </div>
               </AccordionContent>

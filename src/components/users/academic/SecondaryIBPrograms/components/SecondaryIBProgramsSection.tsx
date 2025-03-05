@@ -72,18 +72,18 @@ export default function SecondaryIBProgramsSection() {
                 IB Middle Years Program (MYP)
               </h1>
               <span className="block w-[140px] h-[3px] bg-main-secondary"></span>
-              <p className="text-base font-poppins text-black-dark font-normal mt-4 lg:mt-8">
+              <p className="text-sm lg:text-base font-poppins text-black-dark font-normal mt-4 lg:mt-8">
                 Pan-Asia International School is extremely proud to be a member
                 of the IB MYP & DP world-wide community. PAIS completed its MYP
                 verification in May 2020. PAIS now offers a complete MYP & DP
                 program for our students from grades 6 to 12.
               </p>
-              <p className="text-base font-poppins text-black-dark font-normal mt-3 lg:mt-6">
+              <p className="text-sm lg:text-base font-poppins text-black-dark font-normal mt-3 lg:mt-6">
                 IB World Schools share a common philosophy- a commitment to
                 high-quality, challenging, international education- that we
                 believe is important for our students.
               </p>
-              <p className="text-base font-poppins text-black-dark font-normal mt-3 mb-6 lg:my-6">
+              <p className="text-sm lg:text-base font-poppins text-black-dark font-normal mt-3 mb-6 lg:my-6">
                 <span className="text-main-secondary">*</span> Only schools
                 authorized by the IB Organization can offer any of its four
                 academic programmes: the Primary Years Programme (PYP), the
@@ -125,18 +125,18 @@ export default function SecondaryIBProgramsSection() {
                 IB Diploma Program (DP)
               </h1>
               <span className="block w-[140px] h-[3px] bg-main-secondary"></span>
-              <p className="text-base font-poppins text-black-dark font-normal mt-4 lg:mt-8">
+              <p className="text-sm lg:text-base font-poppins text-black-dark font-normal mt-4 lg:mt-8">
                 Pan-Asia International School is extremely proud to be a member
                 of the IB MYP & DP world-wide community. PAIS completed its MYP
                 verification in May 2020. PAIS now offers a complete MYP & DP
                 program for our students from grades 6 to 12.
               </p>
-              <p className="text-base font-poppins text-black-dark font-normal mt-3 lg:mt-6">
+              <p className="text-sm lg:text-base font-poppins text-black-dark font-normal mt-3 lg:mt-6">
                 IB World Schools share a common philosophy- a commitment to
                 high-quality, challenging, international education- that we
                 believe is important for our students.
               </p>
-              <p className="text-base font-poppins text-black-dark font-normal mt-3 mb-6 lg:my-6">
+              <p className="text-sm lg:text-base font-poppins text-black-dark font-normal mt-3 mb-6 lg:my-6">
                 <span className="text-main-secondary">*</span> Only schools
                 authorized by the IB Organization can offer any of its four
                 academic programmes: the Primary Years Programme (PYP), the
