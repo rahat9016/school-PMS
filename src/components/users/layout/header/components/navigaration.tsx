@@ -29,7 +29,8 @@ const menuData = [
       { title: "Kindergarten & Primary", href: "/kindergarten-primary" },
       { title: "Secondary & IB Programs", href: "/secondary-ib-programs" },
       { title: "Exams & Assessments", href: "/exams-assessments" },
-      { title: "After-School & Enrichment", href: "/after-school-enrichment" },
+      { title: "After-School & Enrichment", href: "/after-school-enrichment" }, 
+      { title: "School Lunch", href: "/school-lunch" },
     ],
   },
   {
