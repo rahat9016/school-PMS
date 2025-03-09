@@ -30,20 +30,22 @@ export const NextButton = ({ onClick }: { onClick: () => void }) => (
 export const DotButton = ({
   onClick,
   isSelected,
+  isPrimary
 }: {
   onClick: () => void;
   isSelected: boolean;
+  isPrimary?: boolean;
 }) => (
   <button
     className={`w-3 h-3 mx-1 rounded-full ${
-      isSelected ? "bg-main-primary" : "bg-white"
+      isSelected ? `${isPrimary ?"bg-main-secondary":"bg-main-primary"} ` : "bg-white"
     } hover:bg-blue-400`}
     onClick={onClick}
   />
 );
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-const Carousel = ({ slides, className }: { slides: StaticImageData[]; className?: string }) => {
+const Carousel = ({ slides, className, isPrimary }: { slides: StaticImageData[]; className?: string;  isPrimary?:boolean }) => {
   const [emblaRef, emblaApi] = useEmblaCarousel({
     loop: true,
     // align: "start", 
@@ -96,6 +98,7 @@ const Carousel = ({ slides, className }: { slides: StaticImageData[]; className?
             key={index}
             onClick={() => scrollTo(index)}
             isSelected={index === selectedIndex}
+            isPrimary={isPrimary}
           />
         ))}
       </div>

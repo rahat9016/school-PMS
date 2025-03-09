@@ -31,6 +31,8 @@ const menuData = [
       { title: "Exams & Assessments", href: "/exams-assessments" },
       { title: "After-School & Enrichment", href: "/after-school-enrichment" }, 
       { title: "School Lunch", href: "/school-lunch" },
+      { title: "Admissions Overview", href: "/admission-overview" },
+      { title: "Enrollment & Scholarship", href: "/enrollment-scholarship" },
     ],
   },
   {
