@@ -33,6 +33,7 @@ const menuData = [
       { title: "School Lunch", href: "/school-lunch" },
       { title: "Admissions Overview", href: "/admission-overview" },
       { title: "Enrollment & Scholarship", href: "/enrollment-scholarship" },
+      { title: "Open House & School Tour", href: "/open-house-school-tour" },      
     ],
   },
   {
@@ -65,7 +66,7 @@ export function HeaderNavigationMenu() {
                     <li key={item.title}>
                       <a
                         href={item.href}
-                        className="block px-3 py-2 rounded-none hover:bg-main-primary"
+                        className="block px-3 py-2 rounded-none hover:bg-main-primary hover:text-white"
                       >
                         {item.title}
                       </a>

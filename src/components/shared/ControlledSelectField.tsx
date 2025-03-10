@@ -25,7 +25,7 @@ const ControlledSelectField: React.FC<ControlledSelectFieldProps> = ({
   name,
   options,
   selectLabel,
-  className
+  className,
 }) => {
   const { control } = useFormContext();
 
@@ -41,9 +41,16 @@ const ControlledSelectField: React.FC<ControlledSelectFieldProps> = ({
               onValueChange={field.onChange}
               defaultValue={field.value}
             >
-              <SelectTrigger className={cn(`h-[42px] bg-white outline-none ${
-                    error ? "border border-rose-500" : "focus:ring-grayDark focus:border-[#D9E3E7]"
-                } focus:border-none text-[#646464]`, className)}>
+              <SelectTrigger
+                className={cn(
+                  `h-[42px] bg-white outline-none ${
+                    error
+                      ? "border border-rose-500"
+                      : "focus:ring-grayDark focus:border-[#D9E3E7]"
+                  } focus:border-none text-[#646464]`,
+                  className
+                )}
+              >
                 <SelectValue
                   className="text-[#646464] text-sm font-normal"
                   placeholder={selectLabel || "Select an option"}
@@ -64,8 +71,10 @@ const ControlledSelectField: React.FC<ControlledSelectFieldProps> = ({
               </SelectContent>
             </Select>
             {error && (
-          <div className="text-rose-500 text-xs mt-1 pl-2">{error.message}</div>
-        )}
+              <div className="text-rose-500 text-xs mt-1 pl-2">
+                {error.message}
+              </div>
+            )}
           </div>
         );
       }}
