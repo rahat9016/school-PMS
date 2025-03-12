@@ -98,7 +98,7 @@ export default function BookForSchoolTourSection() {
                       placeholder="Enter grade"
                       className="bg-[#F8F8F8]"
                     />
-                  </div>
+                  </div>  
                   <div>
                     <InputLabel
                       label="What time would you like us to call you ? "

@@ -39,7 +39,7 @@ const menuData = [
   {
     title: "Student Life",
     items: [
-      { title: "Getting Started", href: "/docs/getting-started" },
+      { title: "Student Development & Counselling", href: "/student-development-counselling" },
       { title: "API Reference", href: "/docs/api" },
     ],
   },
