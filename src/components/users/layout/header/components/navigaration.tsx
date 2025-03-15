@@ -40,14 +40,18 @@ const menuData = [
     title: "Student Life",
     items: [
       { title: "Student Development & Counselling", href: "/student-development-counselling" },
-      { title: "API Reference", href: "/docs/api" },
+      { title: "Student Leadership & Engagement", href: "/student-leadership-engagement" },
+      { title: "Parents & Faculty Community (PFC)", href: "/parents-faculty-community" },
+      { title: "Alumni Network", href: "/alumni-network" },
+      { title: "PAIS in Wonderland Summer Camp", href: "/pais-in-wonderland-summer-camp" },
+      { title: "Sports", href: "/sports" },
     ],
   },
   {
     title: "News & Events",
     items: [
       { title: "Getting Started", href: "/docs/getting-started" },
-      { title: "API Reference", href: "/docs/api" },
+      { title: "Student Leadership & Engagement", href: "/student-leadership-engagement" },
     ],
   },
 ];

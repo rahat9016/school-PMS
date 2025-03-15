@@ -9,15 +9,15 @@ const data = [
 export default function GuidanceSection() {
   return (
     <div
-      className="bg-main-primary bg-no-repeat bg-contain bg-center py-10 py-[104px]"
+      className="bg-main-primary bg-no-repeat bg-contain bg-center py-10 lg:py-[104px]"
       style={{
         backgroundImage: `url(${bg.src})`,
       }}
     >
       <div className="container">
         <div className='grid grid-cols-1 lg:grid-cols-2 gap-8'>
-        {data.map((value, index) => <div key={index} className='border border-main-secondary px-8 py-14 h-[255px] rounded-2xl'>
-            <div className='flex items-start gap-[14px] '>
+        {data.map((value, index) => <div key={index} className='border border-main-secondary px-8 py-14 min-h-[255px] rounded-2xl'>
+            <div className='flex items-start gap-[14px]'>
                 <Image src={tick} alt='tic' width={20} height={20} />
                 <p className="text-white font-poppins text-base leading-[28px] font-light">{value}</p>
             </div>

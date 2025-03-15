@@ -3,6 +3,9 @@ import React from 'react'
 import herobg from "../../../../../public/students/studentHero.jpeg";
 import SchoolCounsellingSection from './components/SchoolCounsellingSection';
 import GuidanceSection from './components/GuidanceSection';
+import MeetTheSchoolSection from './components/MeetTheSchoolSection';
+import OnlineGuidanceCounselingSection from './components/OnlineGuidanceCounselingSection';
+import IndividualCounselingSection from './components/IndividualCounselingSection';
 export default function StudentDevelopmentCounselling() {
   return (
     <div>
@@ -13,6 +16,9 @@ export default function StudentDevelopmentCounselling() {
       />
       <SchoolCounsellingSection />
       <GuidanceSection />
+      <MeetTheSchoolSection />
+      <OnlineGuidanceCounselingSection />
+      <IndividualCounselingSection />
     </div>
   )
 }

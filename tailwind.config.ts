@@ -24,12 +24,13 @@ export default {
         },
         padding: {
           DEFAULT: "1rem",
-          '2xl': "0rem",
+          "2xl": "0rem",
         },
       },
       colors: {
-        "main-primary": "#242D65", // Dark Purple
-        "main-secondary": "#F68C25", // Orange
+        "main-primary": "#242D65",
+        "main-secondary": "#F68C25",
+        aliceBlue: "#F2FBFD",
         lightBlue: "#EFF3F4",
         greyLight: "#F2F2F2",
         pureBlack: "#000000",
@@ -163,7 +164,7 @@ export default {
       filter: {
         "custom-filter":
           "brightness(0) saturate(0%) invert(37%) sepia(77%) saturate(597%) hue-rotate(-8deg) brightness(137%) contrast(160%)",
-        "white-filter": "brightness(0) saturate(100%) invert(100%)"
+        "white-filter": "brightness(0) saturate(100%) invert(100%)",
       },
       keyframes: {
         "accordion-down": {
@@ -188,7 +189,7 @@ export default {
         },
         floatUp: {
           "0%": { transform: "translateY(100px)" },
-          "100%": { transform: "translateY(0)"},
+          "100%": { transform: "translateY(0)" },
         },
         floatDown: {
           "0%": { transform: "translateY(-100px)" },
@@ -204,5 +205,9 @@ export default {
       },
     },
   },
-  plugins: [require("tailwindcss-animate"), require('tailwindcss-filters'),  require('tailwind-scrollbar-hide')],
+  plugins: [
+    require("tailwindcss-animate"),
+    require("tailwindcss-filters"),
+    require("tailwind-scrollbar-hide"),
+  ],
 } satisfies Config;
