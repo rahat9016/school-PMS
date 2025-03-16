@@ -4,7 +4,7 @@ import InputLabel from "@/components/shared/InputLabel";
 import { Button } from "@/components/ui/button";
 import React from "react";
 import { FormProvider, useForm } from "react-hook-form";
-import {letUsCallValidationSchema} from "./Schema";
+import {letUsCallValidationSchema} from "../Schema";
 import { yupResolver } from "@hookform/resolvers/yup";
 import ControlledCalendarField from "@/components/shared/ControlledCalendarField";
 import ControlledRadioField from "@/components/shared/ControlledRadioField";

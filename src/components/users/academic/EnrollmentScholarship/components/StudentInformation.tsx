@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import bg from "../../../../../../public/academic/StudentInformationShape.png";
 import bg2 from "../../../../../../public/academic/ParentInformationShape.png";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { validationStudentAllInformationSchema } from "./Schema";
+import { validationStudentAllInformationSchema } from "../Schema";
 import ControlledInputField from "@/components/shared/ControlledInputField";
 import InputLabel from "@/components/shared/InputLabel";
 import ControlledSelectField from "@/components/shared/ControlledSelectField";

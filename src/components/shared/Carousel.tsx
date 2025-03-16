@@ -9,18 +9,27 @@ import {
 } from "next/dist/shared/lib/get-img-props";
 import { cn } from "@/lib/utils";
 
-export const PrevButton = ({ onClick }: { onClick: () => void }) => (
+export const PrevButton = ({ onClick, className }: { onClick: () => void; className?: string }) => (
   <button
-    className="absolute left-2 top-1/2 transform -translate-y-1/2 bg-gray-800 text-black-dark bg-white p-1 lg:p-2 rounded-full shadow-lg hover:bg-gray-700"
+    className={cn("absolute left-2 top-1/2 transform -translate-y-1/2 bg-gray-800 text-black-dark bg-white p-1 lg:p-2 rounded-full shadow-lg hover:bg-gray-700", className)}
     onClick={onClick}
   >
     <ChevronLeft className="text-base lg:text-2xl" />
   </button>
 );
 
-export const NextButton = ({ onClick }: { onClick: () => void }) => (
+export const NextButton = ({
+  onClick,
+  className,
+}: {
+  onClick: () => void;
+  className?: string;
+}) => (
   <button
-    className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-gray-800 text-black-dark bg-white p-1 lg:p-2 rounded-full shadow-lg hover:bg-gray-700"
+    className={cn(
+      "absolute right-2 top-1/2 transform -translate-y-1/2 bg-gray-800 text-black-dark bg-white p-1 lg:p-2 rounded-full shadow-lg hover:bg-gray-700",
+      className
+    )}
     onClick={onClick}
   >
     <ChevronRight className="text-base lg:text-2xl" />
@@ -30,7 +39,7 @@ export const NextButton = ({ onClick }: { onClick: () => void }) => (
 export const DotButton = ({
   onClick,
   isSelected,
-  isPrimary
+  isPrimary,
 }: {
   onClick: () => void;
   isSelected: boolean;
@@ -38,17 +47,33 @@ export const DotButton = ({
 }) => (
   <button
     className={`w-3 h-3 mx-1 rounded-full ${
-      isSelected ? `${isPrimary ?"bg-main-secondary":"bg-main-primary"} ` : "bg-white"
+      isSelected
+        ? `${isPrimary ? "bg-main-secondary" : "bg-main-primary"} `
+        : "bg-white"
     } hover:bg-blue-400`}
     onClick={onClick}
   />
 );
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-const Carousel = ({ slides, className, isPrimary }: { slides: StaticImageData[]; className?: string;  isPrimary?:boolean }) => {
+const Carousel = ({
+  slides,
+  className,
+  isPrimary,
+  nextClassName,
+  prevClassName,
+  isShowDotButton = true
+}: {
+  slides: StaticImageData[];
+  className?: string;
+  isPrimary?: boolean;
+  nextClassName?: string;
+  prevClassName?: string;
+  isShowDotButton?: boolean
+}) => {
   const [emblaRef, emblaApi] = useEmblaCarousel({
     loop: true,
-    // align: "start", 
+    // align: "start",
     // slidesToScroll: 1,
     // containScroll: "trim",
   });
@@ -76,7 +101,10 @@ const Carousel = ({ slides, className, isPrimary }: { slides: StaticImageData[];
               src: string | StaticImport,
               index: React.Key | null | undefined
             ) => (
-              <div className={cn(`flex-shrink-0 w-full px-2`, className)} key={index}>
+              <div
+                className={cn(`flex-shrink-0 w-full px-2`, className)}
+                key={index}
+              >
                 <Image
                   src={src}
                   alt={`Slide ${index}`}
@@ -90,9 +118,15 @@ const Carousel = ({ slides, className, isPrimary }: { slides: StaticImageData[];
           )}
         </div>
       </div>
-      <PrevButton onClick={() => emblaApi && emblaApi.scrollPrev()} />
-      <NextButton onClick={() => emblaApi && emblaApi.scrollNext()} />
-      <div className="flex justify-center absolute bottom-10 left-1/2 -translate-x-1/2">
+      <PrevButton
+        onClick={() => emblaApi && emblaApi.scrollPrev()}
+        className={prevClassName}
+      />
+      <NextButton
+        onClick={() => emblaApi && emblaApi.scrollNext()}
+        className={nextClassName}
+      />
+      {isShowDotButton && <div className="flex justify-center absolute bottom-10 left-1/2 -translate-x-1/2">
         {scrollSnaps.map((_, index) => (
           <DotButton
             key={index}
@@ -101,7 +135,7 @@ const Carousel = ({ slides, className, isPrimary }: { slides: StaticImageData[];
             isPrimary={isPrimary}
           />
         ))}
-      </div>
+      </div>}
     </div>
   );
 };

@@ -41,9 +41,9 @@ const menuData = [
     items: [
       { title: "Student Development & Counselling", href: "/student-development-counselling" },
       { title: "Student Leadership & Engagement", href: "/student-leadership-engagement" },
-      { title: "Parents & Faculty Community (PFC)", href: "/parents-faculty-community" },
+      { title: "Parents & Faculty Community", href: "/parents-faculty-community" },
       { title: "Alumni Network", href: "/alumni-network" },
-      { title: "PAIS in Wonderland Summer Camp", href: "/pais-in-wonderland-summer-camp" },
+      { title: "Summer Programs", href: "/pais-in-wonderland-summer-camp" },
       { title: "Sports", href: "/sports" },
     ],
   },

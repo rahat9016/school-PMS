@@ -8,7 +8,7 @@ import { Button } from "@/components/ui/button";
 import { yupResolver } from "@hookform/resolvers/yup";
 import React from "react";
 import { FormProvider, useForm } from "react-hook-form";
-import { visitFormSchema } from "./Schema";
+import { visitFormSchema } from "../Schema";
 import img from "../../../../../../public/academic/OpenHouseImg.jpg"
 import Image from "next/image";
 export default function BookForSchoolTourSection() {

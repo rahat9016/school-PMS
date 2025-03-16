@@ -1,6 +1,7 @@
 import React from "react";
-import { Controller, useFormContext } from "react-hook-form";
+
 import { Input } from "../ui/input";
+import { Controller, useFormContext } from "react-hook-form";
 
 interface ControlledInputFieldProps {
   name: string;
