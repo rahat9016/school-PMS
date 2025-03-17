@@ -11,7 +11,7 @@ const preRegisterSchema = yup.object().shape({
   studentNationality: yup.string().required("Student's nationality is required"),
   currentSchool: yup.string().required("Current school is required"),
   grade: yup.string().required("Grade is required"),
-  additionalInfo: yup.string().required(""),
+  additionalInfo: yup.string().required("Additional Info required"),
 });
 
 export {preRegisterSchema}

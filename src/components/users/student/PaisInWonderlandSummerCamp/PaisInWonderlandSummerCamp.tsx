@@ -3,6 +3,7 @@ import HeroSection from '@/components/shared/HeroSection'
 import herobg from "../../../../../public/students/campHeroBg.jpg";
 import AboutSummerCamp from './components/AboutSummerCamp';
 import PreRegisterSection from './components/PreRegisterSection';
+import AcademicCampsSection from './components/AcademicCampsSection';
 export default function PaisInWonderlandSummerCamp() {
   return (
     <div>
@@ -13,6 +14,7 @@ export default function PaisInWonderlandSummerCamp() {
       />
       <AboutSummerCamp/>
       <PreRegisterSection />
+      <AcademicCampsSection />
     </div>
   )
 }

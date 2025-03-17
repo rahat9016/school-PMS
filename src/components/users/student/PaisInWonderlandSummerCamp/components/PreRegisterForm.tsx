@@ -18,9 +18,10 @@ export default function PreRegister() {
     console.log(data);
   };
   return (
-    <FormProvider {...methods}>
-      <form onSubmit={methods.handleSubmit(onSubmit)}>
-        <div className="grid grid-cols-2 gap-6">
+    <div>
+      <FormProvider {...methods}>
+      <form onSubmit={methods.handleSubmit(onSubmit)} className="w-full">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
           <div>
             <InputLabel label="Parent Name" required />
             <ControlledInputField
@@ -123,7 +124,7 @@ export default function PreRegister() {
               className="bg-[#F8F8F8]"
             />
           </div>
-          <div className="col-span-2 flex justify-end gap-4">
+          <div className="flex justify-end gap-4">
             <Button
               type="reset"
               className="uppercase bg-[#EFF0EF] text-[#363739] rounded-sm px-6 lg:px-10 py-3 h-10 lg:h-14"
@@ -140,5 +141,6 @@ export default function PreRegister() {
         </div>
       </form>
     </FormProvider>
+    </div>
   );
 }

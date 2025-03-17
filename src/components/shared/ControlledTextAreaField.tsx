@@ -19,27 +19,30 @@ const ControlledTextareaField: React.FC<ControlledTextareaFieldProps> = ({
     <Controller
       name={name}
       control={control}
-      render={({ field, fieldState: { error } }) => (
-        <div>
-          <Textarea
-            {...field}
-            placeholder={placeholder}
-            className={cn(
-              `h-[160px] ${
-                error
-                  ? "border border-rose-500"
-                  : "focus:ring-grayDark focus:border-[#D4D4D4]"
-              }  focus:outline-none bg-[#F8F8F8]`,
-              className
-            )}
-          />
-          {error && (
-              <div className="text-rose-500 text-xs mt-1 pl-2">
-                {error.message}
-              </div>
-            )}
-        </div>
-      )}
+      render={({ field, fieldState: { error } }) => {
+        console.log(error)
+        return (
+          <div>
+            <Textarea
+              {...field}
+              placeholder={placeholder}
+              className={cn(
+                `h-[160px] ${
+                  error
+                    ? "border border-rose-500"
+                    : "focus:ring-grayDark focus:border-[#D4D4D4]"
+                }  focus:outline-none bg-[#F8F8F8]`,
+                className
+              )}
+            />
+            {error && (
+                <div className="text-rose-500 text-xs mt-1 pl-2">
+                  {error.message}
+                </div>
+              )}
+          </div>
+        )
+      }}
     />
   );
 };
