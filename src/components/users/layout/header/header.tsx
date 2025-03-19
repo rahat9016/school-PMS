@@ -103,7 +103,7 @@ const Header = () => {
                         <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-main-secondary transition-all duration-300 group-hover/nav:w-full"></span>
                       </span>
                     </Link>
-                    <Link href={`/`} className="group/nav">
+                    <Link href={`/faq`} className="group/nav">
                       <span className="relative cursor-pointer block font-medium group-hover:text-white">
                         FAQ
                         <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-main-secondary transition-all duration-300 group-hover/nav:w-full"></span>
