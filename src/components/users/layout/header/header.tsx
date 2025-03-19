@@ -8,14 +8,8 @@ import logoIcon from "../../../../../public/logoIcon.png";
 import { useState } from "react";
 import { Input } from "@/components/ui/input";
 import { HeaderNavigationMenu } from "./components/navigaration";
-
-// import {
-//   NavigationMenu,
-//   NavigationMenuContent,
-//   NavigationMenuItem,
-//   NavigationMenuList,
-//   NavigationMenuTrigger,
-// } from "@/components/ui/navigation-menu";
+import { Drawer, DrawerContent, DrawerTrigger } from "@/components/ui/drawer";
+import { menuData } from "./components/data/data";
 
 const navlinks = [
   {
@@ -35,6 +29,7 @@ const Header = () => {
   const pathname = usePathname();
   const [showSearch, setShowSearch] = useState(false);
   const [showMenu, setShowMenu] = useState(false);
+  const [showMobileMenu, setShowMobileMenu] = useState(false);
   return (
     <header
       className={`group ${
@@ -49,9 +44,19 @@ const Header = () => {
                 <div className="flex items-center lg:gap-[30px]">
                   <div
                     onClick={() => setShowMenu(!showMenu)}
-                    className="w-10 h-10 flex items-center cursor-pointer"
+                    className="hidden w-10 h-10 lg:flex items-center cursor-pointer"
                   >
                     {!showMenu ? (
+                      <Menu className="group-hover:text-white text-2xl" />
+                    ) : (
+                      <X className="group-hover:text-white text-2xl" />
+                    )}
+                  </div>
+                  <div
+                    onClick={() => setShowMobileMenu(!showMobileMenu)}
+                    className="lg:hidden w-10 h-10 flex items-center cursor-pointer"
+                  >
+                    {!showMobileMenu ? (
                       <Menu className="group-hover:text-white text-2xl" />
                     ) : (
                       <X className="group-hover:text-white text-2xl" />
@@ -142,6 +147,47 @@ const Header = () => {
               <div className="container h-[60px]">
                 <HeaderNavigationMenu />
               </div>
+            </div>
+          )}
+          {showMobileMenu && (
+            <div className="lg:hidden">
+              <Drawer open={showMobileMenu} onOpenChange={setShowMobileMenu}>
+                <DrawerTrigger asChild>
+                  <button className="text-gray-700 focus:outline-none">
+                    <Menu size={28} />
+                  </button>
+                </DrawerTrigger>
+
+                {/* Left-side Drawer (Fixed Full Height & Scrollable) */}
+                <DrawerContent className="fixed left-0 -top-[100px] h-screen w-[75%] bg-white shadow-lg p-6 flex flex-col ">
+                  {/* Scrollable Menu Content */}
+                  <div className="mt-8 flex-1 overflow-y-auto ">
+                    {menuData.map((menu, index) => (
+                      <div key={index} className="mb-4">
+                        <p className="text-lg font-semibold">{menu.title}</p>
+                        <div className="ml-4 mt-2">
+                          {menu.items.map((item, idx) => (
+                            <Link
+                              key={idx}
+                              href={item.href}
+                              className="block py-2 text-gray-700 hover:text-black"
+                              onClick={() => setShowMobileMenu(false)}
+                            >
+                              {item.title}
+                            </Link>
+                          ))}
+                        </div>
+                      </div>
+                    ))}
+                    <Link
+                      href={"/contact"}
+                      className={`h-[60px] flex items-center  gap-1 transition font-poppins text-base  text-black hover:text-main-primary font-semibold pb-20`}
+                    >
+                      Contact
+                    </Link>
+                  </div>
+                </DrawerContent>
+              </Drawer>
             </div>
           )}
         </div>
