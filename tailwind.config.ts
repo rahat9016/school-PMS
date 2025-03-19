@@ -209,5 +209,6 @@ export default {
     require("tailwindcss-animate"),
     require("tailwindcss-filters"),
     require("tailwind-scrollbar-hide"),
+    require("tailwind-scrollbar")
   ],
 } satisfies Config;
