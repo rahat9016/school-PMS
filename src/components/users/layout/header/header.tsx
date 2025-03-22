@@ -10,6 +10,12 @@ import { Input } from "@/components/ui/input";
 import { HeaderNavigationMenu } from "./components/navigaration";
 import { Drawer, DrawerContent, DrawerTrigger } from "@/components/ui/drawer";
 import { menuData } from "./components/data/data";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+import { Button } from "@/components/ui/button";
 
 const navlinks = [
   {
@@ -96,13 +102,25 @@ const Header = () => {
                   </Link>
                 </div>
                 <div className="flex items-center justify-end gap-8">
-                  <nav className="hidden md:flex space-x-5 uppercase font-poppins font-medium">
-                    <Link href={`/`} className="group/nav">
-                      <span className="relative cursor-pointer block font-medium group-hover:text-white">
-                        LMS
-                        <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-main-secondary transition-all duration-300 group-hover/nav:w-full"></span>
-                      </span>
-                    </Link>
+                  <nav className="hidden md:flex items-center space-x-5 uppercase font-poppins font-medium">
+                    <DropdownMenu>
+                      <DropdownMenuTrigger asChild>
+                        <Button className="group/nav bg-transparent text-black shadow-none hover:bg-transparent ">
+                          <span className="text-base relative cursor-pointer block font-medium group-hover:text-white">
+                            LMS
+                            <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-main-secondary transition-all duration-300 group-hover/nav:w-full"></span>
+                          </span>
+                        </Button>
+                      </DropdownMenuTrigger>
+                      <DropdownMenuContent className="w-36 bg-forestWhite p-1">
+                        <Link href={`https://www.schoolbaglive.com/admin/`} className="hover:bg-main-primary hover:text-white w-full block px-3 py-2 rounded-md">
+                          SchoolBagLive
+                        </Link>
+                        <Link href={`https://pais.managebac.com/login`} className="hover:bg-main-primary hover:text-white w-full block px-3 py-2 rounded-md">
+                        ManageBAC
+                        </Link>
+                      </DropdownMenuContent>
+                    </DropdownMenu>
                     <Link href={`/faq`} className="group/nav">
                       <span className="relative cursor-pointer block font-medium group-hover:text-white">
                         FAQ

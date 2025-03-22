@@ -62,14 +62,16 @@ const Carousel = ({
   isPrimary,
   nextClassName,
   prevClassName,
-  isShowDotButton = true
+  isShowDotButton = true,
+  children
 }: {
-  slides: StaticImageData[];
+  slides?: StaticImageData[];
   className?: string;
   isPrimary?: boolean;
   nextClassName?: string;
   prevClassName?: string;
-  isShowDotButton?: boolean
+  isShowDotButton?: boolean;
+  children?: React.ReactNode
 }) => {
   const [emblaRef, emblaApi] = useEmblaCarousel({
     loop: true,
@@ -96,26 +98,29 @@ const Carousel = ({
     <div className="relative w-full mx-auto">
       <div className="overflow-hidden" ref={emblaRef}>
         <div className="flex">
-          {slides.map(
-            (
-              src: string | StaticImport,
-              index: React.Key | null | undefined
-            ) => (
-              <div
-                className={cn(`flex-shrink-0 w-full px-2`, className)}
-                key={index}
-              >
-                <Image
-                  src={src}
-                  alt={`Slide ${index}`}
-                  layout="responsive"
-                  width={800}
-                  height={600}
-                  className="rounded-xl"
-                />
-              </div>
+          
+          {
+            children ? children : slides?.map(
+              (
+                src: string | StaticImport,
+                index: React.Key | null | undefined
+              ) => (
+                <div
+                  className={cn(`flex-shrink-0 w-full px-2`, className)}
+                  key={index}
+                >
+                  <Image
+                    src={src}
+                    alt={`Slide ${index}`}
+                    layout="responsive"
+                    width={800}
+                    height={600}
+                    className="rounded-xl"
+                  />
+                </div>
+              )
             )
-          )}
+          }
         </div>
       </div>
       <PrevButton
