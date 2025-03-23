@@ -5,10 +5,17 @@ import herobg from "../../../../../public/newsEvents/latestNewsHeroBg.jpg";
 import { useParams } from "next/navigation";
 import filterData from "@/lib/data/data";
 import PostDetails from "./components/PostDetails";
+import Recent from "./components/Recent";
 
 export default function LatestNewsUpdatesDetails() {
   const { id } = useParams();
   const post = filterData.posts.find((post) => post.id === Number(id));
+  if (!post)
+    return (
+      <div className="container h-[600px] flex items-center justify-center">
+        <p>Content not found!</p>
+      </div>
+    );
   return (
     <div className="bg-white">
       <HeroSection
@@ -16,11 +23,16 @@ export default function LatestNewsUpdatesDetails() {
         title="Latest News & Updates"
         className="bg-cover h-[280px]"
       />
-      <div className="flex items-start gap-4">
-        <div className="w-8/12">
+      <div className="container flex items-start gap-4">
+        <div className="w-[70%]">
           <PostDetails post={post} />
         </div>
-        <div className="w-4/12"></div>
+        <div className="w-[30%]">
+          <Recent/>
+        </div>
+      </div>
+      <div>
+        <p className="text-center text-main-secondary font-medium font-poppins text-base mt-6 pb-10">Facilitators Ryan and Marno acted as judges during the debate competitions.</p>
       </div>
     </div>
   );

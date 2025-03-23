@@ -14,11 +14,14 @@ import { Search } from "lucide-react";
 import React, { useEffect, useState } from "react";
 import Image, { StaticImageData } from "next/image";
 import { useRouter } from "next/navigation";
+import { filterPosts } from "@/lib/helper/helper";
 export interface IPost {
   id: number;
   title: string;
   date: string;
   content: string;
+  content2: string;
+  content3: string;
   category_ids: number[];
   tag_ids: number[];
   image: StaticImageData;
@@ -31,38 +34,7 @@ export default function LatestNews() {
   const [filteredPosts, setFilteredPosts] = useState<IPost[]>(filterData.posts);
   const router = useRouter();
 
-  const filterPosts = (
-    selectedCategory: number | null = null,
-    selectedTags: number[] = [],
-    searchQuery: string = ""
-  ): IPost[] => {
-    const query = searchQuery.toLowerCase().trim();
 
-    if (
-      selectedCategory === null &&
-      selectedTags.length === 0 &&
-      query === ""
-    ) {
-      return filterData.posts;
-    }
-
-    return filterData.posts.filter((post) => {
-      const categoryMatch =
-        selectedCategory === null ||
-        post.category_ids.includes(selectedCategory);
-
-      const tagMatch =
-        selectedTags.length === 0 ||
-        post.tag_ids.some((tagId) => selectedTags.includes(tagId));
-
-      const searchMatch =
-        query === "" ||
-        post.title.toLowerCase().includes(query) ||
-        post.content.toLowerCase().includes(query);
-
-      return categoryMatch && tagMatch && searchMatch;
-    });
-  };
 
   // Handler for category selection change
   const handleCategoryChange = (value: string) => {
@@ -112,7 +84,7 @@ export default function LatestNews() {
           </div>
           <div>
             <div>
-              <div className="hidden lg:flex items-center gap-2 border rounded-xl px-4 h-[40px] w-full max-w-64">
+              <div className="flex items-center gap-2 border rounded-xl px-4 h-[40px] w-full max-w-64">
                 <Search className="w-5 h-5 text-mediumGray group-hover:text-white" />
                 <Input
                   type="text"
