@@ -20,23 +20,23 @@ import Link from "next/link";
 const navLinks = [
   {
     label: "Kindergarten & Primary",
-    href: "/",
+    href: "/kindergarten-primary",
   },
   {
     label: "Secondary & IB Programs",
-    href: "/",
+    href: "/secondary-ib-programs",
   },
   {
     label: "Admissions",
-    href: "/",
+    href: "/admission-overview",
   },
   {
     label: "Open House 2022",
-    href: "/",
+    href: "/open-house-school-tour",
   },
   {
     label: "PAIS Online Learning Approach (OLA)",
-    href: "/",
+    href: "/pais-online-learning-approach",
   },
 ];
 const ACCREDITATIONS = [
