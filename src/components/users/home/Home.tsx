@@ -5,12 +5,13 @@ import PreRegister from './components/PreRegister'
 import AdmissionsProcessSection from './components/AdmissionsProcessSection'
 import PAISGoalsSection from './components/PAISGoalsSection'
 import GallerySection from './components/GallerySection'
+import HeroSection from './components/HeroSection'
 
 export default function Home() {
 
   return (
     <div>
-        {/* <HeroSection/> */}
+        <HeroSection/>
         <AboutSection/>
         <FacilitiesSection/>
         <PreRegister/>

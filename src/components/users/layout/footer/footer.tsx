@@ -169,7 +169,7 @@ const Footer = () => {
               <p className="text-sm my-4 md:mt-8 text-darkGray font-poppins">
                 Copyright © Pan-Asia International School •{" "}
                 <Link
-                  href="#"
+                  href="/privacy"
                   className="text-main-primary hover:text-orange-500 font-medium font-poppins text-sm"
                 >
                   Privacy Policy
