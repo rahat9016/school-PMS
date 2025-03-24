@@ -23,16 +23,19 @@ export default function LatestNewsUpdatesDetails() {
         title="Latest News & Updates"
         className="bg-cover h-[280px]"
       />
-      <div className="container flex items-start gap-4">
-        <div className="w-[70%]">
+      <div className="container flex flex-col lg:flex-row items-start gap-4">
+        <div className="w-full lg:w-[70%]">
           <PostDetails post={post} />
         </div>
-        <div className="w-[30%]">
-          <Recent/>
+        <div className="w-full lg:w-[30%]">
+          <Recent />
         </div>
       </div>
       <div>
-        <p className="text-center text-main-secondary font-medium font-poppins text-base mt-6 pb-10">Facilitators Ryan and Marno acted as judges during the debate competitions.</p>
+        <p className="text-center text-main-secondary font-medium font-poppins text-base mt-6 pb-10 px-3 lg:px-0">
+          Facilitators Ryan and Marno acted as judges during the debate
+          competitions.
+        </p>
       </div>
     </div>
   );

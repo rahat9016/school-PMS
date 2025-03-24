@@ -53,14 +53,14 @@ export default function LatestNews() {
   }, [selectedTags, searchQuery, selectedCategory]);
 
   return (
-    <div className="bg-white pt-20 pb-[64px]">
+    <div className="bg-white pt-10 lg:pt-20 pb-8 lg:pb-[64px]">
       <div className="container">
         <h1 className="text-main-primary text-xl lg:text-3xl font-bold">
           Latest News
         </h1>
         <span className="w-[140px] h-[3px] bg-main-secondary block mt-2"></span>
         <div className="flex flex-col lg:flex-row justify-between items-center">
-          <div className="flex items-center mt-6 gap-1">
+          <div className="flex flex-row items-center mt-6 gap-1">
             <InputLabel label="Select Category:" />
             <Select
               value={
@@ -68,7 +68,7 @@ export default function LatestNews() {
               }
               onValueChange={handleCategoryChange}
             >
-              <SelectTrigger className="w-[180px]">
+              <SelectTrigger className="w-full lg:w-[180px]">
                 <SelectValue placeholder="Select a category" />
               </SelectTrigger>
               <SelectContent>
@@ -128,7 +128,7 @@ export default function LatestNews() {
             ))}
           </div>
         </div>
-        <div className="grid grid-cols-4 gap-4 mt-[64px]">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mt-8 lg:mt-[64px]">
           {filteredPosts.map((post, index) => (
             <div key={index}>
               <div

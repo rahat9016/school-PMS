@@ -1,22 +1,47 @@
 import React from "react";
-import { IPost } from "../../LatestNewsUpdates/components/LatestNews";
 import Image from "next/image";
+import Link from "next/link";
+import { IPost } from "../../LatestNewsUpdates/components/LatestNews";
 import facebook from "../../../../../../public/facebook.png";
 import google from "../../../../../../public/google-plus.png";
 import whatsapp from "../../../../../../public/whatsapp.png";
 import twitter from "../../../../../../public/twitter.png";
 import share from "../../../../../../public/share.png";
 import { scholarsData } from "./data";
+import {
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbList,
+  BreadcrumbSeparator,
+} from "@/components/ui/breadcrumb";
 
 export default function PostDetails({ post }: { post: IPost | undefined }) {
   return (
     <div>
       <div>
-        <h1 className="text-main-primary text-xl lg:text-3xl font-bold mt-8">
+        <div className="mt-10">
+          <Breadcrumb>
+            <BreadcrumbList>
+              <BreadcrumbItem>
+                <BreadcrumbLink asChild>
+                  <Link href="/latest-news-updates" className="font-poppins text-darkGray text-sm" >Latest News & Updates</Link>
+                </BreadcrumbLink>
+              </BreadcrumbItem>
+              <BreadcrumbSeparator />
+              <BreadcrumbItem>
+                <BreadcrumbLink asChild>
+                  <Link href={`/latest-news-updates/${post?.id}`} className="font-poppins text-darkGray text-sm" >{post?.title}</Link>
+                </BreadcrumbLink>
+              </BreadcrumbItem>
+            </BreadcrumbList>
+          </Breadcrumb>
+        </div>
+        <h1 className="text-main-primary text-xl lg:text-3xl font-bold mt-8 text-center lg:textleft">
           {post?.title}
         </h1>
-        <span className="w-[140px] h-[3px] bg-main-secondary block mt-2 mb-[18px]"></span>
-        <div className="flex items-center justify-between">
+        <span className="w-[140px] h-[3px] bg-main-secondary block mt-2 mb-[18px] mx-auto lg:ml-0"></span>
+        <div className="flex flex-col lg:flex-row items-center justify-between">
           <div className="flex items-center gap-2">
             <span className="block py-2 px-4 bg-main-primary rounded-full text-white text-sm font-poppins">
               School Life
@@ -26,7 +51,7 @@ export default function PostDetails({ post }: { post: IPost | undefined }) {
               {post?.date}
             </p>
           </div>
-          <div className="flex items-center gap-4">
+          <div className="flex flex-col lg:flex-row items-center gap-4">
             <div>
               <p className="font-poppins font-medium text-sm text-[#4A7FE9]">
                 Leave a comment
@@ -53,27 +78,27 @@ export default function PostDetails({ post }: { post: IPost | undefined }) {
             alt={"PAIS Victorious in World Scholar’s Cup"}
           />
           {post?.content && (
-            <p className="font-poppins font-medium text-base text-main-primary">
+            <p className="font-poppins font-medium text-sm lg:text-base text-main-primary">
               {post?.content}
             </p>
           )}
           {post?.content2 && (
-            <p className="font-poppins font-normal text-base text-black-dark mt-6">
+            <p className="font-poppins font-normal text-sm lg:text-base text-black-dark mt-3 lg:mt-6">
               {post?.content2}
             </p>
           )}
           {post?.content3 && (
-            <p className="font-poppins font-normal text-base text-black-dark mt-6">
+            <p className="font-poppins font-normal text-sm lg:text-base text-black-dark mt-3 lg:mt-6">
               {post?.content3}
             </p>
           )}
         </div>
         <div>
-          <p className="font-poppins font-medium text-lg text-black-dark mb-6">
+          <p className="font-poppins font-medium text-lg text-black-dark mt-3 lg:mb-6">
             Here’s what our scholars have to say about their experience.
           </p>
         </div>
-        <div className="grid grid-cols-3 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           {scholarsData.map((data, index) => (
             <div key={index} className="shadow-md rounded-xl">
               <Image

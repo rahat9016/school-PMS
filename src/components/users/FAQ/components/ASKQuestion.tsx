@@ -17,6 +17,8 @@ export default function ASKQuestion() {
   return (
     <div className="bg-aliceBlue">
       <div className="container py-20 lg:py-[154px]">
+      <h1 className="text-main-primary  text-2xl font-poppins font-semibold">Ask a Question</h1>
+      <span className="block bg-main-secondary h-[3px] w-[140px]  mb-10 lg:mb-[64px]"></span>
         <FormProvider {...methods}>
           <form onSubmit={methods.handleSubmit(onSubmit)} className="w-full">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">

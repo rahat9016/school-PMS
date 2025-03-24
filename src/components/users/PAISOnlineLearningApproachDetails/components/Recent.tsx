@@ -1,7 +1,6 @@
 "use client";
 import { filterPosts } from "@/lib/helper/helper";
 import React, { useEffect, useState } from "react";
-import { IPost } from "../../LatestNewsUpdates/components/LatestNews";
 import filterData from "@/lib/data/data";
 import {
   Select,
@@ -14,6 +13,7 @@ import {
 import Link from "next/link";
 import { Search } from "lucide-react";
 import { Input } from "@/components/ui/input";
+import { IPost } from "../../newsAndEvents/LatestNewsUpdates/components/LatestNews";
 import { ScrollArea } from "@/components/ui/scroll-area";
 
 const dates = [
@@ -48,7 +48,7 @@ export default function Recent() {
   return (
     <div>
       <div>
-        <div className="pt-[110px]">
+        <div className="pt-10 lg:pt-[110px]">
           <div className="flex items-center gap-2 border rounded-xl px-4 h-[40px] w-full mb-[44px]">
             <Search className="w-5 h-5 text-mediumGray group-hover:text-white" />
             <Input
@@ -98,6 +98,22 @@ export default function Recent() {
                 ))}
               </ul>
             </div>
+          </div>
+          <div className="flex items-center gap-3 my-6">
+            <div className="w-52">
+              <p className="text-sm font-poppins font-medium text-main-primary">
+                Recent Comments
+              </p>
+            </div>
+            <span className="w-full h-[2px] bg-softGray block"></span>
+          </div>
+          <div className="flex items-center gap-3 my-6">
+            <div className="w-28">
+              <p className="text-sm font-poppins font-medium text-main-primary">
+                Archives
+              </p>
+            </div>
+            <span className="w-full h-[2px] bg-softGray block"></span>
           </div>
           <div className="mb-10">
           <ScrollArea className="h-[423px] w-full rounded-md border p-3">
