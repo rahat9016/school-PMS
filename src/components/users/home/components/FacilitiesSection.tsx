@@ -21,7 +21,7 @@ const facilitiesData = [
     icon: icon3,
     title: "Pre-School Kindergarten",
     description: "Discover one of the best Kindergarten schools in Bangkok.",
-    href: "/",
+    href: "/kindergarten-primary",
   },
   {
     img: img2,
@@ -29,7 +29,7 @@ const facilitiesData = [
     title: "Primary",
     description:
       "Pan-Asia's Primary Department embraces each student's unique strengths and needs.",
-    href: "/",
+    href: "/kindergarten-primary",
   },
   {
     img: img3,
@@ -37,7 +37,7 @@ const facilitiesData = [
     title: "IB Middle Years Program (MYP)",
     description:
       "The Middle Years Program (IB) at Pan-Asia International School (Grades 6-8)",
-    href: "/",
+    href: "/secondary-ib-programs",
   },
   {
     img: img4,
@@ -45,7 +45,7 @@ const facilitiesData = [
     title: "IB Diploma Program (DP)",
     description:
       "Pan-Asia International School is proud to offer the IB Diploma Programme (IBDP).",
-    href: "/",
+    href: "/secondary-ib-programs",
   },
   {
     img: img5,
@@ -53,7 +53,7 @@ const facilitiesData = [
     title: "Facilities",
     description:
       "Pan-Asia International School ensures a secure, modern learning environment.",
-    href: "/",
+    href: "/facilities-safety",
   },
   {
     img: img6,

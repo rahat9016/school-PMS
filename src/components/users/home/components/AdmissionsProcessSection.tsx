@@ -15,7 +15,7 @@ const AdmissionsData = [
     title: "Request Info",
     description:
       "You will receive a confirmation email with instructions to complete your application.",
-    href: "/",
+    href: "/enrollment-scholarship",
     buttonLabel: "Request Info",
   },
   {
@@ -25,7 +25,7 @@ const AdmissionsData = [
     title: "Schedule a Visit",
     description:
       "You are always welcome to visit us in person. This is the best way to learn about Pan-Asia.",
-    href: "/",
+    href: "/open-house-school-tour",
     buttonLabel: "Schedule a visit",
   },
   {
@@ -35,7 +35,7 @@ const AdmissionsData = [
     title: "Apply",
     description:
       "Applicants will be required to sit for aptitude tests as well as attend an interview.",
-    href: "/",
+    href: "/admission-overview",
     buttonLabel: "Apply Now",
   },
 ];

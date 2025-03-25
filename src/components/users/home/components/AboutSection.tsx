@@ -1,11 +1,11 @@
 import TitleTag from "@/components/shared/TitleTag";
 import React from "react";
 import { ChevronRight } from "lucide-react";
-import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import aboutUsImg from "../../../../../public/about/aboutus.png";
 import aboutUsImg2 from "../../../../../public/about/Group 1000002290.png";
 import aboutUsImg3 from "../../../../../public/about/Rectangle 94.png";
+import Link from "next/link";
 export default function AboutSection() {
   return (
     <div className="bg-white py-12 md:py-32">
@@ -51,9 +51,9 @@ export default function AboutSection() {
           Candidate status gives no guarantee that authorization will be
           granted.
         </p>
-        <Button className="bg-transparent shadow-none border border-main-primary text-main-primary font-medium font-poppins text-sm hover:bg-main-primary hover:text-white duration-300 flex items-center">
+        <Link href="/" className="bg-transparent shadow-none border border-main-primary text-main-primary font-medium font-poppins text-sm hover:bg-main-primary hover:text-white duration-300 flex items-center justify-center w-[215px] py-3 rounded-lg">
           For More Information <ChevronRight />
-        </Button>
+        </Link>
       </div>
     </div>
     </div>
