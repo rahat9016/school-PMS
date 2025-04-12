@@ -20,17 +20,18 @@ const validationStudentAllInformationSchema = Yup.object().shape({
   parentTitle: Yup.string().required('Title is required'),
   parentFirstName: Yup.string().required('Parent first name is required'),
   parentLastName: Yup.string().required('Parent last name is required'),
-  parentRelationship: Yup.string().required('Relationship is required'),
+  parentRelation: Yup.string().required('Relationship is required'),
   parentNationality: Yup.string().required('Nationality is required'),
   parentEmail: Yup.string()
     .email('Invalid email address')
     .required('Parent email is required'),
-  parentPhone: Yup.string().required('Phone number is required'),
+  parentPhone: Yup.string().optional(),
   parentAddress: Yup.string().required('Address is required'),
 
   // Additional Information
   // heardFrom: Yup.string().required('This field is required'),
-  // comments: Yup.string()
+  referralSource: Yup.string().optional(),
+  comments: Yup.string().optional()
 });
 
 

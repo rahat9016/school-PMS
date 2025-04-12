@@ -20,7 +20,6 @@ const ControlledTextareaField: React.FC<ControlledTextareaFieldProps> = ({
       name={name}
       control={control}
       render={({ field, fieldState: { error } }) => {
-        console.log(error)
         return (
           <div>
             <Textarea

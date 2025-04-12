@@ -10,7 +10,7 @@ import Image from "next/image";
 export default function PreRegister() {
   return (
     <div className="bg-[#F2FBFD] py-32">
-      <div className="container grid xl:grid-cols-2 gap-32">
+      <div className="container grid grid-cols-1 xl:grid-cols-2 gap-32">
         <div>
           <TitleTag title="Apply" />
           <h1 className="text-black font-poppins font-semibold text-2xl lg:text-5xl mb-12 mt-6">

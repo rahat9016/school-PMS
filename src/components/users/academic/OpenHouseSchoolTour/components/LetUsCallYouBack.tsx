@@ -4,13 +4,20 @@ import InputLabel from "@/components/shared/InputLabel";
 import { Button } from "@/components/ui/button";
 import React from "react";
 import { FormProvider, useForm } from "react-hook-form";
-import {letUsCallValidationSchema} from "../Schema";
+import { letUsCallValidationSchema } from "../Schema";
 import { yupResolver } from "@hookform/resolvers/yup";
 import ControlledCalendarField from "@/components/shared/ControlledCalendarField";
 import ControlledRadioField from "@/components/shared/ControlledRadioField";
 import ControlledTextareaField from "@/components/shared/ControlledTextAreaField";
+import { useMutation } from "@tanstack/react-query";
+import { appointmentRequest } from "@/app/api/api";
+import { toast } from "react-toastify";
 
 export default function LetUsCallYouBack() {
+  const { isPending, mutateAsync } = useMutation({
+    mutationFn: appointmentRequest,
+    onSuccess: () => {},
+  });
   const methods = useForm({
     mode: "onChange",
     resolver: yupResolver(letUsCallValidationSchema),
@@ -19,7 +26,16 @@ export default function LetUsCallYouBack() {
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const onSubmit = (data: any) => {
-    console.log(data);
+    mutateAsync(data).then((res) => {
+      if (res?.success) {
+        methods.reset();
+        toast.success(
+          `${res?.data?.message || "Submitted successfully!"} `
+        );
+      } else {
+        toast.error(`${res?.message || "Something went wrong!"} `);
+      }
+    });
   };
   return (
     <div className="bg-white pt-7 lg:pt-12 pb-10 lg:pb-20">
@@ -80,12 +96,15 @@ export default function LetUsCallYouBack() {
               </div>
               <div>
                 <InputLabel label="When would you like us to call ?" required />
-                <ControlledCalendarField name="callDate" />
+                <ControlledCalendarField name="preferredCallDate" />
               </div>
               <div>
-                <InputLabel label="What time would you like us to call you ? " required />
+                <InputLabel
+                  label="What time would you like us to call you ? "
+                  required
+                />
                 <ControlledRadioField
-                  name="callTime"
+                  name="preferredCallTime"
                   options={[
                     { label: "10:00", value: "10:00" },
                     { label: "11:00", value: "11:00" },
@@ -99,7 +118,7 @@ export default function LetUsCallYouBack() {
               </div>
             </div>
             <div className="flex flex-col lg:flex-row mt-6 gap-4">
-            <div className="w-full lg:w-[38%] ">
+              <div className="w-full lg:w-[38%] ">
                 <InputLabel label="Subject" required />
                 <ControlledInputField
                   name="subject"
@@ -108,17 +127,18 @@ export default function LetUsCallYouBack() {
                 />
               </div>
               <div className="w-full lg:w-[62%]">
-                  <InputLabel label="Additional Message"  required/>
-                  <ControlledTextareaField
-                    name="additionalMessage"
-                    placeholder="Type your message here..."
-                    className=""
-                  />
-                </div>
+                <InputLabel label="Additional Message" required />
+                <ControlledTextareaField
+                  name="additionalMessage"
+                  placeholder="Type your message here..."
+                  className=""
+                />
+              </div>
             </div>
             <div className="flex justify-end gap-2 mt-3 lg:mt-6">
               <Button
                 type="reset"
+                onClick={()=> methods.reset()}
                 className="uppercase bg-[#EFF0EF] text-[#363739] rounded-sm px-6 lg:px-10 py-3 h-10 lg:h-14"
               >
                 Clear
@@ -127,7 +147,7 @@ export default function LetUsCallYouBack() {
                 type="submit"
                 className="uppercase bg-main-secondary text-white rounded-sm px-6 lg:px-10 py-3 h-10 lg:h-14"
               >
-                Submit
+                {isPending ? "Sending..." : "Submit"}
               </Button>
             </div>
           </div>

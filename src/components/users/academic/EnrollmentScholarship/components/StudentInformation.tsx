@@ -10,17 +10,37 @@ import ControlledInputField from "@/components/shared/ControlledInputField";
 import InputLabel from "@/components/shared/InputLabel";
 import ControlledSelectField from "@/components/shared/ControlledSelectField";
 import ControlledTextareaField from "@/components/shared/ControlledTextAreaField";
+import { admissionRequest } from "@/app/api/api";
+import { useMutation } from "@tanstack/react-query";
+import { toast } from "react-toastify";
 export default function StudentInformation() {
+  const { isPending, mutateAsync } = useMutation({
+    mutationFn: admissionRequest,
+    onSuccess: () => {},
+  });
   const methods = useForm({
     mode: "onChange",
     resolver: yupResolver(validationStudentAllInformationSchema),
-    defaultValues: {},
+    // defaultValues: {},
   });
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const onSubmit = (data: any) => {
     console.log(data);
+    mutateAsync(data).then((res)=> {
+      console.log(res?.message)
+      if(res.success){
+        toast.success(`${res.data.message || "Admission fetched successfully!"} `)
+      }else{
+        toast.error(`${res.message || "Something went wrong!"} `)
+      }
+    })
   };
+  const {
+    formState: { errors },
+  } = methods;
+  console.log({ errors });
+  
   return (
     <div>
       <FormProvider {...methods}>
@@ -87,9 +107,9 @@ export default function StudentInformation() {
                     className="bg-[#F8F8F8]"
                     selectLabel="-- Select Gender --"
                     options={[
-                      { value: "male", label: "Male" },
-                      { value: "female", label: "Female" },
-                      { value: "others", label: "Others" },
+                      { value: "Male", label: "Male" },
+                      { value: "Female", label: "Female" },
+                      { value: "Others", label: "Others" },
                     ]}
                   />
                 </div>
@@ -193,22 +213,37 @@ export default function StudentInformation() {
                 </h1>
               </div>
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
-                <div>
-                  <InputLabel
-                    label="First Name"
-                    required
-                    className="text-white"
-                  />
-                  <ControlledInputField
-                    name="parentTitle"
-                    placeholder="Enter your first name"
-                    className="bg-[#F8F8F8]"
-                  />
+                <div className="flex items-end gap-4">
+                  <div className="w-[20%]">
+                    <InputLabel
+                      label="First Name"
+                      className="text-white"
+                      required
+                    />
+                    <ControlledSelectField
+                      className="bg-[#F8F8F8]"
+                      name="parentTitle"
+                      selectLabel="-- Select Title --"
+                      options={[
+                        { value: "Mr.", label: "Mr." },
+                        { value: "Mrs.", label: "Mrs." },
+                        { value: "Ms.", label: "Ms." },
+                        { value: "Dr.", label: "Dr." },
+                      ]}
+                    />
+                  </div>
+                  <div className="w-[80%]">
+                    <ControlledInputField
+                      name="parentFirstName"
+                      placeholder="Enter your first name"
+                      className="bg-[#F8F8F8]"
+                    />
+                  </div>
                 </div>
                 <div>
                   <InputLabel label="Middle Name" className="text-white" />
                   <ControlledInputField
-                    name="middleName"
+                    name="parentMiddleName"
                     placeholder="Enter your middle Name"
                     className="bg-[#F8F8F8]"
                   />
@@ -227,16 +262,22 @@ export default function StudentInformation() {
                 </div>
                 <div>
                   <InputLabel
-                    label="Last Name"
+                    label="Relation"
                     className="text-white"
                     required
                   />
-                  <ControlledInputField
-                    name="parentLastName"
-                    placeholder="Enter your last name"
+                  <ControlledSelectField
                     className="bg-[#F8F8F8]"
+                    name="parentRelation"
+                    selectLabel="-- Select Relationship --"
+                    options={[
+                      { value: "Father", label: "Father" },
+                      { value: "Mother", label: "Mother" },
+                      { value: "Others", label: "Others" },
+                    ]}
                   />
                 </div>
+
                 <div>
                   <InputLabel
                     label="Nationality"
@@ -250,40 +291,28 @@ export default function StudentInformation() {
                   />
                 </div>
                 <div>
-                  <InputLabel label="Gender" required className="text-white" />
-                  <ControlledSelectField
+                  <InputLabel label="Phone" className="text-white" />
+                  <ControlledInputField
                     className="bg-[#F8F8F8]"
-                    name="gender"
-                    selectLabel="-- Select Gender --"
-                    options={[
-                      { value: "male", label: "Male" },
-                      { value: "female", label: "Female" },
-                      { value: "others", label: "Others" },
-                    ]}
+                    name="parentPhone"
+                    placeholder="Enter your phone"
                   />
                 </div>
                 <div>
-                  <InputLabel label="Nick Name" className="text-white" />
+                  <InputLabel label="Email" className="text-white" />
                   <ControlledInputField
                     className="bg-[#F8F8F8]"
-                    name="nickName"
-                    placeholder="Enter your nick name"
+                    type="email"
+                    name="parentEmail"
+                    placeholder="Enter your Email"
                   />
                 </div>
                 <div>
-                  <InputLabel label="Nick Name" className="text-white" />
+                  <InputLabel label="Address" className="text-white" />
                   <ControlledInputField
                     className="bg-[#F8F8F8]"
-                    name="nickName"
-                    placeholder="Enter your nick name"
-                  />
-                </div>
-                <div>
-                  <InputLabel label="Nick Name" className="text-white" />
-                  <ControlledInputField
-                    className="bg-[#F8F8F8]"
-                    name="nickName"
-                    placeholder="Enter your nick name"
+                    name="parentAddress"
+                    placeholder="Enter your address"
                   />
                 </div>
               </div>
@@ -300,41 +329,37 @@ export default function StudentInformation() {
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
                 <div className="mt-6">
                   <ControlledSelectField
-                    name="yearApplyingFor"
+                    name="referralSource"
                     className="bg-[#F8F8F8]"
                     selectLabel="Where did you hear from our school?"
-                    options={[
-                      { value: "2021-2022", label: "2021-2022" },
-                      { value: "2022-2023", label: "2022-2023" },
-                      { value: "2023-2024", label: "2023-2024" },
-                      { value: "2024-2025", label: "2024-2025" },
-                    ]}
+                    options={[]}
                   />
                 </div>
                 <div>
                   <InputLabel label="Comments" />
                   <ControlledTextareaField
-                    name="comment"
+                    name="comments"
                     placeholder="Type your comments"
                     className="border border-[#D4D4D4] focus:outline-none bg-[#F8F8F8]"
                   />
                 </div>
               </div>
               <div
-                className="flex justify-end
- gap-2 mt-6"
+                className="flex justify-end gap-2 mt-6"
               >
                 <Button
-                  type="submit"
+                  type="reset"
+                  // onClick={notify}
                   className="uppercase bg-[#EFF0EF] text-[#363739] rounded-none px-6 lg:px-10 py-3 h-10 lg:h-14"
                 >
                   Clear
                 </Button>
                 <Button
+                disabled={isPending}
                   type="submit"
                   className="uppercase bg-main-secondary text-white rounded-none px-6 lg:px-10 py-3 h-10 lg:h-14"
                 >
-                  Submit
+                  {isPending ? "Sending..." :"Submit"} 
                 </Button>
               </div>
             </div>
