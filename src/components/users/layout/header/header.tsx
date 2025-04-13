@@ -36,13 +36,17 @@ const Header = () => {
   const [showSearch, setShowSearch] = useState(false);
   const [showMenu, setShowMenu] = useState(false);
   const [showMobileMenu, setShowMobileMenu] = useState(false);
+
+  const excludedPaths = ["/admin", "/signin"];
+
+  const shouldHideHeader = excludedPaths.some(path => pathname.startsWith(path));
   return (
     <header
       className={`group ${
-        pathname.startsWith("/admin") ? "" : "pb-[70px] md:pb-[91px]"
+        shouldHideHeader ? "" : "pb-[70px] md:pb-[91px]"
       } `}
     >
-      {!pathname.startsWith("/admin") && (
+      {!shouldHideHeader && (
         <div className="top-0 w-full fixed z-50 ">
           <div className="border-b bg-light-gray shadow-sm h-[70px] md:h-[91px] flex items-center group-hover:bg-main-primary duration-150 border-main-secondary">
             <div className="container py-4 ">

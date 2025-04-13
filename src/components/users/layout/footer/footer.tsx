@@ -49,9 +49,12 @@ const ACCREDITATIONS = [
 ];
 const Footer = () => {
   const pathname = usePathname();
+  const excludedPaths = ["/admin", "/signin"];
+
+  const shouldHideHeader = excludedPaths.some(path => pathname.startsWith(path));
   return (
     <footer>
-      {!pathname.startsWith("/admin") && (
+      {!shouldHideHeader && (
         <div className="bg-pureWhite py-10 border-t border-main-secondary">
           <div className="container flex flex-col md:flex-row">
             <div className="w-full md:w-[45%]">
