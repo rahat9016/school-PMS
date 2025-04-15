@@ -37,7 +37,7 @@ const Header = () => {
   const [showMenu, setShowMenu] = useState(false);
   const [showMobileMenu, setShowMobileMenu] = useState(false);
 
-  const excludedPaths = ["/admin", "/signin"];
+  const excludedPaths = ["/dashboard", "/signin"];
 
   const shouldHideHeader = excludedPaths.some(path => pathname.startsWith(path));
   return (

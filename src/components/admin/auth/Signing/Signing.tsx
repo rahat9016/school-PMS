@@ -13,8 +13,16 @@ import { loginRequest } from "@/app/api/api";
 import loginValidationSchema from "./Schema";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { toast } from "react-toastify";
+import { LockKeyhole, UserRound } from "lucide-react";
+import Link from "next/link";
+import { setCookie } from "@/lib/cookie";
+import { useRouter } from "next/navigation";
+import { useAppDispatch } from "@/lib/redux/hooks";
+import { setUserInformation } from "@/lib/redux/features/auth/authSlice";
 
 export default function Signing() {
+  const router = useRouter()
+  const dispatch = useAppDispatch()
   const { isError, error, isPending, mutateAsync } = useMutation({
     mutationFn: loginRequest,
     onSuccess: () => {},
@@ -30,6 +38,21 @@ export default function Signing() {
     mutateAsync(data)
       .then((res) => {
         if (res.success) {
+          // ============== SET ACCESS, REFRESH TOKEN AND USER INFORMATION ==============
+          const {accessToken, refreshToken, user} = res?.data
+          setCookie("accessToken", accessToken, 10)
+          setCookie("refreshToken", refreshToken, 10)
+          setCookie("user", user, 10)
+          // ============== END ACCESS, REFRESH TOKEN AND USER INFORMATION ==============
+          // ============== NAVIGATE TO DASHBOARD ==============
+          if(user.role.toLowerCase() === "admin"){
+            router.push('/dashboard')
+          }
+          // ============== END NAVIGATE TO DASHBOARD ==============
+
+          // ============== SET USER INFORMATION IN REDUX ==============
+          dispatch(setUserInformation(user))
+          // ============== END USER INFORMATION IN REDUX ==============
           toast.success("Login Successful", {
             position: "bottom-left",
           });
@@ -48,7 +71,7 @@ export default function Signing() {
           background:
             "radial-gradient(circle,rgba(25, 54, 143, 1) 100%, rgba(25, 54, 143, 1) 100%)",
         }}
-        className="min-h-screen px-[81px] relative"
+        className="min-h-screen h-auto lg:px-[81px] py-10 relative flex items-center justify-center"
       >
         <Image
           src={loginShape1}
@@ -64,8 +87,8 @@ export default function Signing() {
           height={113}
           className="absolute bottom-0 right-0"
         />
-        <div className="grid grid-cols-2 h-screen">
-          <div className="flex items-center justify-center">
+        <div className="flex flex-col lg:flex-row items-center gap-10 ">
+          <div className="w-full lg:w-1/2 lg:flex items-center justify-center hidden">
             <Image
               src={loginImg}
               alt="loginImg"
@@ -74,8 +97,8 @@ export default function Signing() {
               className="w-[80%]"
             />
           </div>
-          <div className="ml-10 flex items-center">
-            <div className="bg-white w-[55%] p-14 rounded-xl">
+          <div className="w-full lg:w-1/2 lg:ml-10 flex items-center justify-center lg:justify-start">
+            <div className="bg-white p-7 lg:p-14 rounded-xl">
               <div>
                 <Image
                   src={logo}
@@ -103,7 +126,13 @@ export default function Signing() {
                         name="email"
                         type="email"
                         placeholder="Email address"
-                        className="h-12 bg-white  focus:ring-0 rounded-xl px-3 shadow-none"
+                        className="h-12 bg-white  focus:ring-0 rounded-xl px-3 shadow-none pl-10"
+                        icon={
+                          <UserRound
+                            size={16}
+                            className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"
+                          />
+                        }
                       />
                     </div>
                     <div className="relative">
@@ -111,8 +140,25 @@ export default function Signing() {
                         name="password"
                         type="password"
                         placeholder="Password"
-                        className="h-12 bg-white focus:ring-0 rounded-xl px-3 shadow-none"
+                        className="h-12 bg-white focus:ring-0 rounded-xl px-3 shadow-none pl-10"
+                        icon={
+                          <LockKeyhole
+                            size={16}
+                            className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"
+                          />
+                        }
                       />
+                    </div>
+                    <div className="flex items-center justify-between">
+                      <div>
+                        <label htmlFor="remeberme" className="flex items-center gap-1 text-[#1C1C1C] text-sm font-poppins font-normal">
+                          <input type="checkbox" id="remeberme" />
+                          Remember me
+                        </label>
+                      </div>
+                      <div>
+                        <Link href="#" className="underline text-[#0075FF] text-sm font-poppins font-normal">Forgot Password?</Link>
+                      </div>
                     </div>
                     {isError && error && (
                       <div className="h-[38px] w-full flex items-center justify-center bg-rose-200 rounded-md text-rose-700 text-sm font-poppins px-2 py-2">

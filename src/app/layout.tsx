@@ -6,6 +6,7 @@ import QueryProvider from "./QueryProvider";
 import "./globals.css";
 import TargetLocation from "./TargetLocation";
 import { ToastContainer } from 'react-toastify';
+import StoreProvider from "./StoreProvider";
 
 export const metadata: Metadata = {
   title: "PAN ASIA",
@@ -20,6 +21,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="bg-[#E6E9EB]">
+        <StoreProvider>
         <QueryProvider>
           <Header />
           <NoInternet />
@@ -28,6 +30,7 @@ export default function RootLayout({
           {children}
           <Footer />
         </QueryProvider>
+        </StoreProvider>
       </body>
     </html>
   );

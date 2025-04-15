@@ -49,7 +49,7 @@ const ACCREDITATIONS = [
 ];
 const Footer = () => {
   const pathname = usePathname();
-  const excludedPaths = ["/admin", "/signin"];
+  const excludedPaths = ["/dashboard", "/signin"];
 
   const shouldHideHeader = excludedPaths.some(path => pathname.startsWith(path));
   return (
