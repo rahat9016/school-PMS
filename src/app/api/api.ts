@@ -1,6 +1,8 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { IPreRegister } from "@/components/users/student/PaisInWonderlandSummerCamp/interface";
 import api from "./baseAPI";
+import { IFeedback } from "@/components/users/contact/interface";
+import { IFAQ } from "@/components/users/FAQ/interface";
 
 export const loginRequest = async (data: {
   email: string;
@@ -50,3 +52,21 @@ export const preRegisterRequest = async(data: IPreRegister) => {
     throw new Error(error?.response?.data?.message || "Something went wrong!");
   }
 };
+export const feedbackRequest = async(data: IFeedback) => {
+  try {
+    const response = await api.post("/student/feedback", data);
+    return response.data;
+  } catch (error: any) {
+    throw new Error(error?.response?.data?.message || "Something went wrong!");
+  }
+};
+
+export const faqRequest = async(data: IFAQ) => {
+  try {
+    const response = await api.post("/student/faq", data);
+    return response.data;
+  } catch (error: any) {
+    throw new Error(error?.response?.data?.message || "Something went wrong!");
+  }
+};
+

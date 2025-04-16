@@ -6,14 +6,37 @@ import InputLabel from "@/components/shared/InputLabel";
 import { Button } from "@/components/ui/button";
 import React from "react";
 import { FormProvider, useForm } from "react-hook-form";
+import { feedbackValidationSchema } from "../Schema";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { feedbackRequest } from "@/app/api/api";
+import { useMutation } from "@tanstack/react-query";
+import { toast } from "react-toastify";
+import { IFeedback } from "../interface";
 
 export default function FeedbackForm() {
+  const { mutateAsync } = useMutation({
+    mutationFn: feedbackRequest,
+    onSuccess: () => {},
+  });
   const methods = useForm({
-    // resolver: yupResolver(preRegisterSchema),
+    resolver: yupResolver(feedbackValidationSchema),
   });
 
-  const onSubmit = <T,>(data: T) => {
-    console.log(data);
+  const onSubmit = (data: IFeedback) => {
+    mutateAsync(data)
+      .then((res) => {
+        if (res.success) {
+          methods.reset();
+          toast.success(res?.message, {
+            position: "bottom-left",
+          });
+        }
+      })
+      .catch((error) => {
+        toast.error(error?.message, {
+          position: "bottom-left",
+        });
+      });
   };
   return (
     <div>
@@ -55,13 +78,16 @@ export default function FeedbackForm() {
               />
             </div>
             <div>
-              <InputLabel label="Is your relative currently studying in PAIS ?" required />
+              <InputLabel
+                label="Is your relative currently studying in PAIS ?"
+                required
+              />
               <ControlledRadioField
                 className="justify-start"
-                name="relative"
+                name="isRelativeStudying"
                 options={[
-                  { label: "Yes", value: "yes" },
-                  { label: "Bo", value: "no" },
+                  { label: "Yes", value: "Yes" },
+                  { label: "Bo", value: "No" },
                 ]}
               />
             </div>
@@ -76,7 +102,7 @@ export default function FeedbackForm() {
             <div>
               <InputLabel label="Additional Message" required />
               <ControlledTextareaField
-                name="additionalMessage"
+                name="message"
                 placeholder="Enter additional message"
                 className="bg-[#F8F8F8]"
               />

@@ -5,14 +5,37 @@ import InputLabel from "@/components/shared/InputLabel";
 import { Button } from "@/components/ui/button";
 import React from "react";
 import { FormProvider, useForm } from "react-hook-form";
+import { IFAQ } from "../interface";
+import { faqRequest } from "@/app/api/api";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { faqValidationSchema } from "../Schema";
+import { useMutation } from "@tanstack/react-query";
+import { toast } from "react-toastify";
 
 export default function ASKQuestion() {
+  const { mutateAsync } = useMutation({
+    mutationFn: faqRequest,
+    onSuccess: () => {},
+  });
   const methods = useForm({
-    // resolver: yupResolver(preRegisterSchema),
+    resolver: yupResolver(faqValidationSchema),
   });
 
-  const onSubmit = <T,>(data: T) => {
-    console.log(data);
+  const onSubmit = (data: IFAQ) => {
+    mutateAsync(data)
+          .then((res) => {
+            if (res.success) {
+              methods.reset();
+              toast.success(res?.message, {
+                position: "bottom-left",
+              });
+            }
+          })
+          .catch((error) => {
+            toast.error(error?.message, {
+              position: "bottom-left",
+            });
+          });
   };
   return (
     <div className="bg-aliceBlue">
@@ -25,7 +48,7 @@ export default function ASKQuestion() {
               <div>
                 <InputLabel label="First Name" required />
                 <ControlledInputField
-                  name="parentName"
+                  name="firstName"
                   placeholder="Enter your first name"
                   className="bg-[#F8F8F8]"
                 />
@@ -33,7 +56,7 @@ export default function ASKQuestion() {
               <div>
                 <InputLabel label="Last Name" required />
                 <ControlledInputField
-                  name="studentName"
+                  name="lastName"
                   placeholder="Enter your last name"
                   className="bg-[#F8F8F8]"
                 />
