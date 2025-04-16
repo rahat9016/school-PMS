@@ -1,8 +1,8 @@
 import axios, { InternalAxiosRequestConfig } from "axios"
 import { ICustomAxiosRequestConfig } from "./interface.baseApi";
 import { getCookie, isCookieExpired } from "@/lib/cookie";
-const BASE_URL = "https://backend-beryl-sigma-47.vercel.app/api/v1";
-
+// const BASE_URL = "https://backend-beryl-sigma-47.vercel.app/api/v1";
+const BASE_URL = "http://localhost:5000/api/v1";
 const api = axios.create({
     baseURL: BASE_URL,
     headers: {

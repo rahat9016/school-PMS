@@ -1,4 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
+import { IPreRegister } from "@/components/users/student/PaisInWonderlandSummerCamp/interface";
 import api from "./baseAPI";
 
 export const loginRequest = async (data: {
@@ -38,5 +39,14 @@ export const schoolTourBookingRequest = async <T>(data: T) => {
     return response.data;
   } catch (error: any) {
     return error.response.data;
+  }
+};
+
+export const preRegisterRequest = async(data: IPreRegister) => {
+  try {
+    const response = await api.post("/student/pre-register", data);
+    return response.data;
+  } catch (error: any) {
+    throw new Error(error?.response?.data?.message || "Something went wrong!");
   }
 };
