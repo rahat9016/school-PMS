@@ -195,6 +195,14 @@ export default {
           "0%": { transform: "translateY(-100px)" },
           "100%": { transform: "translateY(0)" },
         },
+        'pulse-ring-small': {
+          '0%, 100%': { transform: 'scale(1)', opacity: '0.6' },
+          '50%': { transform: 'scale(1.2)', opacity: '0.3' },
+        },
+        'pulse-ring-big': {
+          '0%, 100%': { transform: 'scale(1)', opacity: '0.8' },
+          '50%': { transform: 'scale(1.4)', opacity: '0.3' },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
@@ -202,6 +210,8 @@ export default {
         "zoom-in-out": "zoomInOut 4s ease-in-out infinite",
         floatUp: "floatUp 4s ease-out infinite",
         floatDown: "floatDown 4s ease-out infinite",
+        'pulse-ring-small': 'pulse-ring-small 2s ease-in-out infinite',
+        'pulse-ring-big': 'pulse-ring-big 2s ease-in-out infinite',
       },
     },
   },
