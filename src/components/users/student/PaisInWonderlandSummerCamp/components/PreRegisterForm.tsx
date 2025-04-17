@@ -14,7 +14,7 @@ import { toast } from "react-toastify";
 import { IPreRegister } from "../interface";
 
 export default function PreRegister() {
-  const { mutateAsync } = useMutation({
+  const { mutateAsync, isPending } = useMutation({
     mutationFn: preRegisterRequest,
     onSuccess: () => {},
   });
@@ -27,7 +27,7 @@ export default function PreRegister() {
     mutateAsync(data)
       .then((res) => {
         if (res.success) {
-          methods.reset()
+          methods.reset();
           toast.success(res?.message, {
             position: "bottom-left",
           });
@@ -155,10 +155,11 @@ export default function PreRegister() {
                 Clear
               </Button>
               <Button
+                disabled={isPending}
                 type="submit"
-                className="uppercase bg-main-secondary text-white rounded-sm px-6 lg:px-10 py-3 h-10 lg:h-14"
+                className="uppercase bg-main-secondary text-white rounded-none px-6 lg:px-10 py-3 h-10 lg:h-14"
               >
-                Submit
+                {isPending ? "Sending..." : "Submit"}
               </Button>
             </div>
           </div>

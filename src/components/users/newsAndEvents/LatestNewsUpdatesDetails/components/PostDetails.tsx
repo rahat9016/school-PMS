@@ -37,7 +37,7 @@ export default function PostDetails({ post }: { post: IPost | undefined }) {
             </BreadcrumbList>
           </Breadcrumb>
         </div>
-        <h1 className="text-main-primary text-xl lg:text-3xl font-bold mt-8 text-center lg:textleft">
+        <h1 className="text-main-primary text-xl lg:text-3xl font-bold mt-8 text-center lg:text-left">
           {post?.title}
         </h1>
         <span className="w-[140px] h-[3px] bg-main-secondary block mt-2 mb-[18px] mx-auto lg:ml-0"></span>

@@ -14,7 +14,7 @@ import { toast } from "react-toastify";
 import { IFeedback } from "../interface";
 
 export default function FeedbackForm() {
-  const { mutateAsync } = useMutation({
+  const { mutateAsync, isPending } = useMutation({
     mutationFn: feedbackRequest,
     onSuccess: () => {},
   });
@@ -87,7 +87,7 @@ export default function FeedbackForm() {
                 name="isRelativeStudying"
                 options={[
                   { label: "Yes", value: "Yes" },
-                  { label: "Bo", value: "No" },
+                  { label: "No", value: "No" },
                 ]}
               />
             </div>
@@ -95,7 +95,7 @@ export default function FeedbackForm() {
               <InputLabel label="Subject" required />
               <ControlledInputField
                 name="subject"
-                placeholder="Enter date of birth"
+                placeholder="Enter your subject"
                 className="bg-[#F8F8F8]"
               />
             </div>
@@ -115,10 +115,11 @@ export default function FeedbackForm() {
                 Clear
               </Button>
               <Button
+                disabled={isPending}
                 type="submit"
-                className="uppercase bg-main-secondary text-white rounded-sm px-6 lg:px-10 py-3 h-10 lg:h-14"
+                className="uppercase bg-main-secondary text-white rounded-none px-6 lg:px-10 py-3 h-10 lg:h-14"
               >
-                Submit
+                {isPending ? "Sending..." : "Submit"}
               </Button>
             </div>
           </div>

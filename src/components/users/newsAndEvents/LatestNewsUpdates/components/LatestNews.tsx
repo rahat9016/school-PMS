@@ -11,10 +11,10 @@ import {
 } from "@/components/ui/select";
 import filterData from "@/lib/data/data";
 import { Search } from "lucide-react";
-import React, { useEffect, useState } from "react";
+import React from "react";
 import Image, { StaticImageData } from "next/image";
 import { useRouter } from "next/navigation";
-import { filterPosts } from "@/lib/helper/helper";
+import useFilter from "@/hooks/useFilter";
 export interface IPost {
   id: number;
   title: string;
@@ -28,29 +28,16 @@ export interface IPost {
 }
 
 export default function LatestNews() {
-  const [selectedCategory, setSelectedCategory] = useState<number | null>(null);
-  const [selectedTags, setSelectedTags] = useState<number[]>([]);
-  const [searchQuery, setSearchQuery] = useState<string>("");
-  const [filteredPosts, setFilteredPosts] = useState<IPost[]>(filterData.posts);
+  const {
+    handleCategoryChange,
+    selectedCategory,
+    setSearchQuery,
+    toggleTag,
+    selectedTags,
+    setSelectedTags,
+    filteredPosts
+  } = useFilter();
   const router = useRouter();
-
-
-
-  // Handler for category selection change
-  const handleCategoryChange = (value: string) => {
-    setSelectedCategory(Number(value));
-  };
-
-  const toggleTag = (id: number) => {
-    setSelectedTags((prev) =>
-      prev.includes(id) ? prev.filter((t) => t !== id) : [...prev, id]
-    );
-  };
-
-  useEffect(() => {
-    const posts = filterPosts(selectedCategory, selectedTags, searchQuery);
-    setFilteredPosts(posts);
-  }, [selectedTags, searchQuery, selectedCategory]);
 
   return (
     <div className="bg-white pt-10 lg:pt-20 pb-8 lg:pb-[64px]">

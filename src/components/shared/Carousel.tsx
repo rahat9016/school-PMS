@@ -55,7 +55,6 @@ export const DotButton = ({
   />
 );
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const Carousel = ({
   slides,
   className,

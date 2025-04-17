@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import ControlledInputField from "@/components/shared/ControlledInputField";
 import ControlledTextareaField from "@/components/shared/ControlledTextAreaField";
 import InputLabel from "@/components/shared/InputLabel";
@@ -13,7 +13,7 @@ import { useMutation } from "@tanstack/react-query";
 import { toast } from "react-toastify";
 
 export default function ASKQuestion() {
-  const { mutateAsync } = useMutation({
+  const { mutateAsync, isPending } = useMutation({
     mutationFn: faqRequest,
     onSuccess: () => {},
   });
@@ -23,25 +23,27 @@ export default function ASKQuestion() {
 
   const onSubmit = (data: IFAQ) => {
     mutateAsync(data)
-          .then((res) => {
-            if (res.success) {
-              methods.reset();
-              toast.success(res?.message, {
-                position: "bottom-left",
-              });
-            }
-          })
-          .catch((error) => {
-            toast.error(error?.message, {
-              position: "bottom-left",
-            });
+      .then((res) => {
+        if (res.success) {
+          methods.reset();
+          toast.success(res?.message, {
+            position: "bottom-left",
           });
+        }
+      })
+      .catch((error) => {
+        toast.error(error?.message, {
+          position: "bottom-left",
+        });
+      });
   };
   return (
     <div className="bg-aliceBlue">
       <div className="container py-20 lg:py-[154px]">
-      <h1 className="text-main-primary  text-2xl font-poppins font-semibold">Ask a Question</h1>
-      <span className="block bg-main-secondary h-[3px] w-[140px]  mb-10 lg:mb-[64px]"></span>
+        <h1 className="text-main-primary  text-2xl font-poppins font-semibold">
+          Ask a Question
+        </h1>
+        <span className="block bg-main-secondary h-[3px] w-[140px]  mb-10 lg:mb-[64px]"></span>
         <FormProvider {...methods}>
           <form onSubmit={methods.handleSubmit(onSubmit)} className="w-full">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
@@ -87,22 +89,22 @@ export default function ASKQuestion() {
                   className="bg-[#F8F8F8]"
                 />
               </div>
-              
             </div>
             <div className="flex justify-end gap-4 mt-10 lg:mt-32">
-                <Button
-                  type="reset"
-                  className="uppercase bg-[#EFF0EF] text-[#363739] rounded-sm px-6 lg:px-10 py-3 h-10 lg:h-14"
-                >
-                  Clear
-                </Button>
-                <Button
-                  type="submit"
-                  className="uppercase bg-main-secondary text-white rounded-sm px-6 lg:px-10 py-3 h-10 lg:h-14"
-                >
-                  Submit
-                </Button>
-              </div>
+              <Button
+                type="reset"
+                className="uppercase bg-[#EFF0EF] text-[#363739] rounded-sm px-6 lg:px-10 py-3 h-10 lg:h-14"
+              >
+                Clear
+              </Button>
+              <Button
+                disabled={isPending}
+                type="submit"
+                className="uppercase bg-main-secondary text-white rounded-none px-6 lg:px-10 py-3 h-10 lg:h-14"
+              >
+                {isPending ? "Sending..." : "Submit"}
+              </Button>
+            </div>
           </form>
         </FormProvider>
       </div>

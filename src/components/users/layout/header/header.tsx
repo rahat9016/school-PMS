@@ -1,5 +1,5 @@
 "use client";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { Menu, Search, X } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
@@ -33,18 +33,32 @@ const navlinks = [
 ];
 const Header = () => {
   const pathname = usePathname();
+  const router = useRouter();
+  const [query, setQuery] = useState("");
   const [showSearch, setShowSearch] = useState(false);
   const [showMenu, setShowMenu] = useState(false);
   const [showMobileMenu, setShowMobileMenu] = useState(false);
 
   const excludedPaths = ["/dashboard", "/signin"];
+  const shouldHideHeader = excludedPaths.some((path) =>
+    pathname.startsWith(path)
+  );
 
-  const shouldHideHeader = excludedPaths.some(path => pathname.startsWith(path));
+  const handleSearch = () => {
+    if (query.trim()) {
+      router.push(`/search?query=${encodeURIComponent(query.trim())}`);
+    }
+  };
+
+  const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
+    if (event.key === "Enter") {
+      handleSearch();
+    }
+  };
+
   return (
     <header
-      className={`group ${
-        shouldHideHeader ? "" : "pb-[70px] md:pb-[91px]"
-      } `}
+      className={`group ${shouldHideHeader ? "" : "pb-[70px] md:pb-[91px]"} `}
     >
       {!shouldHideHeader && (
         <div className="top-0 w-full fixed z-50 ">
@@ -117,11 +131,17 @@ const Header = () => {
                         </Button>
                       </DropdownMenuTrigger>
                       <DropdownMenuContent className="w-36 bg-forestWhite p-1">
-                        <Link href={`https://www.schoolbaglive.com/admin/`} className="hover:bg-main-primary hover:text-white w-full block px-3 py-2 rounded-md">
+                        <Link
+                          href={`https://www.schoolbaglive.com/admin/`}
+                          className="hover:bg-main-primary hover:text-white w-full block px-3 py-2 rounded-md"
+                        >
                           SchoolBagLive
                         </Link>
-                        <Link href={`https://pais.managebac.com/login`} className="hover:bg-main-primary hover:text-white w-full block px-3 py-2 rounded-md">
-                        ManageBAC
+                        <Link
+                          href={`https://pais.managebac.com/login`}
+                          className="hover:bg-main-primary hover:text-white w-full block px-3 py-2 rounded-md"
+                        >
+                          ManageBAC
                         </Link>
                       </DropdownMenuContent>
                     </DropdownMenu>
@@ -139,12 +159,17 @@ const Header = () => {
                     <Search className="w-7 h-7 text-mediumGray group-hover:text-white ml-auto" />
                   </div>
                   <div className="hidden lg:flex items-center gap-2 border rounded-xl px-4 h-[40px] w-full max-w-64">
-                    <Search className="w-5 h-5 text-mediumGray group-hover:text-white" />
+                    <Search
+                      onClick={handleSearch}
+                      className="w-5 h-5 text-mediumGray group-hover:text-white"
+                    />
                     <Input
                       type="text"
                       placeholder="Search..."
-                      className="border-none bg-transparent placeholder-gray-400 shadow-none py-1 placeholder:text-[#646464] group-hover:placeholder:text-white"
-                      // onChange={(event) => setSearch && setSearch(event.target.value)}
+                      className="border-none bg-transparent placeholder-gray-400 shadow-none py-1 placeholder:text-[#646464] group-hover:placeholder:text-white group-hover:text-white"
+                      value={query}
+                      onChange={(e) => setQuery(e.target.value)}
+                      onKeyDown={handleKeyDown}
                     />
                   </div>
                 </div>
@@ -152,12 +177,14 @@ const Header = () => {
               {showSearch && (
                 <div className="lg:hidden absolute -bottom-[40px] w-full left-0 shadow-lg">
                   <div className="flex items-center gap-2 px-4 h-[40px] w-full bg-white">
-                    <Search className="w-5 h-5 text-mediumGray " />
+                    <Search onClick={handleSearch} className="w-5 h-5 text-mediumGray " />
                     <Input
                       type="text"
                       placeholder="Search..."
                       className="border-none bg-transparent placeholder-gray-400 shadow-none py-1 placeholder:text-[#646464] "
-                      // onChange={(event) => setSearch && setSearch(event.target.value)}
+                      value={query}
+                      onChange={(e) => setQuery(e.target.value)}
+                      onKeyDown={handleKeyDown}
                     />
                   </div>
                 </div>
