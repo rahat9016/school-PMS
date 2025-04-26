@@ -44,7 +44,7 @@ export const schoolTourBookingRequest = async <T>(data: T) => {
   }
 };
 
-export const preRegisterRequest = async(data: IPreRegister) => {
+export const preRegisterRequest = async (data: IPreRegister) => {
   try {
     const response = await api.post("/student/pre-register", data);
     return response.data;
@@ -52,7 +52,7 @@ export const preRegisterRequest = async(data: IPreRegister) => {
     throw new Error(error?.response?.data?.message || "Something went wrong!");
   }
 };
-export const feedbackRequest = async(data: IFeedback) => {
+export const feedbackRequest = async (data: IFeedback) => {
   try {
     const response = await api.post("/student/feedback", data);
     return response.data;
@@ -61,7 +61,7 @@ export const feedbackRequest = async(data: IFeedback) => {
   }
 };
 
-export const faqRequest = async(data: IFAQ) => {
+export const faqRequest = async (data: IFAQ) => {
   try {
     const response = await api.post("/student/faq", data);
     return response.data;
@@ -70,3 +70,27 @@ export const faqRequest = async(data: IFAQ) => {
   }
 };
 
+export const mediaLibraryGalleryRequest = async (data: FormData) => {
+  try {
+    const response = await api.post("/media-library/gallery", data);
+    return response.data;
+  } catch (error: any) {
+    throw new Error(error?.response?.data?.message || "Something went wrong!");
+  }
+};
+export const getMediaLibraryGalleryRequest = async ({
+  page,
+  limit,
+}: {
+  page: number;
+  limit: number;
+}) => {
+  try {
+    const response = await api.get(
+      `/media-library/gallery?limit=${limit}&page=${page}`
+    );
+    return response.data;
+  } catch (error: any) {
+    throw new Error(error?.response?.data?.message || "Something went wrong!");
+  }
+};

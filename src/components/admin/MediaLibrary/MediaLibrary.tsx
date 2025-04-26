@@ -8,7 +8,7 @@ import {
 } from "@/components/ui/breadcrumb";
 import { Slash } from "lucide-react";
 import React, { useState } from "react";
-import UploadImageModal from "./components/UploadMediaImage";
+import UploadImageModal from "../../shared/UploadMediaImage";
 
 export default function MediaLibrary() {
   const [open, setOpen] = useState(false);

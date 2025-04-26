@@ -7,6 +7,7 @@ import Edit_light from "../../../../public/Edit_light.png";
 import document from "../../../../public/dashboard/document.png";
 import announch from "../../../../public/dashboard/announch.png";
 import callender from "../../../../public/dashboard/callender.png";
+import dgallery from "../../../../public/dashboard/gallery.png";
 import cap from "../../../../public/dashboard/cap.png";
 import lunch from "../../../../public/dashboard/lunch.png";
 import media from "../../../../public/dashboard/media.png";
@@ -21,46 +22,61 @@ const features = [
     title: "Manage Articles",
     desc: "Write, edit, and publish news updates.",
     icon: document,
+    location: "/dashboard/"
   },
   {
     title: "Media Library",
     desc: "Upload and organize images & videos.",
     icon: media,
+    location: "/dashboard/"
   },
   {
     title: "School Board",
     desc: "Update and manage school board images.",
     icon: school,
+    location: "/dashboard/"
   },
   {
     title: "Lunch Menu",
     desc: "Write, edit, and publish news updates.",
     icon: lunch,
+    location: "/dashboard/"
   },
   {
     title: "School Profile",
     desc: "Update and maintain school profile images.",
     icon: schoolb,
+    location: "/dashboard/"
   },
   {
     title: "Student Council",
     desc: "Add members, update photos & details.",
     icon: cap,
+    location: "/dashboard/"
   },
   {
     title: "Summer Camp",
     desc: "Upload images and desc. for summer camps.",
     icon: summer,
+    location: "/dashboard/"
   },
   {
     title: "PAIS Post",
     desc: "Publish announcements and updates.",
     icon: announch,
+    location: "/dashboard/"
   },
   {
     title: "Calendars",
     desc: "Upload and manage the academic & activity schedule.",
     icon: callender,
+    location: "/dashboard/"
+  },
+  {
+    title: "Gallery",
+    desc: "Browse, upload, and relive student moments & memories",
+    icon: dgallery,
+    location: "/dashboard/gallery"
   },
 ];
 
@@ -104,13 +120,13 @@ export default function Dashboard() {
         </div>
 
         {/* Feature Cards */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 px-5 pb-5 lg:px-32 mt-5 lg:-mt-20">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 px-5 pb-5 lg:px-32 mt-5 lg:-mt-20">
           {features?.map((item, index) => (
             <div
               key={index}
               className=" group bg-white hover:bg-main-primary duration-300 rounded-xl py-12 pr-12 pl-5 border border-[#CDCDCD] group-hover:border-none transition relative"
             >
-              <Ellipsis className="absolute right-4 top-4 text-[#9B9B9C] group-hover:text-white" />
+              <Ellipsis onClick={() => router.push(item.location)} className="absolute right-4 top-4 text-[#9B9B9C] group-hover:text-white" />
               <div className="flex items-center gap-4 relative">
                 <div className="bg-[#EFF0EF] group-hover:bg-[#F68C25] duration-300 w-[72px] h-[64px] flex items-center justify-center rounded-lg">
                   <Image
