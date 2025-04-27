@@ -28,7 +28,7 @@ const features = [
     title: "Media Library",
     desc: "Upload and organize images & videos.",
     icon: media,
-    location: "/dashboard/"
+    location: "/dashboard/media-library"
   },
   {
     title: "School Board",

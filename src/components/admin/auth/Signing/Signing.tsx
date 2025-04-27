@@ -40,9 +40,9 @@ export default function Signing() {
         if (res.success) {
           // ============== SET ACCESS, REFRESH TOKEN AND USER INFORMATION ==============
           const {accessToken, refreshToken, user} = res?.data
-          setCookie("accessToken", accessToken, 10)
-          setCookie("refreshToken", refreshToken, 10)
-          setCookie("user", user, 10)
+          setCookie("accessToken", accessToken, 10000)
+          setCookie("refreshToken", refreshToken, 10000)
+          setCookie("user", user, 10000)
           // ============== END ACCESS, REFRESH TOKEN AND USER INFORMATION ==============
           // ============== NAVIGATE TO DASHBOARD ==============
           if(user.role.toLowerCase() === "admin"){

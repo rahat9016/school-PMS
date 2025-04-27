@@ -13,6 +13,7 @@ export default function DashboardLayout({
   return (
     <section>
       <Header />
-      {children}</section>
+      {children}
+    </section>
   );
 }

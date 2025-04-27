@@ -94,3 +94,31 @@ export const getMediaLibraryGalleryRequest = async ({
     throw new Error(error?.response?.data?.message || "Something went wrong!");
   }
 };
+
+export const getGalleryImagesRequest = async ({
+  page,
+  limit,
+}: {
+  page: number;
+  limit: number;
+}) => {
+  try {
+    const response = await api.get(
+      `/media-library/get-images-from-gallery?limit=${limit}&page=${page}`
+    );
+    return response.data;
+  } catch (error: any) {
+    throw new Error(error?.response?.data?.message || "Something went wrong!");
+  }
+};
+
+export const getCategoryListRequest = async () => {
+  try {
+    const response = await api.get(
+      `/group/category`
+    );
+    return response.data;
+  } catch (error: any) {
+    throw new Error(error?.response?.data?.message || "Something went wrong!");
+  }
+};
