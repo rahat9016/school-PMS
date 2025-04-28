@@ -1,27 +1,31 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { useQuery } from "@tanstack/react-query";
 import Image from "next/image";
-import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
-import { getCategoryListRequest, getMediaLibraryGalleryRequest } from "@/app/api/api";
+import {
+  getCategoryListRequest,
+  getMediaLibraryGalleryRequest,
+} from "@/app/api/api";
+import galleryImg from "../../../../../public/dashboard/galleryImg.png";
+import { Input } from "@/components/ui/input";
+import { IData } from "../interface";
 
-
-
-// Yup Schema
-const schema = yup.object({
-  selectedImageIds: yup.array().min(1, "At least one image must be selected"),
-  selectedCategory: yup.string().required("Category is required"),
-  imageTitles: yup.object(),
+const schema = yup.object().shape({
+  selectedImageIds: yup.array().of(
+    yup.string().required("Image ID is required")
+  ).required("At least one image must be selected"),
+  selectedCategory: yup.string().required('Category is required.'),
+  imageTitles: yup.object().required(), 
 });
-
-interface FormValues {
-  selectedImageIds: string[];
-  selectedCategory: string;
-  imageTitles: { [id: string]: string };
-}
 
 export default function UploadGalleryImages({
   open,
@@ -30,16 +34,17 @@ export default function UploadGalleryImages({
 }: {
   open: boolean;
   onOpenChange: (open: boolean) => void;
-  onSubmit?: (data: FormValues) => void;
+  onSubmit?: (data: IData) => void;
 }) {
   const {
     register,
     handleSubmit,
     setValue,
     getValues,
+    watch,
     formState: { errors },
     reset,
-  } = useForm<FormValues>({
+  } = useForm<IData>({
     resolver: yupResolver(schema),
     defaultValues: {
       selectedImageIds: [],
@@ -48,44 +53,67 @@ export default function UploadGalleryImages({
     },
   });
 
-  const [currentPage, setCurrentPage] = useState(1);
-
-  // Fetch Media Images
-//   const { data: mediaImageData, isLoading: loadingImages } = useQuery({
-//     queryKey: ["mediaImageData", currentPage],
-//     queryFn: () =>
-//       getMediaLibraryGalleryRequest({
-//         page: currentPage,
-//         limit: 9,
-//       }),
-//     enabled: open, // Only fetch when modal open
-//   });
+  const { data: mediaImageData, isLoading: loadingImages } = useQuery({
+    queryKey: ["mediaImageData"],
+    queryFn: () =>
+      getMediaLibraryGalleryRequest({
+        // page: currentPage,
+        limit: 100,
+      }),
+    enabled: open,
+  });
 
   // Fetch Categories
-  const { data: categoryData, isLoading: loadingCategories } = useQuery({
+  const { data: categoryData } = useQuery({
     queryKey: ["categories"],
     queryFn: getCategoryListRequest,
     enabled: open,
   });
 
-//   const toggleSelectImage = (id: string) => {
-//     const selectedIds = getValues("selectedImageIds");
-//     if (selectedIds.includes(id)) {
-//       setValue(
-//         "selectedImageIds",
-//         selectedIds.filter((item) => item !== id)
-//       );
-//     } else {
-//       setValue("selectedImageIds", [...selectedIds, id]);
-//     }
-//   };
+  const selectedImageIds = watch("selectedImageIds");
+  const imageTitles = watch("imageTitles");
+
+  const toggleSelectImage = (id: string, filename: string) => {
+    const selectedIds = getValues("selectedImageIds") || [];
+    const titles = getValues("imageTitles") || {};
+    let updatedSelectedIds: string[] = [];
+
+    if (selectedIds.includes(id)) {
+      updatedSelectedIds = selectedIds.filter((item) => item !== id);
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      const { [id]: removed, ...rest } = titles;
+      setValue("imageTitles", rest, {
+        shouldValidate: true,
+        shouldDirty: true,
+      });
+    } else {
+      updatedSelectedIds = [...selectedIds, id];
+      setValue(
+        "imageTitles",
+        {
+          ...titles,
+          [id]: filename,
+        },
+        { shouldValidate: true, shouldDirty: true }
+      );
+    }
+
+    setValue("selectedImageIds", updatedSelectedIds, {
+      shouldValidate: true,
+      shouldDirty: true,
+    });
+  };
 
   const handleTitleChange = (id: string, value: string) => {
-    const titles = getValues("imageTitles");
-    setValue("imageTitles", {
-      ...titles,
-      [id]: value,
-    });
+    const titles = getValues("imageTitles") || {};
+    setValue(
+      "imageTitles",
+      {
+        ...titles,
+        [id]: value,
+      },
+      { shouldValidate: true, shouldDirty: true }
+    );
   };
 
   useEffect(() => {
@@ -93,7 +121,6 @@ export default function UploadGalleryImages({
       reset();
     }
   }, [open, reset]);
-
   return (
     <Dialog
       open={open}
@@ -106,7 +133,11 @@ export default function UploadGalleryImages({
     >
       <DialogContent className="max-w-3xl max-h-[85vh] overflow-y-auto">
         <DialogHeader>
-          <DialogTitle className="text-2xl font-semibold">Select Images</DialogTitle>
+          <DialogTitle className="flex items-center gap-2 text-2xl text-[#363739]">
+            <Image src={galleryImg} alt="galleryImg" />
+            Gallery
+          </DialogTitle>
+          <span className="w-full h-[1px] block bg-[#CDCDCD]"></span>
         </DialogHeader>
 
         <form
@@ -115,76 +146,90 @@ export default function UploadGalleryImages({
           })}
           className="flex flex-col gap-6"
         >
-          {/* Category Dropdown */}
-          <div>
-            <label className="text-sm font-medium">Select Category</label>
-            <select
-              {...register("selectedCategory")}
-              className="w-full border rounded p-2 mt-1"
-            >
-              <option value="">Select a category</option>
-              {categoryData?.data?.map((category: any) => (
-                <option key={category._id} value={category._id}>
-                  {category.name}
-                </option>
-              ))}
-            </select>
-            {errors.selectedCategory && (
-              <p className="text-red-500 text-sm">{errors.selectedCategory.message}</p>
-            )}
+          <div className="flex items-center justify-between">
+            <div>
+              <Input placeholder="Search..." className="h-8" />
+            </div>
+            <div>
+              <select
+                {...register("selectedCategory")}
+                className="w-full border border-[#CDCDCD] rounded p-2 px-3 "
+              >
+                <option value="">-- Select section --</option>
+                {categoryData?.data?.map(
+                  (category: { _id: string; name: string }) => (
+                    <option key={category._id} value={category._id}>
+                      {category.name}
+                    </option>
+                  )
+                )}
+              </select>
+              {errors.selectedCategory && (
+                <p className="text-red-500 text-sm">
+                  {errors.selectedCategory.message}
+                </p>
+              )}
+            </div>
           </div>
 
           {/* Image Gallery */}
-          {/* <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             {loadingImages ? (
               <p>Loading Images...</p>
             ) : (
-              mediaImageData?.data?.map((img: any) => {
-                console.log(img)
-                return (
+              mediaImageData?.data?.map(
+                (img: { _id: string; filename: string; image: string }) => {
+                  return (
                     <div
-                      key={img.id}
-                      onClick={() => toggleSelectImage(img.id)}
-                      className={`relative flex flex-col items-center p-2 border rounded cursor-pointer ${
-                        getValues("selectedImageIds").includes(img.id)
-                          ? "border-blue-500"
-                          : "border-gray-300"
+                      key={img._id}
+                      onClick={() => toggleSelectImage(img._id, img.filename)}
+                      className={`relative  border-2 rounded cursor-pointer h-[101px] ${
+                        getValues("selectedImageIds").includes(img._id)
+                          ? "border-main-primary"
+                          : ""
                       }`}
                     >
-                      {getValues("selectedImageIds").includes(img.id) && (
-                        <div className="absolute top-2 right-2 bg-blue-500 text-white rounded-full w-5 h-5 flex items-center justify-center text-xs">
-                          ✓
-                        </div>
-                      )}
                       <Image
-                        src={img.url}
-                        alt={img.title}
-                        width={120}
-                        height={120}
-                        className="object-cover rounded"
+                        src={img?.image}
+                        alt={img?.filename}
+                        width={171}
+                        height={101}
+                        className="object-cover rounded h-full w-full"
                       />
-                      <input
-                        type="text"
-                        placeholder="Edit title"
-                        defaultValue={img.title}
-                        onClick={(e) => e.stopPropagation()}
-                        onChange={(e) => handleTitleChange(img.id, e.target.value)}
-                        className="text-sm border mt-2 px-2 py-1 rounded w-full"
-                      />
+
+                      {selectedImageIds.includes(img._id) && (
+                        <input
+                          type="text"
+                          placeholder="Edit title"
+                          required
+                          value={imageTitles[img._id] ?? img.filename}
+                          onClick={(e) => e.stopPropagation()}
+                          onChange={(e) =>
+                            handleTitleChange(img._id, e.target.value)
+                          }
+                          className="text-sm border mt-2 px-2 py-1 rounded w-11/12  absolute bottom-2 left-2"
+                        />
+                      )}
                     </div>
-                  )
-              })
+                  );
+                }
+              )
             )}
-          </div> */}
+          </div>
 
           {/* Error if no image selected */}
           {errors.selectedImageIds && (
-            <p className="text-red-500 text-sm">{errors.selectedImageIds.message}</p>
+            <p className="text-red-500 text-sm">
+              {errors.selectedImageIds.message}
+            </p>
           )}
 
           {/* Submit Button */}
           <div className="flex justify-end">
-            <Button type="submit" className="bg-[#42AD00] hover:bg-green-700 w-32 h-12">
+            <Button
+              type="submit"
+              className="bg-[#42AD00] hover:bg-green-700 w-32 h-12"
+            >
               Submit
             </Button>
           </div>

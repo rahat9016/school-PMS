@@ -79,10 +79,10 @@ export const mediaLibraryGalleryRequest = async (data: FormData) => {
   }
 };
 export const getMediaLibraryGalleryRequest = async ({
-  page,
+  page = 1,
   limit,
 }: {
-  page: number;
+  page?: number;
   limit: number;
 }) => {
   try {
@@ -120,5 +120,25 @@ export const getCategoryListRequest = async () => {
     return response.data;
   } catch (error: any) {
     throw new Error(error?.response?.data?.message || "Something went wrong!");
+  }
+};
+
+export const uploadImageFromGalleryRequest = async (data: any) => {
+  try {
+    const response = await api.post(
+      `/media-library/upload-images-from-gallery`,
+      data
+    );
+    return response.data;
+  } catch (error: any) {
+    function extractErrorMessage(error: any): string {
+      return (
+        error?.response?.data?.errorMessages?.[0]?.message ||
+        error?.response?.data?.message ||
+        error?.message ||
+        "Something went wrong!"
+      );
+    }
+    throw new Error(extractErrorMessage(error) || "Something went wrong!");
   }
 };
