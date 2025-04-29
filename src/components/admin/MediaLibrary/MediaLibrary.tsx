@@ -44,15 +44,17 @@ export default function MediaLibrary() {
       images: images,
       categoryId: data.selectedCategory,
     };
-    mutateAsync(uploadDataFormate).then((res) => {
-      if (res.success) {
-        setOpen(false);
-      }
-    }).catch((error) => {
-      toast.error(error?.message, {
-                position: "bottom-left",
-              });
-    });
+    mutateAsync(uploadDataFormate)
+      .then((res) => {
+        if (res.success) {
+          setOpen(false);
+        }
+      })
+      .catch((error) => {
+        toast.error(error?.message, {
+          position: "bottom-left",
+        });
+      });
   };
 
   return (

@@ -1,6 +1,8 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 import { getMediaLibraryGalleryRequest } from "@/app/api/api";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
 import {
   Pagination,
   PaginationContent,
@@ -12,7 +14,7 @@ import {
 import { useQuery } from "@tanstack/react-query";
 import Image from "next/image";
 import { useState } from "react";
-
+import AllVideo from "../../../../../public/dashboard/allVideo.png";
 const ITEMS_PER_PAGE = 10;
 export default function MediaFiles() {
   const [currentPage, setCurrentPage] = useState(1);
@@ -33,6 +35,25 @@ export default function MediaFiles() {
   return (
     <div>
       <div className="px-5 lg:px-32">
+        <div className="flex justify-between gap-3 items-center mt-12 mb-10">
+          <div className="flex items-center gap-2">
+            <Image src={AllVideo} alt="AllVideo" width={28} height={28} />
+            <h3 className="text-base font-medium font-poppins text-charcoalGray">
+              Media Files
+            </h3>
+          </div>
+          <div className="flex gap-2">
+            <Button className="h-12 bg-[#42AD00] hover:bg-[#42AD00] px-4 py-3 font-poppins text-sm">
+              Filter
+            </Button>
+            <Input
+              className="w-72 h-12 "
+              placeholder="Search by file name or type..."
+              // value={filter}
+              // onChange={(e) => setFilter(e.target.value)}
+            />
+          </div>
+        </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-6 gap-5">
           {data?.data?.map((item: any) => {
             console.log(item);
@@ -52,7 +73,7 @@ export default function MediaFiles() {
             );
           })}
         </div>
-        <Pagination>
+        <Pagination className="mt-10">
           <PaginationContent>
             <PaginationItem>
               <PaginationPrevious
