@@ -68,7 +68,7 @@ export const data = [
     content: [],
     img: img,
     border: "#002D37",
-    bg: "#43DDFF",
+    bg: "#242D65",
   },
   {
     title: "Service and Action",
@@ -84,7 +84,7 @@ export const data = [
       "plan for subsequent service and action",
     ],
     border: "#002D37",
-    bg: "#43FF56",
+    bg: "#FFA843",
   },
   {
     title: "Personal Project",
@@ -98,7 +98,7 @@ export const data = [
       "appreciate the process of learning and take pride in their accomplishments"
     ],
     border: "#002D37",
-    bg: "#F0FF43",
+    bg: "#242D65",
   },
   {
     title: "Assessment",
@@ -107,6 +107,6 @@ export const data = [
     content: [],
     img:Assessment,
     border: "#002D37",
-    bg: "#AC43FF",
+    bg: "#FFA843",
   },
 ];

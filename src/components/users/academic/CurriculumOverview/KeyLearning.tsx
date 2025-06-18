@@ -1,12 +1,11 @@
-import React from "react";
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import { data } from "./data";
 import KeyPoints from "../../../shared/KeyPoints";
+import { data } from "./data";
 
 
 export default function KeyLearning() {
@@ -31,7 +30,7 @@ export default function KeyLearning() {
                     background: `${content.bg}`,
                     border: `1px solid ${content.border}`,
                   }}
-                  className="p-4 rounded-lg text-[#002D37] text-base font-medium hover:no-underline"
+                  className={`p-4 rounded-lg ${index %2==0?"text-[#002D37]":"text-white" } text-base font-medium hover:no-underline`}
                 >
                   {content.title}
                 </AccordionTrigger>

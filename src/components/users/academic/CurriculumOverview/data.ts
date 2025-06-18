@@ -33,7 +33,7 @@ export const data = [
       "STEM",
     ],
     border: "#002D37",
-    bg: "#43DDFF",
+    bg: "#242D65",
   },
   {
     title:
@@ -91,7 +91,7 @@ export const data = [
       ],
     },
     border: "#002D37",
-    bg: "#43FF56",
+    bg: "#FFA843",
   },
 ];
 
@@ -110,7 +110,7 @@ export const data2 = [
       "The IB Diploma Programme is a two-year (Grades 11-12, or ages 16-19) international curriculum that allows students to fulfill the requirements for university entrance of their national or state education systems. Internationally mobile students are able to transfer into the IB Diploma Programme from other IB World schools, as well as from other school systems.",
     content: [],
     border: "#002D37",
-    bg: "#43DDFF",
+    bg: "#242D65",
   },
   {
     title: "Course Selection",
@@ -134,7 +134,7 @@ export const data2 = [
       "-A Creativity, Activity, & Service (CAS) programme",
     ],
     border: "#002D37",
-    bg: "#43FF56",
+    bg: "#FFA843",
   },
   {
     title: "The Core IB Curriculum",
@@ -179,7 +179,7 @@ export const data2 = [
       },
     ],
     border: "#242700",
-    bg: "#F0FF43",
+    bg: "#242D65",
   },
 ];
 
@@ -213,7 +213,7 @@ export const data3 = [
       },
     ],
     border: "#242700",
-    bg: "#43DDFF",
+    bg: "#242D65",
   },
   {
     title: "The Submission",
@@ -226,7 +226,7 @@ export const data3 = [
       "CAS Activity Log: Students record their activities and the key elements of CAS as Creativity, Activity and Service.",
     ],
     border: "#002D37",
-    bg: "#43FF56",
+    bg: "#FFA843",
   },
   {
     title: "CAS Suggestions",
@@ -247,6 +247,6 @@ export const data3 = [
       },
     ],
     border: "#242700",
-    bg: "#F0FF43",
+    bg: "#242D65",
   },
 ];

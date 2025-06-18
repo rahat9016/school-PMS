@@ -1,13 +1,12 @@
+import KeyPoints from "@/components/shared/KeyPoints";
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import React from "react";
-import { data } from "./data";
-import KeyPoints from "@/components/shared/KeyPoints";
 import Image from "next/image";
+import { data } from "./data";
 
 export default function IBProgramKeyPoints() {
   return (
@@ -30,7 +29,7 @@ export default function IBProgramKeyPoints() {
                   background: `${content.bg}`,
                   border: `1px solid ${content.border}`,
                 }}
-                className="p-4 rounded-lg text-[#002D37] text-sm lg:text-base font-medium hover:no-underline"
+                className={`p-4 rounded-lg ${index %2== 0? "text-[#371E00]":"text-[#fff]"} text-sm lg:text-base font-medium hover:no-underline`}
               >
                 {content.title}
               </AccordionTrigger>

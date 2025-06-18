@@ -28,7 +28,7 @@ export default function IBDiplomaProgramKeyPoints() {
                   background: `${content.bg}`,
                   border: `1px solid ${content.border}`,
                 }}
-                className="p-4 rounded-lg text-[#002D37] text-sm lg:text-base font-medium hover:no-underline"
+                className={`p-4 rounded-lg ${index % 2 ==0 ?"text-[#002D37]":"text-white"} text-sm lg:text-base font-medium hover:no-underline`}
               >
                 {content.title}
               </AccordionTrigger>

@@ -1,5 +1,4 @@
-import SchoolLunch from '@/components/users/academic/SchoolLunch/SchoolLunch'
-import React from 'react'
+import SchoolLunch from '@/components/users/student/SchoolLunch/SchoolLunch'
 
 export default function SchoolLunchPage() {
   return (

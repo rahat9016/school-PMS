@@ -20,10 +20,9 @@ export const menuData = [
         { title: "Secondary & IB Programs", href: "/secondary-ib-programs" },
         { title: "Exams & Assessments", href: "/exams-assessments" },
         { title: "After-School & Enrichment", href: "/after-school-enrichment" },
-        { title: "School Lunch", href: "/school-lunch" },
         { title: "Admissions Overview", href: "/admission-overview" },
         { title: "Enrollment & Scholarship", href: "/enrollment-scholarship" },
-        { title: "Open House & School Tour", href: "/open-house-school-tour" },
+        
       ],
     },
     {
@@ -41,6 +40,7 @@ export const menuData = [
           title: "Parents & Faculty Community",
           href: "/parents-faculty-community",
         },
+        { title: "School Lunch", href: "/school-lunch" },
         { title: "Alumni Network", href: "/alumni-network" },
         { title: "Summer Programs", href: "/pais-in-wonderland-summer-camp" },
         { title: "Sports", href: "/sports" },
@@ -54,6 +54,7 @@ export const menuData = [
           title: "Academic & Activity Calendar",
           href: "/academic-activity-calendar",
         },
+        { title: "Open House & School Tour", href: "/open-house-school-tour" },
       ],
     },
   ];

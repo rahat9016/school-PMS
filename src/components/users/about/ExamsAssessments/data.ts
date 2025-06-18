@@ -15,7 +15,7 @@ export const data = [
     desc3:"When taking the MAP test, the difficulty of each question is based on how well a student answers all the previous questions. As the student answers correctly, questions become more difficult. If the student answers incorrectly, the questions become easier. Although the tests are not timed, it usually takes students about one hour to complete each test.",
     content: [],
     border: "#002D37",
-    bg: "#43DDFF",
+    bg: "#242D65",
   },
   {
     title: "Do all students in the same grade take the same test?",
@@ -23,7 +23,7 @@ export const data = [
       "No. This assessment is designed to target a student’s academic performance in mathematics, reading, language usage and science. These tests are tailored to an individual’s current achievement level. This gives each student a fair opportunity to show what he or she knows and can do. Because the computer adjusts the difficulty of the questions as the test progresses, each student takes a unique test.",
     content: [],
     border: "#002D37",
-    bg: "#43FF56",
+    bg: "#FFA843",
   },
   {
     title: "What are the MAP test results used for?",
@@ -37,7 +37,7 @@ export const data = [
       "Provide books and magazines for your child to read at home. By reading new material, a child learns new words that might appear on a test. Ask your child’s teacher for a suggested reading list."
     ],
     border: "#242700",
-    bg: "#F0FF43",
+    bg: "#242D65",
   },
   {
     title: "Where can I go for more information about MAP testing?",
@@ -46,6 +46,6 @@ export const data = [
     link:"www.nwea.org",
     content: [],
     border: "#1B0031",
-    bg: "#AC43FF",
+    bg: "#FFA843",
   },
 ];
