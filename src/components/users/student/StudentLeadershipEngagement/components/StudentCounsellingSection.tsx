@@ -1,7 +1,7 @@
-import Image from "next/image";
-import SchoolCounsellingImg from "../../../../../../public/students/StudentCounsellingImg.jpg";
-import shape2 from "../../../../../../public/Facilities/shape.png";
 import TitleTag from "@/components/shared/TitleTag";
+import Image from "next/image";
+import shape2 from "../../../../../../public/Facilities/shape.png";
+import SchoolCounsellingImg from "../../../../../../public/students/StudentCounsellingImg.jpg";
 
 export default function StudentCounsellingSection() {
   return (
@@ -11,7 +11,7 @@ export default function StudentCounsellingSection() {
           <div className="w-full lg:w-1/2">
             <TitleTag title="Counselling" />
             <h1 className="text-3xl lg:text-5xl text-black font-poppins font-semibold mt-4 lg:mt-8">
-              School Counselling
+              About Counselling
             </h1>
             <p className="text-sm lg:text-base font-poppins text-darkGray font-light mt-6 lg:mt-14 leading-[28px]">
               Student Council is a group of elected students from grades 10

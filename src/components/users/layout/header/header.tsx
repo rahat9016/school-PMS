@@ -1,42 +1,29 @@
 "use client";
-import { usePathname, useRouter } from "next/navigation";
-import { Menu, Search, X } from "lucide-react";
-import Link from "next/link";
-import Image from "next/image";
-import Logo from "../../../../../public/logo.png";
-import logoIcon from "../../../../../public/logoIcon.png";
-import { useState } from "react";
-import { Input } from "@/components/ui/input";
-import { HeaderNavigationMenu } from "./components/navigaration";
+import { Button } from "@/components/ui/button";
 import { Drawer, DrawerContent, DrawerTrigger } from "@/components/ui/drawer";
-import { menuData } from "./components/data/data";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Menu, Search, X } from "lucide-react";
+import Image from "next/image";
+import Link from "next/link";
+import { usePathname, useRouter } from "next/navigation";
+import { useState } from "react";
+import Logo from "../../../../../public/logo.png";
+import logoIcon from "../../../../../public/logoIcon.png";
+import { menuData } from "./components/data/data";
+import { HeaderNavigationMenuLeft } from "./components/HeaderNavigationMenuLeft";
+import { HeaderNavigationMenuRight } from "./components/HeaderNavigationMenuRight";
 
-const navlinks = [
-  {
-    label: "About",
-    href: "/about",
-  },
-  {
-    label: "Academic",
-    href: "/curriculumOverview",
-  },
-  {
-    label: "Admission",
-    href: "/admission-overview",
-  },
-];
 const Header = () => {
   const pathname = usePathname();
   const router = useRouter();
   const [query, setQuery] = useState("");
   const [showSearch, setShowSearch] = useState(false);
-  const [showMenu, setShowMenu] = useState(false);
+  const [mouseHover, setMouseHover] = useState(false);
   const [showMobileMenu, setShowMobileMenu] = useState(false);
 
   const excludedPaths = ["/dashboard", "/signin"];
@@ -55,27 +42,19 @@ const Header = () => {
       handleSearch();
     }
   };
-
+console.log(mouseHover)
   return (
     <header
       className={`group ${shouldHideHeader ? "" : "pb-[70px] md:pb-[91px]"} `}
+      onMouseEnter={() => setMouseHover(true)}
+      onMouseLeave={() => setMouseHover(false)}
     >
       {!shouldHideHeader && (
-        <div className="top-0 w-full fixed z-50 ">
+        <div className="top-0 w-full fixed z-50">
           <div className="border-b bg-light-gray shadow-sm h-[70px] md:h-[91px] flex items-center group-hover:bg-main-primary duration-150 border-main-secondary">
             <div className="container py-4 ">
-              <div className="grid grid-cols-3 lg:gap-4 place-content-center relative">
+              <div className="w-full flex items-center  justify-between  relative">
                 <div className="flex items-center lg:gap-[30px]">
-                  <div
-                    onClick={() => setShowMenu(!showMenu)}
-                    className="hidden w-10 h-10 lg:flex items-center cursor-pointer"
-                  >
-                    {!showMenu ? (
-                      <Menu className="group-hover:text-white text-2xl" />
-                    ) : (
-                      <X className="group-hover:text-white text-2xl" />
-                    )}
-                  </div>
                   <div
                     onClick={() => setShowMobileMenu(!showMobileMenu)}
                     className="lg:hidden w-10 h-10 flex items-center cursor-pointer"
@@ -86,16 +65,7 @@ const Header = () => {
                       <X className="group-hover:text-white text-2xl" />
                     )}
                   </div>
-                  <nav className="hidden lg:flex space-x-5 uppercase font-poppins font-medium">
-                    {navlinks.map((link, index) => (
-                      <Link key={index} href={link.href} className="group/nav">
-                        <span className="relative cursor-pointer block font-medium group-hover:text-white">
-                          {link.label}
-                          <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-main-secondary transition-all duration-300 group-hover/nav:w-full"></span>
-                        </span>
-                      </Link>
-                    ))}
-                  </nav>
+                  <HeaderNavigationMenuLeft mouseHover={mouseHover} />
                 </div>
                 <div className="flex items-center justify-center">
                   <div className="h-[60px]">
@@ -119,18 +89,18 @@ const Header = () => {
                     />
                   </Link>
                 </div>
-                <div className="flex items-center justify-end gap-8">
-                  <nav className="hidden md:flex items-center space-x-5 uppercase font-poppins font-medium">
-                    <DropdownMenu>
+                <div className="flex items-center justify-end gap-3">
+                  <nav className="hidden lg:flex items-center space-x-5 uppercase font-poppins font-medium" >
+                    <DropdownMenu >
                       <DropdownMenuTrigger asChild>
-                        <Button className="group/nav bg-transparent text-black shadow-none hover:bg-transparent ">
-                          <span className="text-base relative cursor-pointer block font-medium group-hover:text-white">
+                        <Button className="group/nav bg-transparent text-charcoalGray shadow-none hover:bg-transparent ">
+                          <span className={`text-base relative cursor-pointer block font-medium ${mouseHover && "text-white"}`}>
                             LMS
                             <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-main-secondary transition-all duration-300 group-hover/nav:w-full"></span>
                           </span>
                         </Button>
                       </DropdownMenuTrigger>
-                      <DropdownMenuContent className="w-36 bg-forestWhite p-1">
+                      <DropdownMenuContent onMouseEnter={() => setMouseHover(false)} className="w-36 bg-forestWhite p-1">
                         <Link
                           href={`https://www.schoolbaglive.com/admin/`}
                           className="hover:bg-main-primary hover:text-white w-full block px-3 py-2 rounded-md"
@@ -145,23 +115,20 @@ const Header = () => {
                         </Link>
                       </DropdownMenuContent>
                     </DropdownMenu>
-                    <Link href={`/faq`} className="group/nav">
-                      <span className="relative cursor-pointer block font-medium group-hover:text-white">
-                        FAQ
-                        <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-main-secondary transition-all duration-300 group-hover/nav:w-full"></span>
-                      </span>
-                    </Link>
                   </nav>
-                  <div
-                    onClick={() => setShowSearch(!showSearch)}
-                    className="lg:hidden"
+                  
+                  <HeaderNavigationMenuRight mouseHover={mouseHover} />
+                  <Link
+                    href={"/contact"}
+                    className={`lg:flex items-center justify-center gap-1 transition font-poppins font-medium  text-base text-charcoalGray group/contact relative hidden  ${mouseHover && "text-white"}`}
                   >
-                    <Search className="w-7 h-7 text-mediumGray group-hover:text-white ml-auto" />
-                  </div>
-                  <div className="hidden lg:flex items-center gap-2 border rounded-xl px-4 h-[40px] w-full max-w-64">
+                    Contact
+                    <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-main-secondary transition-all duration-300 group-hover/contact:w-full"></span>
+                  </Link>
+                  <div className="hidden xl:flex items-center gap-1 border rounded-xl px-2 h-[40px] w-full max-w-40">
                     <Search
                       onClick={handleSearch}
-                      className="w-5 h-5 text-mediumGray group-hover:text-white"
+                      className={`w-8 h-10 text-mediumGray ${mouseHover && "text-white"} `}
                     />
                     <Input
                       type="text"
@@ -172,12 +139,21 @@ const Header = () => {
                       onKeyDown={handleKeyDown}
                     />
                   </div>
+                  <div
+                    onClick={() => setShowSearch(!showSearch)}
+                    className="xl:hidden"
+                  >
+                    <Search className="w-7 h-7 text-mediumGray group-hover:text-white ml-auto" />
+                  </div>
                 </div>
               </div>
               {showSearch && (
                 <div className="lg:hidden absolute -bottom-[40px] w-full left-0 shadow-lg">
                   <div className="flex items-center gap-2 px-4 h-[40px] w-full bg-white">
-                    <Search onClick={handleSearch} className="w-5 h-5 text-mediumGray " />
+                    <Search
+                      onClick={handleSearch}
+                      className="w-5 h-5 text-mediumGray "
+                    />
                     <Input
                       type="text"
                       placeholder="Search..."
@@ -191,13 +167,6 @@ const Header = () => {
               )}
             </div>
           </div>
-          {showMenu && (
-            <div className="hidden lg:block bg-white shadow-md">
-              <div className="container h-[60px]">
-                <HeaderNavigationMenu />
-              </div>
-            </div>
-          )}
           {showMobileMenu && (
             <div className="lg:hidden">
               <Drawer open={showMobileMenu} onOpenChange={setShowMobileMenu}>

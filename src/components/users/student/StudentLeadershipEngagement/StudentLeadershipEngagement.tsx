@@ -1,15 +1,14 @@
-import React from 'react'
-import HeroSection from '@/components/shared/HeroSection'
+import HeroSection from '@/components/shared/HeroSection';
 import herobg from "../../../../../public/students/StudentLeadershipEngagementImg.jpg";
-import StudentCounsellingSection from './components/StudentCounsellingSection';
-import StudentCouncilMembers from './components/StudentCouncilMembers';
 import PAISSchoolProfileSection from './components/PAISSchoolProfileSection';
-export default function StudentLeadershipEngagement() {
+import StudentCouncilMembers from './components/StudentCouncilMembers';
+import StudentCounsellingSection from './components/StudentCounsellingSection';
+export default function StudentCouncil() {
   return (
     <div>
         <HeroSection
         img={herobg}
-        title="Student Leadership & Engagement"
+        title="Student Council"
         className="bg-cover h-[280px]"
       />
       <StudentCounsellingSection />

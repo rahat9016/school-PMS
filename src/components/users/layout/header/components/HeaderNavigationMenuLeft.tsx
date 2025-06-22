@@ -1,16 +1,16 @@
 "use client";
 
-import * as React from "react";
-import Link from "next/link";
 import { ChevronDown } from "lucide-react";
+import Link from "next/link";
+import * as React from "react";
 import { menuData } from "./data/data";
 
-export function HeaderNavigationMenu() {
+export function HeaderNavigationMenuLeft({mouseHover}:{mouseHover:boolean}) {
   const [openDropdown, setOpenDropdown] = React.useState<number | null>(null);
   return (
-    <nav>
-      <div className="flex">
-        {menuData.map((menu, index) => (
+    <nav className="hidden lg:block">
+      <div className="lg:flex">
+        {menuData.slice(0,3).map((menu, index) => (
           <div
             key={index}
             className="relative"
@@ -19,11 +19,7 @@ export function HeaderNavigationMenu() {
           >
             {/* Main Menu Button */}
             <button
-              className={`h-[60px] flex items-center justify-center gap-1 transition px-3 font-poppins font-medium w-[256px] text-base ${
-                openDropdown === index
-                  ? "bg-[#FFE8D1] text-main-primary"
-                  : "text-charcoalGray"
-              }`}
+              className={`flex items-center justify-center gap-1 transition px-3 font-poppins font-medium text-base ${mouseHover ?"text-white":"text-charcoalGray"}  `}
             >
               {menu.title}
               {menu.items.length > 0 && <ChevronDown size={16} />}
@@ -31,7 +27,7 @@ export function HeaderNavigationMenu() {
 
             {/* Dropdown Menu */}
             {menu.items.length > 0 && openDropdown === index && (
-              <div className="absolute left-0 w-[256px] z-50 pt-2">
+              <div className="absolute left-0 w-[256px] z-50 pt-9">
                 <div className="bg-forestWhite shadow-lg rounded-md border border-main-primary p-1">
                   {menu.items.map((item, idx) => (
                     <Link
@@ -47,12 +43,7 @@ export function HeaderNavigationMenu() {
             )}
           </div>
         ))}
-        <Link
-          href={"/contact"}
-          className={`h-[60px] flex items-center justify-center gap-1 transition px-3 font-poppins font-medium w-[256px] text-base hover:bg-[#FFE8D1] text-charcoalGray hover:text-main-primary`}
-        >
-          Contact
-        </Link>
+        
       </div>
     </nav>
   );

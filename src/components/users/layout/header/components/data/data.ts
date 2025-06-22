@@ -10,6 +10,7 @@ export const menuData = [
         { title: "School Board", href: "/school-board" },
         { title: "Facilities & Safety", href: "/facilities-safety" },
         { title: "ESLRs", href: "/ESLRs" },
+        { title: "FAQ", href: "/faq" },
       ],
     },
     {
@@ -26,6 +27,17 @@ export const menuData = [
       ],
     },
     {
+      title: "News & Events",
+      items: [
+        { title: "Latest News & Updates", href: "/latest-news-updates" },
+        {
+          title: "Academic & Activity Calendar",
+          href: "/academic-activity-calendar",
+        },
+        { title: "Open House & School Tour", href: "/open-house-school-tour" },
+      ],
+    },
+    {
       title: "Student Life",
       items: [
         {
@@ -33,8 +45,8 @@ export const menuData = [
           href: "/student-development-counselling",
         },
         {
-          title: "Student Leadership & Engagement",
-          href: "/student-leadership-engagement",
+          title: "Student Council",
+          href: "/student-council",
         },
         {
           title: "Parents & Faculty Community",
@@ -46,15 +58,5 @@ export const menuData = [
         { title: "Sports", href: "/sports" },
       ],
     },
-    {
-      title: "News & Events",
-      items: [
-        { title: "Latest News & Updates", href: "/latest-news-updates" },
-        {
-          title: "Academic & Activity Calendar",
-          href: "/academic-activity-calendar",
-        },
-        { title: "Open House & School Tour", href: "/open-house-school-tour" },
-      ],
-    },
+    
   ];
