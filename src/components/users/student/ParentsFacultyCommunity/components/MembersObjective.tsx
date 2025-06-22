@@ -1,12 +1,11 @@
-import React from "react";
 import Image from "next/image";
-import getInvoled from "../../../../../../public/students/getInvoled.png";
-import facebookIcon from "../../../../../../public/students/facebookIcon.png";
 import Link from "next/link";
+import facebookIcon from "../../../../../../public/students/facebookIcon.png";
+import getInvoled from "../../../../../../public/students/getInvoled.png";
 
 export default function MembersObjective() {
   return (
-    <div className="bg-aliceBlue py-10 lg:pt-[88px] lg:pb-[104px]">
+    <div className="bg-white py-10 lg:pt-[88px] lg:pb-[104px]">
       <div className="container">
         <div className="flex flex-col-reverse lg:flex-row gap-10">
           <div className="w-full lg:w-1/2">

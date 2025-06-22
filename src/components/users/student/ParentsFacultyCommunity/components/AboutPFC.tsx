@@ -1,8 +1,7 @@
-import React from "react";
 
 export default function AboutPFC() {
   return (
-    <div className="bg-white py-10 lg:pt-[104px] lg:pb-12">
+    <div className="bg-aliceBlue py-10 lg:pt-[104px] lg:pb-12">
       <div className="container">
         <div className="w-full lg:w-1/2">
         <h1 className="text-xl lg:text-3xl text-black font-poppins font-semibold mb-8 uppercase">
