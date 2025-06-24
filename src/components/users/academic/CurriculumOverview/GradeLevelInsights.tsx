@@ -1,6 +1,5 @@
 import TitleTag from "@/components/shared/TitleTag";
-import React from "react";
-import bg from "../../../../../public/academic/progressBg.png"
+import bg from "../../../../../public/academic/progressBg.png";
 export default function GradeLevelInsights() {
   return (
     <div  className="bg-main-primary py-[64px]">
@@ -12,7 +11,7 @@ export default function GradeLevelInsights() {
         <div>
           <TitleTag title="Progress" />
           <h1 className="font-poppins text-3xl lg:text-5xl font-semibold text-white mb-10 mt-8">
-            Building Independent Learners
+            Grade Comparison
           </h1>
         </div>
         <div className="overflow-x-auto block rounded-2xl overflow-hidden">

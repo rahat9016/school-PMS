@@ -1,5 +1,4 @@
 import Carousel from "@/components/shared/Carousel";
-import React from "react";
 import img1 from "../../../../../public/academic/Octopus1.png";
 import img2 from "../../../../../public/academic/Octopus2.png";
 import img3 from "../../../../../public/academic/Octopus3.png";
@@ -8,7 +7,7 @@ export default function MarketSpaceSection() {
     <div className="bg-white">
       <div className="container">
         <h1 className="font-poppins text-xl  lg:text-3xl font-semibold text-main-primary">
-          Makerspace Room
+          STREAM Lab
         </h1>
         <span className="block bg-main-secondary h-[3px] w-[147px] mb-9"></span>
       </div>

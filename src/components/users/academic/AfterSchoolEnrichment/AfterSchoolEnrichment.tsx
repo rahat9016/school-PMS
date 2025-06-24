@@ -1,8 +1,8 @@
-import React from 'react'
-import HeroSection from '@/components/shared/HeroSection'
+import HeroSection from '@/components/shared/HeroSection';
 import herobg from "../../../../../public/academic/AfterSchoolHeroBg.jpg";
-import AfterSchoolProgramSection from './components/AfterSchoolProgramSection';
 import MarketSpaceSection from '../../about/ExamsAssessments/MarketSpaceSection';
+import AboutSummerCamp from './components/AboutSummerCamp';
+import AfterSchoolProgramSection from './components/AfterSchoolProgramSection';
 export default function AfterSchoolEnrichment() {
   return (
     <div>
@@ -13,6 +13,7 @@ export default function AfterSchoolEnrichment() {
       />
       <AfterSchoolProgramSection />
       <MarketSpaceSection />
+      <AboutSummerCamp />
     </div>
   )
 }

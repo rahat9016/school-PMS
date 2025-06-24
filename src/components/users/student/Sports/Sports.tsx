@@ -1,6 +1,6 @@
-import React from 'react'
-import herobg from "../../../../../public/students/sports/medium-shot-kids-laying-grass.jpg"
 import HeroSection from '@/components/shared/HeroSection'
+import herobg from "../../../../../public/students/sports/medium-shot-kids-laying-grass.jpg"
+import ISSAMembershipSection from './components/ISSAMembership'
 import SportGallerySection from './components/SportGallerySection'
 import SportNewsSection from './components/SportNewsSection'
 export default function Sports() {
@@ -13,6 +13,7 @@ export default function Sports() {
       />
       <SportGallerySection />
       <SportNewsSection />
+      <ISSAMembershipSection />
     </div>
   )
 }

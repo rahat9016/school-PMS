@@ -1,9 +1,7 @@
 import Image from "next/image";
-import React from "react";
 import img1 from "../../../../../../public/academic/kindergarten1.jpg";
 import img2 from "../../../../../../public/academic/kindergarten2.jpg";
-import img3 from "../../../../../../public/academic/primary1.jpg";
-import img4 from "../../../../../../public/academic/primary1.jpg";
+import { default as img3, default as img4 } from "../../../../../../public/academic/primary1.jpg";
 export default function Kindergarten() {
   return (
     <div>
@@ -89,7 +87,7 @@ export default function Kindergarten() {
       >
         <div className="container">
           <h1 className="text-main-primary font-semibold text-[30px] font-poppins lg:pt-20">
-            Primary
+            STREAM to Primary
           </h1>
           <span className="block bg-main-secondary h-[3px] w-[140px]"></span>
           <p className="text-black-dark font-medium text-sm lg:text-lg font-poppins mt-4 lg:mt-8 mb-5 lg:mb-10">
