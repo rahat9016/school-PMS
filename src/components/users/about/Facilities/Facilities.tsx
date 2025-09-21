@@ -25,7 +25,7 @@ import facaltiesSliderImg5 from "../../../../../public/Facilities/facaltiesSlide
 import facaltiesSliderImg6 from "../../../../../public/Facilities/facaltiesSliderWaiting03.jpg";
 import herobg from "../../../../../public/Facilities/heroImg.jpeg";
 import CertificateMembership from "./components/CertificateMembership";
-import ChildSafety from "./components/ChildSafety";
+
 import DevelopmentPolicy from "./components/DevelopmentPolicy";
 import FacilitiesLayout from "./components/FacilitiesLayout";
 const facilitiesData = [
@@ -103,7 +103,6 @@ export default function Facilities() {
           data={facilities}
         />
       ))}
-      <ChildSafety />
       <CertificateMembership />
       <DevelopmentPolicy/>
     </div>

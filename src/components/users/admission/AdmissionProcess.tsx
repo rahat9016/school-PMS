@@ -1,13 +1,13 @@
 "use client";
-import { useEffect } from "react";
-import bg from "../../../../public/admission/shape.png";
 import KeyPoints from "@/components/shared/KeyPoints";
 import { Button } from "@/components/ui/button";
+import { useEffect } from "react";
+import bg from "../../../../public/admission/shape.png";
 const steps = [
   {
-    title: "STEP 1: Apply to Join the PAIS Community",
+    title: "STEP 1:Apply to Join PAIS",
     description:
-      "All students seeking to enroll at Pan-Asia International School must submit the Student Application Form. This can be done in one of two ways:",
+      "Submit a completed Student Application Form on campus or online.",
     skills: [
       "Reading Fluency (English)",
       "Reading Comprehension (English)",
@@ -17,9 +17,16 @@ const steps = [
     ],
   },
   {
-    title: "STEP 2: Schedule a Time for Testing (MAP Testing)",
+    title: "STEP 2: Assessment & Interview",
     description:
-      "All students from Kindergarten to Grade 12 must complete an admissions test in order to be accepted into Pan-Asia International School. Students seeking to join Kindergarten 1 to Kindergarten 3 must complete a half day trial in the appropriate Grade level paired with a short questionnaire for parents. Students from Grade 1 to Grade 5 must complete a paper test evaluating their basic academic skills and Students from Grade 6 to Grade 12 must complete the following:",
+      "As part of the admission process, your child will be scheduled for an interview with the Section Coordinator and the Student Development Center. This helps us assess their English proficiency and get to know them better",
+    cases: {
+      title: "In some cases, students may also be asked to",
+      case: [
+        "Attend a 3-day trial class for observation by the coordinator.",
+        "Complete a MAP Test if requested by the coordinator.",
+      ],
+    },
     skills: [
       "Reading Fluency (English)",
       "Reading Comprehension (English)",
@@ -29,66 +36,69 @@ const steps = [
     ],
   },
   {
-    title: "STEP 3: Submit Official Documents",
+    title: "STEP 3: Submit Documents",
     description:
-      "If the applicant has successfully completed the admissions tests and has been accepted into Pan-Asia International School, the following documents must be prepared and submitted to the school.",
+      "The following documents must be prepared and submitted to the school.",
     skills2: [
       {
-        title: "Thai Students",
+        title: "Student Documents:",
         skills: [
-          "Previous school report",
-          "A copy of residence certificate",
-          "Good moral certificate or Behavior report",
-          "A copy of birth certificate",
-          "A medical report",
-          "2 color photos (2″)",
-          "House map",
+          "Previous Report Card or Transcript",
+          "Good Moral Certificate or Behavior Report",
+          "Medical Certificate",
+          "1 Passport ID Photo of Student",
+          "1 Passport ID Photo of Parents",
         ],
       },
       {
-        title: "and for parents:",
+        title: "For Thai Nationals:",
         skills: [
-          "A copy of each parent’s residence certificate & ID card",
-          "2 color photos (2″) of each parent or guardian",
+          "Copy of Student’s Birth Certificate",
+          "Copy of Student’s House Registration",
+          "Copy of Parent’s ID Card",
+          "Copy of Parent’s House Registration",
         ],
       },
       {
-        title: "Foreign Students",
+        title: "For Foreign Nationals:",
         skills: [
-          "Previous school report",
-          "Good moral certificate or Behavior report",
-          "A copy of passport and visa",
-          "A medical report",
-          "2 color photos (2″)",
-          "House map",
-        ],
-      },
-      {
-        title: "and for parents:",
-        skills: [
-          "A copy of passport and visa",
-          "2 color photos (2″) of each parent or guardian",
+          "Copy of Student’s Passport & Visa",
+          "Copy of Parent’s Passport & Visa ",
         ],
       },
     ],
   },
   {
-    title: "STEP 4: Pay School Fees",
+    title: "STEP 4: Visa Assistance (if needed)",
     description:
-      "Before the student can register and receive class information and schedules, all required fees must be paid for in full for the semester.",
-    skills: [
-      "Enrollment fee",
-      "Tuition fees",
-      "Uniform fee",
-    ],
+      "Meet with the Visa Officer if you require help with visa processing.",
+    skills: [],
   },
   {
-    title: "STEP 5: Register for Classes",
+    title: "STEP 5: Health Check (if needed)",
     description:
-      "Once confirmation of payment has been received, the student will be eligible to register for classes and/or receive a class schedule. Books, standard supplies and the Student & Parent Handbook will also be issued at that time.",
-    skills: [
-    ],
+      "Meet with the School Nurse if your child has special medical needs.",
+    skills: [],
   },
+  {
+    title: "STEP 6: Request School Transportation (if needed)",
+    description:
+      "Submit a transportation form. If a route is available, fees are added to the semester, and bus details are confirmed with parents.",
+    skills: [],
+  },
+  {
+    title: "STEP 7: Pay the School Fees",
+    description:
+      "Complete payment of all required fees at the Finance Office to register your child",
+    skills: [],
+  },
+  {
+    title: "STEP 8: Purchase School Uniform",
+    description:
+      "Buy the official school uniform and sports jersey with guidance from the Admissions Officer.",
+    skills: [],
+  },
+  
 ];
 
 export default function AdmissionProcess() {
@@ -126,6 +136,16 @@ export default function AdmissionProcess() {
                 <p className="text-base text-charcoalGray font-poppins font-normal mt-6 mb-4">
                   {step.description}
                 </p>
+                {step.cases && (
+                  <div>
+                    <p className="text-base text-charcoalGray font-poppins font-normal mt-6 mb-2">
+                      {step.cases.title}
+                    </p>
+                    <div className="pl-5 mb-5">
+                      <KeyPoints points={step?.cases.case} />
+                    </div>
+                  </div>
+                )}
                 <KeyPoints points={step?.skills} />
                 <div className="flex flex-col gap-6">
                   {step?.skills2 &&
@@ -150,7 +170,9 @@ export default function AdmissionProcess() {
           ))}
         </div>
         <div className="flex justify-center">
-          <Button className="bg-main-secondary rounded-full px-8 py-3 pt-4 h-[52px]  font-poppins font-medium text-base hover:bg-main-secondary scale-100 hover:scale-90 transform transition hover:duration-500">Online Enroll Now</Button>
+          <Button className="bg-main-secondary rounded-full px-8 py-3 pt-4 h-[52px]  font-poppins font-medium text-base hover:bg-main-secondary scale-100 hover:scale-90 transform transition hover:duration-500">
+            Online Enroll Now
+          </Button>
         </div>
       </div>
     </div>

@@ -1,22 +1,15 @@
 "use client";
 import Image from "next/image";
+import Link from "next/link";
 import { usePathname } from "next/navigation";
-import React from "react";
-import Logo from "../../../../../public/logo.png";
+import clock from "../../../../../public/clock.png";
 import facebook from "../../../../../public/facebook.png";
-import youtube from "../../../../../public/youtube.png";
 import instagram from "../../../../../public/instagram.png";
 import location from "../../../../../public/location.png";
-import smartphone from "../../../../../public/smartphone.png";
+import Logo from "../../../../../public/logo.png";
 import paperPlan from "../../../../../public/paper-plane.png";
-import clock from "../../../../../public/clock.png";
-import ACCREDITATIONS1 from "../../../../../public/ACCREDITATIONS1.png";
-import ACCREDITATIONS2 from "../../../../../public/ACCREDITATIONS2.png";
-import ACCREDITATIONS3 from "../../../../../public/ACCREDITATIONS3.png";
-import ACCREDITATIONS4 from "../../../../../public/ACCREDITATIONS4.png";
-import ACCREDITATIONS5 from "../../../../../public/ACCREDITATIONS5.png";
-import ACCREDITATIONS6 from "../../../../../public/ACCREDITATIONS6.png";
-import Link from "next/link";
+import smartphone from "../../../../../public/smartphone.png";
+import youtube from "../../../../../public/youtube.png";
 const navLinks = [
   {
     label: "Kindergarten & Primary",
@@ -31,27 +24,18 @@ const navLinks = [
     href: "/admission-overview",
   },
   {
-    label: "Open House 2022",
-    href: "/open-house-school-tour",
-  },
-  {
     label: "PAIS Online Learning Approach (OLA)",
     href: "/pais-online-learning-approach",
   },
 ];
-const ACCREDITATIONS = [
-  ACCREDITATIONS1,
-  ACCREDITATIONS2,
-  ACCREDITATIONS3,
-  ACCREDITATIONS4,
-  ACCREDITATIONS5,
-  ACCREDITATIONS6,
-];
+
 const Footer = () => {
   const pathname = usePathname();
   const excludedPaths = ["/dashboard", "/signin"];
 
-  const shouldHideHeader = excludedPaths.some(path => pathname.startsWith(path));
+  const shouldHideHeader = excludedPaths.some((path) =>
+    pathname.startsWith(path)
+  );
   return (
     <footer>
       {!shouldHideHeader && (
@@ -115,8 +99,7 @@ const Footer = () => {
                 </h3>
                 <p className="flex items-center gap-2 text-charcoalGray text-sm font-poppins font-normal mb-2">
                   <Image src={location} alt="location" width={24} height={24} />{" "}
-                  1B Chalerm Phrakiat Ratchakan Thi 9 Road Sai 67, Dok Mai,
-                  Prawet, Bangkok 10250, Thailand
+                  18 Chaloem Phrakiat not 1B Chalerm Phrakiat
                 </p>
                 <p className="flex items-center gap-2 text-charcoalGray hover:text-main-secondary text-sm font-poppins font-normal mb-2">
                   <Image
@@ -126,15 +109,6 @@ const Footer = () => {
                     height={16}
                   />{" "}
                   023472280
-                </p>
-                <p className="flex items-center gap-2 text-charcoalGray hover:text-main-secondary text-sm font-poppins font-normal mb-2">
-                  <Image
-                    src={smartphone}
-                    alt="smartphone"
-                    width={16}
-                    height={16}
-                  />{" "}
-                  027726341
                 </p>
                 <p className="flex items-center gap-2 text-charcoalGray hover:text-main-secondary text-sm font-poppins font-normal mb-2">
                   <Image
@@ -157,19 +131,16 @@ const Footer = () => {
               <h4 className="text-base my-3 md:my-6 font-poppins font-normal text-pureBlack uppercase">
                 ACCREDITATIONS
               </h4>
-              <div className="w-full md:w-7/12 mx-auto grid grid-cols-3 md:grid-cols-6 items-center justify-center gap-5 md:gap-10 ">
-                {ACCREDITATIONS.map((acc, inx) => (
-                  <Image
-                    key={inx}
-                    src={acc}
-                    alt="Brand"
-                    width={50}
-                    height={60}
-                    className="w-1/2 md:w-9/12 lg:w-auto h-auto mx-auto"
-                  />
-                ))}
+              <div className="w-full mx-auto ">
+                <Image
+                  src={"/Accreditation.png"}
+                  alt="Brand"
+                  width={50}
+                  height={60}
+                  className="w-auto h-auto lg:h-[220px] mx-auto"
+                />
               </div>
-              <p className="text-sm my-4 md:mt-8 text-darkGray font-poppins">
+              <p className="text-sm my-4 md:mt-0 text-darkGray font-poppins">
                 Copyright © Pan-Asia International School •{" "}
                 <Link
                   href="/privacy"

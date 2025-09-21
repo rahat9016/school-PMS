@@ -5,12 +5,6 @@ import img3 from "../../../../../public/academic/Octopus3.png";
 export default function MarketSpaceSection() {
   return (
     <div className="bg-white">
-      <div className="container">
-        <h1 className="font-poppins text-xl  lg:text-3xl font-semibold text-main-primary">
-          STREAM Lab
-        </h1>
-        <span className="block bg-main-secondary h-[3px] w-[147px] mb-9"></span>
-      </div>
       <div className="py-14 bg-[#FFE8D1]">
         <div className="container">
           <Carousel slides={[img1, img2, img3]} className="w-full lg:w-1/3" />

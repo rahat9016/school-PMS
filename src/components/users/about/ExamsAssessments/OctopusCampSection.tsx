@@ -1,17 +1,12 @@
-import React from "react";
+import Carousel from "@/components/shared/Carousel";
 import shape2 from "../../../../../public/Facilities/shape2.png";
 import img1 from "../../../../../public/academic/Octopus1.png";
 import img2 from "../../../../../public/academic/Octopus2.png";
 import img3 from "../../../../../public/academic/Octopus3.png";
-import Carousel from "@/components/shared/Carousel";
 export default function OctopusCampSection() {
   return (
     <div className="bg-white pt-10 lg:pt-20 pb-10">
       <div className="container">
-        <h1 className="font-poppins text-xl  lg:text-3xl font-semibold text-main-primary">
-          Octopus Camp, March Mallow Camp & Amazing Summer Camp
-        </h1>
-        <span className="block bg-main-secondary h-[3px] w-[147px]"></span>
         <p className="text-base font-poppins text-black-dark font-normal mt-3 lg:mt-6">
           English Camp can enrich a child’s life. English Camps offer children
           to experience new things, gain a sense of independence, have fun and

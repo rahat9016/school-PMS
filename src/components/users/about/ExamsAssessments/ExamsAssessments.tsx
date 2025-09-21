@@ -1,4 +1,3 @@
-import React from "react";
 import HeroSection from "@/components/shared/HeroSection";
 import herobg from "../../../../../public/academic/ExamsHeroBg.jpg";
 import NweaMapExamsKeyPoints from "./NweaMapExamsKeyPoints";
@@ -9,7 +8,7 @@ export default function ExamsAssessments() {
     <div>
       <HeroSection
         img={herobg}
-        title="Exams & Assessments"
+        title="NWEA MAP Exams"
         className="bg-cover h-[280px]"
       />
       <NweaMapExamsKeyPoints />
