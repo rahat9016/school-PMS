@@ -1,8 +1,7 @@
-import React from 'react'
 import Image from 'next/image';
-import bg from "../../../../../../public/newsEvents/Academic/shape2.png";
-import sep from "../../../../../../public/newsEvents/Academic/sep-24.png";
 import IB from "../../../../../../public/newsEvents/Academic/IB.png";
+import sep from "../../../../../../public/newsEvents/Academic/sep-24.png";
+import bg from "../../../../../../public/newsEvents/Academic/shape2.png";
 export default function ActivityCalendarSection() {
   return (
     <div>
@@ -16,7 +15,7 @@ export default function ActivityCalendarSection() {
           <div>
           <Image src={IB} alt="sep-24" width={141} height={182} className='mx-auto -mt-20 mb-5 lg:mb-10' />
             <h1 className="text-center text-main-primary text-xl lg:text-3xl font-bold">
-              Academic Calendar
+              Activity Calendar
             </h1>
             <span className="w-[140px] h-[3px] bg-main-secondary mx-auto mt-2 mb-10 block"></span>
             <Image src={sep} alt="sep-24" width={848} height={848} className='mx-auto' />

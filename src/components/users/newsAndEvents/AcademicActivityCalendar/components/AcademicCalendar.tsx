@@ -1,7 +1,6 @@
-import React from "react";
-import bg from "../../../../../../public/newsEvents/Academic/shape1.png";
-import calendar from "../../../../../../public/newsEvents/Academic/calendar-2024-2025-updated-scaled.png";
 import Image from "next/image";
+import calendar from "../../../../../../public/newsEvents/Academic/calendar-2024-2025-updated-scaled.png";
+import bg from "../../../../../../public/newsEvents/Academic/shape1.png";
 export default function AcademicCalendar() {
   return (
     <div>

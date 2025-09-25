@@ -1,16 +1,16 @@
 "use client";
 import Image from "next/image";
-import React, { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import videoIcon from "../../../../../public/videoIcon.png";
 export default function HeroSection() {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [showContent, setShowContent] = useState(true);
-  const [showGradient, setShowGradient] = useState(false);
+  // const [showGradient, setShowGradient] = useState(false);
 
   useEffect(() => {
     const timer = setTimeout(() => {
       setShowContent(false);
-      setShowGradient(true);
+      // setShowGradient(true);
     }, 3000);
 
     return () => clearTimeout(timer);
@@ -28,11 +28,11 @@ export default function HeroSection() {
       />
       <div
         className={`absolute inset-0 z-0 transition-all duration-1000`}
-        style={{
-          background: showGradient
-            ? "radial-gradient(51.63% 55.69% at 50% 50%, rgba(6, 9, 31, 0) 0%, rgba(6, 9, 31, 0.8) 100%)"
-            : "#1c1e33",
-        }}
+        // style={{
+        //   background: showGradient
+        //     ? "radial-gradient(51.63% 55.69% at 50% 50%, rgba(6, 9, 31, 0) 0%, rgba(6, 9, 31, 0.8) 100%)"
+        //     : "#1c1e33",
+        // }}
       />
       <div className="absolute left-[12%] bottom-[32%] shadow-2xl rounded-full">
         <div className="relative w-16 lg:w-[70px] h-16 lg:h-[70px] flex items-center justify-center ">
@@ -47,13 +47,13 @@ export default function HeroSection() {
         <div className="z-10 absolute top-[40%] left-1/2 -translate-x-1/2 -translate-y-1/2">
           <span className="block w-[1px] h-[60px] lg:h-[121px] mx-auto bg-white pt-5"></span>
           <div className="w-full lg:w-5/12 mx-auto h-full flex flex-col items-center px-4 lg:px-0">
-            <p className="text-white mt-6 lg:mt-12 text-base uppercase">
+            <p className="text-main-primary mt-6 lg:mt-12 text-base uppercase">
               WELCOME TO
             </p>
-            <h1 className="text-white text-[20px] lg:text-[96px] text-center font-bold font-poppins">
+            <h1 className="text-main-primary text-[20px] lg:text-[96px] text-center font-bold font-poppins">
               PAN-ASIA INTERNATIONAL SCHOOL
             </h1>
-            <p className="text-white mt-6 lg:mt-12 text-sm lg:text-base uppercase text-center">
+            <p className="text-main-primary mt-6 lg:mt-12 text-sm lg:text-base uppercase text-center">
               Western curriculum, Eastern Culture
             </p>
           </div>
