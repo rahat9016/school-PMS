@@ -1,6 +1,4 @@
-import React from "react";
-import SaftyImg from "../../../../../../public/Facilities/child.jpeg"
-import Image from "next/image";
+// import SaftyImg from "../../../../../../public/Facilities/child.jpeg"
 export default function ChildSafety() {
   return (
     <div className="py-20 lg:py-[140px] bg-white">
@@ -11,7 +9,7 @@ export default function ChildSafety() {
         >
           Child Safety
         </h1>
-        <Image src={SaftyImg} alt="SaftyImg" className="mx-auto mt-14" />
+        {/* <Image src={SaftyImg} alt="SaftyImg" className="mx-auto mt-14" /> */}
       </div>
     </div>
   );
