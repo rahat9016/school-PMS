@@ -1,38 +1,31 @@
-import React from "react";
 
-import img1 from "../../../../../../public/ACCREDITATIONS1.png";
-import img2 from "../../../../../../public/ACCREDITATIONS2.png";
-import img3 from "../../../../../../public/ACCREDITATIONS3.png";
-import img4 from "../../../../../../public/ACCREDITATIONS4.png";
-import img6 from "../../../../../../public/ACCREDITATIONS6.png";
-import img7 from "../../../../../../public/ACCREDITATIONS7.png";
 import AccreditationMembershipCard from "./AccreditationMembershipCard";
 
 const data = [
   {
     title: "Ministry Of Education",
-    img: img1,
+    // img: img1,
   },
   {
     title: "An IB World School",
-    img: img6,
+    // img: img6,
   },
   {
     title: "Accredited by Western Association of Schools and Colleges",
-    img: img7,
+    // img: img7,
   },
   {
     title:
       "Accredited by Office of National Education Standards and Quality Assurance (ONESQA)",
-    img: img3,
+    // img: img3,
   },
   {
     title: "Member of International Schools Association of Thailand (ISAT)",
-    img: img4,
+    // img: img4,
   },
   {
     title: "Educational Collaborative for International Schools",
-    img: img2,
+    // img: img2,
   },
 ];
 
