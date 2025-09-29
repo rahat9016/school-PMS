@@ -1,33 +1,31 @@
 import Image from "next/image";
-import React from "react";
-import Logo from "../../../../../public/goals/icon.png";
-import icon1 from "../../../../../public/goals/icon4.png";
+import Logo from "../../../../../public/goals/goals.png";
 import icon2 from "../../../../../public/goals/icon1.png";
 import icon3 from "../../../../../public/goals/icon2.png";
 import icon4 from "../../../../../public/goals/icon3.png";
+import icon1 from "../../../../../public/goals/icon4.png";
 import PAISGoalCard from "./PAISGoalCard";
 const paisdata = [
   {
     title: "Certified Teachers",
     icon: icon1,
-    count: 10,
+    count: 100,
   },
   {
     title: "Students Enrolled",
     icon: icon2,
-    count: 512,
+    count: 700,
   },
   {
-    title: "Passing to Universities",
+    title: "University Placements",
     icon: icon3,
-    count: 20,
+    count: 100,
     percentage:true
   },
   {
-    title: "Satisfied Parents",
+    title: "Nationalities",
     icon: icon4,
-    count: 10,
-    percentage:true  },
+    count: "32+",  },
 ];
 
 export default function PAISGoalsSection() {
