@@ -1,7 +1,11 @@
+"use client";
+
 import Image from "next/image";
 import IB from "../../../../../../public/newsEvents/Academic/IB.png";
 import sep from "../../../../../../public/newsEvents/Academic/sep-24.png";
 import bg from "../../../../../../public/newsEvents/Academic/shape2.png";
+import UpcomingEventCard from "./UpcomingEventCard";
+
 export default function ActivityCalendarSection() {
   return (
     <div>
@@ -35,7 +39,7 @@ export default function ActivityCalendarSection() {
             {/* event cards section  */}
             <div className="eventCard flex justify-between gap-6 ">
               {/* left secton card  */}
-              <div className="eventLeftCard  w-[30%] ">
+              <div className="eventLeftCard  w-[25%]  ">
                 <h1>event left card </h1>
                 <h1>event left card </h1>
                 <h1>event left card </h1>
@@ -45,15 +49,12 @@ export default function ActivityCalendarSection() {
               </div>
 
               {/* right section card  */}
-              <div className="rightSectionCard  w-[70%] ">
-                <h1>right section card </h1>
-                <h1>right section card </h1>
-                <h1>right section card </h1>
-                <h1>right section card </h1>
-                <h1>right section card </h1>
-                <h1>right section card </h1>
-                <h1>right section card </h1>
-                <h1>right section card </h1>
+              <div className="rightSectionCard  w-[75%] ">
+                <div className="cardContent grid grid-cols-3 gap-4 ">
+                  {Array.from({ length: 6 })?.map((_, ind) => (
+                    <UpcomingEventCard key={ind} />
+                  ))}
+                </div>
               </div>
             </div>
           </div>
