@@ -35,7 +35,7 @@ export default function ActivityCalendarSection() {
             {/* event cards section  */}
             <div className="eventCard flex justify-between gap-6 ">
               {/* left secton card  */}
-              <div className="eventLeftCard bg-red-400 w-[30%] ">
+              <div className="eventLeftCard  w-[30%] ">
                 <h1>event left card </h1>
                 <h1>event left card </h1>
                 <h1>event left card </h1>
@@ -45,7 +45,7 @@ export default function ActivityCalendarSection() {
               </div>
 
               {/* right section card  */}
-              <div className="rightSectionCard bg-blue w-[70%] ">
+              <div className="rightSectionCard  w-[70%] ">
                 <h1>right section card </h1>
                 <h1>right section card </h1>
                 <h1>right section card </h1>
