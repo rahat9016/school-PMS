@@ -1,9 +1,8 @@
 import Image from "next/image";
-import React from "react";
-import sportsImg1 from "../../../../../../public/students/sports/sportsImg1.png";
 import img1 from "../../../../../../public/students/sports/img1.jpg";
 import img2 from "../../../../../../public/students/sports/img2.jpg";
 import img3 from "../../../../../../public/students/sports/img3.jpg";
+import sportsImg1 from "../../../../../../public/students/sports/sportsImg1.png";
 
 // const list = [
 //   "New Primary Futsal Court",

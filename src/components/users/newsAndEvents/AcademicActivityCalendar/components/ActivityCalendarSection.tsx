@@ -41,7 +41,7 @@ export default function ActivityCalendarSection() {
             {/* event cards section  */}
             <div className="eventCard flex flex-col lg:flex-row justify-between gap-6 ">
               {/* left secton card  */}
-              <div className="eventLeftCard  mx-auto lg:mx-0 w-full min-[430px]:w-[75%] md:w-[60%] lg:w-[25%] overflow-hidden  rounded-md bg-white  shadow ">
+              <div className="eventLeftCard  mx-auto lg:mx-0 w-full xlg:w-[76%] md:w-[60%] lg:w-[25%] overflow-hidden  rounded-md bg-white  shadow ">
                 {Array.from({ length: 3 })?.map((_, ind) => (
                   <EventCard key={ind} index={ind} />
                 ))}
@@ -54,7 +54,7 @@ export default function ActivityCalendarSection() {
 
               {/* right section card  */}
               <div className="rightSectionCard w-full lg:w-[75%] ">
-                <div className="cardContent grid grid-cols-1 min-[520px]:grid-cols-2 md:grid-cols-3 gap-4 ">
+                <div className="cardContent grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 ">
                   {Array.from({ length: 6 })?.map((_, ind) => (
                     <UpcomingEventCard key={ind} />
                   ))}

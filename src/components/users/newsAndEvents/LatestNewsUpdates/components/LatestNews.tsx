@@ -10,7 +10,8 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import useFilter from "@/hooks/useFilter";
-import filterData from "@/lib/data/data";
+import { filterData } from "@/lib/data/data";
+
 import { Search } from "lucide-react";
 import Image, { StaticImageData } from "next/image";
 import { useRouter } from "next/navigation";

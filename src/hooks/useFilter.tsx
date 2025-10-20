@@ -1,4 +1,4 @@
-import filterData from "@/lib/data/data";
+import { filterData } from "@/lib/data/data";
 import { filterPosts } from "@/lib/helper/helper";
 import { IPost } from "@/types";
 import { useEffect, useState } from "react";
