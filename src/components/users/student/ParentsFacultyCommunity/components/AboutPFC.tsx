@@ -20,7 +20,6 @@ export default function AboutPFC() {
             gatherings, providing opportunities for families to connect, bond,
             and celebrate the PAIS community together.
           </p>
-
           <p className="text-sm lg:text-base font-poppins text-darkGray font-light leading-[28px]">
             Through their initiatives, the PFC encourages parental involvement,
             fosters collaboration with facilitators, and helps create a

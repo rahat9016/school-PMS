@@ -2,7 +2,6 @@ import HeroSection from "@/components/shared/HeroSection";
 import herobg from "../../../../../public/newsEvents/AcademicHeroBg.jpg";
 import AcademicCalendar from "./components/AcademicCalendar";
 import ActivityCalendarSection from "./components/ActivityCalendarSection";
-
 export default function AcademicActivityCalendar() {
   return (
     <div>

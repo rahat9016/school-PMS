@@ -12,7 +12,6 @@ export default function SearchResult() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const query = searchParams.get("query");
-
   useEffect(() => {
     setSearchQuery(query as string);
   }, [query, setSearchQuery]);

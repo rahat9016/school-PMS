@@ -121,7 +121,6 @@ const Header = () => {
                       </DropdownMenuContent>
                     </DropdownMenu>
                   </nav>
-
                   <HeaderNavigationMenuRight mouseHover={mouseHover} />
                   <Link
                     href={"/contact"}
