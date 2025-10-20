@@ -1,8 +1,6 @@
 "use client";
-import { filterPosts } from "@/lib/helper/helper";
-import React, { useEffect, useState } from "react";
-import { IPost } from "../../LatestNewsUpdates/components/LatestNews";
-import filterData from "@/lib/data/data";
+import { Input } from "@/components/ui/input";
+import { ScrollArea } from "@/components/ui/scroll-area";
 import {
   Select,
   SelectContent,
@@ -11,10 +9,12 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import Link from "next/link";
+import { filterData } from "@/lib/data/data";
+import { filterPosts } from "@/lib/helper/helper";
 import { Search } from "lucide-react";
-import { Input } from "@/components/ui/input";
-import { ScrollArea } from "@/components/ui/scroll-area";
+import Link from "next/link";
+import { useEffect, useState } from "react";
+import { IPost } from "../../LatestNewsUpdates/components/LatestNews";
 
 const dates = [
   "April 2024",
@@ -100,15 +100,20 @@ export default function Recent() {
             </div>
           </div>
           <div className="mb-10">
-          <ScrollArea className="h-[423px] w-full rounded-md border p-3">
-            <ul className="list-disc pl-4">
-              {dates.map((date, index) => (
-                <li key={index} className="text-blue-600 hover:underline text-[#4A7FE9]">
-                  <Link href="#" className=" underline py-1 block">{date}</Link>
-                </li>
-              ))}
-            </ul>
-          </ScrollArea>
+            <ScrollArea className="h-[423px] w-full rounded-md border p-3">
+              <ul className="list-disc pl-4">
+                {dates.map((date, index) => (
+                  <li
+                    key={index}
+                    className="text-blue-600 hover:underline text-[#4A7FE9]"
+                  >
+                    <Link href="#" className=" underline py-1 block">
+                      {date}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </ScrollArea>
           </div>
         </div>
       </div>

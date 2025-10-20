@@ -1,10 +1,9 @@
-import AcademicActivityCalendar from '@/components/users/newsAndEvents/AcademicActivityCalendar/AcademicActivityCalendar'
-import React from 'react'
+import AcademicActivityCalendar from "@/components/users/newsAndEvents/AcademicActivityCalendar/AcademicActivityCalendar";
 
 export default function AcademicActivityCalendarPage() {
   return (
     <div>
-        <AcademicActivityCalendar />
+      <AcademicActivityCalendar />
     </div>
-  )
+  );
 }

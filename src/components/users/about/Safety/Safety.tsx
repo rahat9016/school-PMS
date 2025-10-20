@@ -1,5 +1,6 @@
 import HeroSection from "@/components/shared/HeroSection";
-import herobg from "../../../../../public/safety/PAIS.jpg";
+// import herobg from "../../../../../public/safety/PAIS.jpg";
+import herobg from "../../../../../public/safety/safetyHeroBg.png";
 import ChildSafety from "./components/ChildSafety";
 import DevelopmentPolicy from "./components/DevelopmentPolicy";
 

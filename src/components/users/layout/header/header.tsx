@@ -42,7 +42,7 @@ const Header = () => {
       handleSearch();
     }
   };
-console.log(mouseHover)
+  console.log(mouseHover);
   return (
     <header
       className={`group ${shouldHideHeader ? "" : "pb-[70px] md:pb-[91px]"} `}
@@ -90,17 +90,22 @@ console.log(mouseHover)
                   </Link>
                 </div>
                 <div className="flex items-center justify-end gap-3">
-                  <nav className="hidden lg:flex items-center space-x-5 uppercase font-poppins font-medium" >
-                    <DropdownMenu >
+                  <nav className="hidden lg:flex items-center space-x-5 uppercase font-poppins font-medium">
+                    <DropdownMenu>
                       <DropdownMenuTrigger asChild>
                         <Button className="group/nav bg-transparent text-charcoalGray shadow-none hover:bg-transparent ">
-                          <span className={`text-base relative cursor-pointer block font-medium ${mouseHover && "text-white"}`}>
+                          <span
+                            className={`text-base relative cursor-pointer block font-medium ${mouseHover && "text-white"}`}
+                          >
                             LMS
                             <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-main-secondary transition-all duration-300 group-hover/nav:w-full"></span>
                           </span>
                         </Button>
                       </DropdownMenuTrigger>
-                      <DropdownMenuContent onMouseEnter={() => setMouseHover(false)} className="w-36 bg-forestWhite p-1">
+                      <DropdownMenuContent
+                        onMouseEnter={() => setMouseHover(false)}
+                        className="w-36 bg-forestWhite p-1"
+                      >
                         <Link
                           href={`https://www.schoolbaglive.com/admin/`}
                           className="hover:bg-main-primary hover:text-white w-full block px-3 py-2 rounded-md"
@@ -116,7 +121,6 @@ console.log(mouseHover)
                       </DropdownMenuContent>
                     </DropdownMenu>
                   </nav>
-                  
                   <HeaderNavigationMenuRight mouseHover={mouseHover} />
                   <Link
                     href={"/contact"}

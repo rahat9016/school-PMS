@@ -1,10 +1,9 @@
-import LatestNewsUpdates from '@/components/users/newsAndEvents/LatestNewsUpdates/LatestNewsUpdates'
-import React from 'react'
+import LatestNewsUpdates from "@/components/users/newsAndEvents/LatestNewsUpdates/LatestNewsUpdates";
 
 export default function LatestNewsUpdatesPage() {
   return (
     <div>
-        <LatestNewsUpdates />
+      <LatestNewsUpdates />
     </div>
-  )
+  );
 }

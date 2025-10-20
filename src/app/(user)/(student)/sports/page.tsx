@@ -1,10 +1,9 @@
-import Sports from '@/components/users/student/Sports/Sports'
-import React from 'react'
+import Sports from "@/components/users/student/Sports/Sports";
 
 export default function SportsPage() {
   return (
     <div>
-        <Sports />
+      <Sports />
     </div>
-  )
+  );
 }

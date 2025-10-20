@@ -1,7 +1,6 @@
-import HeroSection from '@/components/shared/HeroSection'
-import React from 'react'
+import HeroSection from "@/components/shared/HeroSection";
 import herobg from "../../../../../public/ESLRs/hero.jpg";
-import ExpectedSection from './components/ExpectedSection';
+import ExpectedSection from "./components/ExpectedSection";
 export default function ESLRs() {
   return (
     <div>
@@ -12,5 +11,5 @@ export default function ESLRs() {
       />
       <ExpectedSection />
     </div>
-  )
+  );
 }

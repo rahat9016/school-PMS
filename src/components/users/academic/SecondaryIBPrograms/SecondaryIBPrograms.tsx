@@ -1,11 +1,10 @@
-import React from 'react'
-import HeroSection from '@/components/shared/HeroSection'
+import HeroSection from "@/components/shared/HeroSection";
 import herobg from "../../../../../public/academic/SecondaryIBProgramsHeroBg.jpg";
-import SecondaryIBProgramsSection from './components/SecondaryIBProgramsSection';
+import SecondaryIBProgramsSection from "./components/SecondaryIBProgramsSection";
 
 export default function SecondaryIBPrograms() {
   return (
-    <div className=' bg-white'>
+    <div className=" bg-white">
       <HeroSection
         img={herobg}
         title="Secondary & IB Programs"
@@ -13,5 +12,5 @@ export default function SecondaryIBPrograms() {
       />
       <SecondaryIBProgramsSection />
     </div>
-  )
+  );
 }

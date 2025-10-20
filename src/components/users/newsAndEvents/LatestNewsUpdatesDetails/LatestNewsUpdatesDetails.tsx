@@ -1,9 +1,8 @@
 "use client";
-import React from "react";
 import HeroSection from "@/components/shared/HeroSection";
-import herobg from "../../../../../public/newsEvents/latestNewsHeroBg.jpg";
+import { filterData } from "@/lib/data/data";
 import { useParams } from "next/navigation";
-import filterData from "@/lib/data/data";
+import herobg from "../../../../../public/newsEvents/latestNewsHeroBg.jpg";
 import PostDetails from "./components/PostDetails";
 import Recent from "./components/Recent";
 

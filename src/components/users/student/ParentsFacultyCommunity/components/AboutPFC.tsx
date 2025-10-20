@@ -1,7 +1,6 @@
-
 export default function AboutPFC() {
   return (
-    <div className="bg-aliceBlue py-10 lg:pt-[104px] lg:pb-12">
+    <div className="bg-aliceBlue py-10 lg:pt-[104px] lg:pb-12 ">
       <div className="container">
         <div className="w-full lg:w-1/2">
           <h1 className="text-xl lg:text-3xl text-black font-poppins font-semibold mb-8 uppercase">
@@ -21,7 +20,6 @@ export default function AboutPFC() {
             gatherings, providing opportunities for families to connect, bond,
             and celebrate the PAIS community together.
           </p>
-          
           <p className="text-sm lg:text-base font-poppins text-darkGray font-light leading-[28px]">
             Through their initiatives, the PFC encourages parental involvement,
             fosters collaboration with facilitators, and helps create a

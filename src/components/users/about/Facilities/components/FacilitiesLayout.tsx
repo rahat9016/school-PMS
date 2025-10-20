@@ -1,8 +1,8 @@
 import Carousel from "@/components/shared/Carousel";
 import { StaticImageData } from "next/image";
-import React from "react";
 import shape from "../../../../../../public/Facilities/shape.png";
 import shape2 from "../../../../../../public/Facilities/shape2.png";
+
 export default function FacilitiesLayout({
   isReverse = false,
   data,

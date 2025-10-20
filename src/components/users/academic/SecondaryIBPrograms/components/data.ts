@@ -95,7 +95,7 @@ export const data = [
       "generate creative new insights and develop deeper understandings through in-depth investigation • demonstrate the skills, attitudes and knowledge required to complete a project over an extended period of time",
       "communicate effectively in a variety of situations",
       "demonstrate responsible action through, or as a result of, learning V. Thinking Critical thinking skills Analysing and evaluating issues and ideas Creative thinking skills Generating novel ideas and considering new perspectives Transfer skills Using skills and knowledge in multiple contexts",
-      "appreciate the process of learning and take pride in their accomplishments"
+      "appreciate the process of learning and take pride in their accomplishments",
     ],
     border: "#002D37",
     bg: "#242D65",
@@ -105,7 +105,7 @@ export const data = [
     desc1:
       "Assessment in the IB MYP is criterion- related. All subject groups and projects have four assessment criteria that are aligned with the objectives of the group. Criteria show how well a student is making progress towards achieving the objectives. The lowest achievement level in each criterion is 0 and the highest is 8. Following table is the summary of the assessment criteria for each subject group. For further detail on the assessment criteria please refer to the individual subject courses in the school’s ManageBac System.",
     content: [],
-    img:Assessment,
+    img: Assessment,
     border: "#002D37",
     bg: "#FFA843",
   },

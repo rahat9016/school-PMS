@@ -85,6 +85,12 @@ const facilitiesData = [
     description2:
       "The cafeteria has also received the Thai government’s highest rating for cleanliness and sanitation practices, reflecting our commitment to safety and hygiene.",
   },
+  {
+    slides: [facaltiesSliderImg10, facaltiesSliderImg11, facaltiesSliderImg12],
+    title: "STREAM Lab",
+    description:
+      "The PAIS STREAM Lab offers a hands-on environment where students explore Science, Technology, Robotics, Engineering, Arts, and Mathematics. Equipped with modern tools, including VEX robots, the lab encourages creativity, critical thinking, and problem-solving through collaborative and innovative projects.",
+  },
 ];
 export default function Facilities() {
   return (

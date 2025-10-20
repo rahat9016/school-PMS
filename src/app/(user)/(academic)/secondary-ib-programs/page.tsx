@@ -1,10 +1,9 @@
-import SecondaryIBPrograms from '@/components/users/academic/SecondaryIBPrograms/SecondaryIBPrograms'
-import React from 'react'
+import SecondaryIBPrograms from "@/components/users/academic/SecondaryIBPrograms/SecondaryIBPrograms";
 
 export default function SecondaryIBProgramsPage() {
   return (
     <div>
-        <SecondaryIBPrograms />
+      <SecondaryIBPrograms />
     </div>
-  )
+  );
 }

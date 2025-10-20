@@ -29,7 +29,7 @@ export default function IBProgramKeyPoints() {
                   background: `${content.bg}`,
                   border: `1px solid ${content.border}`,
                 }}
-                className={`p-4 rounded-lg ${index %2== 0? "text-[#371E00]":"text-[#fff]"} text-sm lg:text-base font-medium hover:no-underline`}
+                className={`p-4 rounded-lg ${index % 2 == 0 ? "text-[#371E00]" : "text-[#fff]"} text-sm lg:text-base font-medium hover:no-underline`}
               >
                 {content.title}
               </AccordionTrigger>
@@ -49,7 +49,13 @@ export default function IBProgramKeyPoints() {
                     {content.desc3}
                   </p>
                 )}
-                {content.img && <Image src={content?.img} alt="Approaches" className="w-full lg:w-7/12" />}
+                {content.img && (
+                  <Image
+                    src={content?.img}
+                    alt="Approaches"
+                    className="w-full lg:w-7/12"
+                  />
+                )}
                 <KeyPoints points={content?.content} />
                 {content.desc4 && (
                   <p className="text-sm lg:text-base font-poppins text-black-dark font-normal mt-7 lg:mt-14 mb-3 lg:mb-6">
@@ -62,9 +68,21 @@ export default function IBProgramKeyPoints() {
                   </p>
                 )}
                 <div>
-                    <ul>
-                        {content?.keyPoints?.map((key, index) => <li className="font-poppins text-sm lg:text-base text-black-dark mb-2" key={index}><span className="text-main-primary font-medium">{key?.key}</span> <span className="text-black-dark font-normal">{key?.value}</span></li>)}
-                    </ul>
+                  <ul>
+                    {content?.keyPoints?.map((key, index) => (
+                      <li
+                        className="font-poppins text-sm lg:text-base text-black-dark mb-2"
+                        key={index}
+                      >
+                        <span className="text-main-primary font-medium">
+                          {key?.key}
+                        </span>{" "}
+                        <span className="text-black-dark font-normal">
+                          {key?.value}
+                        </span>
+                      </li>
+                    ))}
+                  </ul>
                 </div>
               </AccordionContent>
             </AccordionItem>

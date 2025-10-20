@@ -1,8 +1,7 @@
-import React from 'react'
-import HeroSection from '@/components/shared/HeroSection'
+import HeroSection from "@/components/shared/HeroSection";
 import herobg from "../../../../../public/newsEvents/latestNewsHeroBg.jpg";
-import PAISPostSection from './components/PAISPostSection';
-import LatestNews from './components/LatestNews';
+import LatestNews from "./components/LatestNews";
+import PAISPostSection from "./components/PAISPostSection";
 export default function LatestNewsUpdates() {
   return (
     <div>
@@ -14,5 +13,5 @@ export default function LatestNewsUpdates() {
       <LatestNews />
       <PAISPostSection />
     </div>
-  )
+  );
 }

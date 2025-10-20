@@ -1,4 +1,4 @@
-import React from "react";
+import Image from "next/image";
 import paisPost1 from "../../../../../../public/newsEvents/paispost/paisPost1.png";
 import paisPost2 from "../../../../../../public/newsEvents/paispost/paisPost2.png";
 import paisPost3 from "../../../../../../public/newsEvents/paispost/paisPost3.png";
@@ -7,7 +7,6 @@ import paisPost5 from "../../../../../../public/newsEvents/paispost/paisPost5.pn
 import paisPost6 from "../../../../../../public/newsEvents/paispost/paisPost6.png";
 import paisPost7 from "../../../../../../public/newsEvents/paispost/paisPost7.png";
 import paisPost8 from "../../../../../../public/newsEvents/paispost/paisPost8.png";
-import Image from "next/image";
 
 const PAISData = [
   paisPost1,

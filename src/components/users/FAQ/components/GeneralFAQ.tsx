@@ -1,4 +1,3 @@
-import React from "react";
 import {
   Accordion,
   AccordionContent,
@@ -18,8 +17,10 @@ export default function GeneralFAQ() {
         className=" py-10 lg:py-20"
       >
         <div className="container">
-            <h1 className="text-main-primary  text-2xl font-poppins font-semibold">General FAQ </h1>
-            <span className="block bg-main-secondary h-[3px] w-[140px]  mb-10 lg:mb-[64px]"></span>
+          <h1 className="text-main-primary  text-2xl font-poppins font-semibold">
+            General FAQ{" "}
+          </h1>
+          <span className="block bg-main-secondary h-[3px] w-[140px]  mb-10 lg:mb-[64px]"></span>
           <Accordion
             defaultValue="item-1"
             type="single"
