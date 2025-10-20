@@ -10,7 +10,7 @@ export default function PfcEvent() {
         </h1>
         <span className="bg-main-secondary h-[3px] w-[97px] block mb-14"></span>
 
-        <div className="pfcCard grid grid-cols-1 min-[510px]:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-10 sm:gap-6  ">
+        <div className=" pfcCard grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-10 sm:gap-6   ">
           {Array.from({ length: 6 })?.map((_, ind) => <PfcCard key={ind} />)}
         </div>
       </div>

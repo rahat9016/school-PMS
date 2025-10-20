@@ -16,7 +16,12 @@ export default function AcademicCalendar() {
               Academic Calendar
             </h1>
             <span className="w-[140px] h-[3px] bg-main-secondary mx-auto mt-2 mb-10 block"></span>
-            <Image src={calendar} alt=" Academic Calendar" width={1280} height={1808} />
+            <Image
+              src={calendar}
+              alt=" Academic Calendar"
+              width={1280}
+              height={1808}
+            />
           </div>
         </div>
       </div>

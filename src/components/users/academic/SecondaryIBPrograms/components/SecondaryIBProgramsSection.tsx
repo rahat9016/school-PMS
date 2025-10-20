@@ -1,15 +1,14 @@
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import React from "react";
+import Image from "next/image";
+import diploma10 from "../../../../../../public/academic/diploma10.png";
+import diplomaLogo from "../../../../../../public/academic/diplomaLogo.png";
+import poster from "../../../../../../public/academic/myp-10-reasons-poster.jpg";
+import img from "../../../../../../public/academic/secondaryMYPDP1.png";
 import Shape from "../../../../../../public/academic/shape.png";
 import shapeBg from "../../../../../../public/academic/shapeBg.png";
-import img from "../../../../../../public/academic/secondaryMYPDP1.png";
-import poster from "../../../../../../public/academic/myp-10-reasons-poster.jpg";
-import diplomaLogo from "../../../../../../public/academic/diplomaLogo.png";
-import diploma10 from "../../../../../../public/academic/diploma10.png";
-import Image from "next/image";
-import IBProgramKeyPoints from "./IBProgrameKeyPoints";
-import IBDiplomaProgramKeyPoints from "./IBDiplomaProgramKeyPoints";
 import IBDiplomaCASProgramKeyPoints from "./IBDiplomaCASProgramKeyPoints";
+import IBDiplomaProgramKeyPoints from "./IBDiplomaProgramKeyPoints";
+import IBProgramKeyPoints from "./IBProgrameKeyPoints";
 export default function SecondaryIBProgramsSection() {
   return (
     <div className="bg-white pt-9 ">

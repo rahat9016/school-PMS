@@ -1,10 +1,9 @@
-import ESLRs from '@/components/users/about/ESLRs/ESLRs'
-import React from 'react'
+import ESLRs from "@/components/users/about/ESLRs/ESLRs";
 
 export default function ESLRsPage() {
   return (
     <div>
-        <ESLRs/>
+      <ESLRs />
     </div>
-  )
+  );
 }

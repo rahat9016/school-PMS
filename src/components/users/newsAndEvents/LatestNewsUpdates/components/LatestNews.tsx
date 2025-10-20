@@ -9,12 +9,11 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import useFilter from "@/hooks/useFilter";
 import filterData from "@/lib/data/data";
 import { Search } from "lucide-react";
-import React from "react";
 import Image, { StaticImageData } from "next/image";
 import { useRouter } from "next/navigation";
-import useFilter from "@/hooks/useFilter";
 export interface IPost {
   id: number;
   title: string;
@@ -35,7 +34,7 @@ export default function LatestNews() {
     toggleTag,
     selectedTags,
     setSelectedTags,
-    filteredPosts
+    filteredPosts,
   } = useFilter();
   const router = useRouter();
 

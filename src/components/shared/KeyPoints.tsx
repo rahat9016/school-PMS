@@ -1,8 +1,11 @@
-import React from "react";
 import Image from "next/image";
 import tickmark from "../../../public/academic/tickmark.png";
 
-export default function KeyPoints({ points }: { points: string[] | undefined}) {
+export default function KeyPoints({
+  points,
+}: {
+  points: string[] | undefined;
+}) {
   return (
     <ul className="flex flex-col gap-[10px]">
       {points?.map((value, index) => (
