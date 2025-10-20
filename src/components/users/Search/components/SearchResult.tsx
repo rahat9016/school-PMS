@@ -1,18 +1,18 @@
-"use client"
+"use client";
 import { Input } from "@/components/ui/input";
 import useFilter from "@/hooks/useFilter";
-import filterData from "@/lib/data/data";
+import { filterData } from "@/lib/data/data";
 import { Search } from "lucide-react";
 import Image from "next/image";
-import {  useRouter, useSearchParams } from "next/navigation";
-import React, { useEffect } from "react";
+import { useRouter, useSearchParams } from "next/navigation";
+import { useEffect } from "react";
 
 export default function SearchResult() {
   const { filteredPosts, setSearchQuery } = useFilter();
   const router = useRouter();
   const searchParams = useSearchParams();
   const query = searchParams.get("query");
-  
+
   useEffect(() => {
     setSearchQuery(query as string);
   }, [query, setSearchQuery]);
