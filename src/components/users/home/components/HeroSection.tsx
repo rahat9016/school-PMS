@@ -16,7 +16,7 @@ export default function HeroSection() {
     return () => clearTimeout(timer);
   }, []);
   return (
-    <div className="w-full min-h-screen relative">
+    <div className="w-full relative">
       <video
         ref={videoRef}
         src="/heroVideo.mp4"
