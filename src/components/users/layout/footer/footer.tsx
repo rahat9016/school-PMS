@@ -117,7 +117,7 @@ const Footer = () => {
                     width={16}
                     height={16}
                   />{" "}
-                  info@pais.ac.th , marketing@pais.ac.th
+                  info@pais.ac.th, marketing@pais.ac.th
                 </p>
                 <p className="flex items-center gap-2 text-charcoalGray text-sm font-poppins font-normal mb-2">
                   <Image src={clock} alt="clock" width={16} height={16} />{" "}

@@ -4,14 +4,6 @@ import img2 from "../../../../../../public/students/sports/img2.jpg";
 import img3 from "../../../../../../public/students/sports/img3.jpg";
 import sportsImg1 from "../../../../../../public/students/sports/sportsImg1.png";
 
-// const list = [
-//   "New Primary Futsal Court",
-//   "2 Covered Courts for Basketball or Volleyball",
-//   "2 Grassed Football Pitches",
-//   "An Open Court for Basketball, Volleyball of Futsal",
-//   "A Half Olympic Size Swimming Pool",
-//   "A Swimming Pool for Kindergarten",
-// ];
 
 export default function SportGallerySection() {
   return (
@@ -97,37 +89,9 @@ export default function SportGallerySection() {
                 abilities, and cultivate a lifelong appreciation for health and
                 fitness.
               </p>
-              {/* <ul className="list-disc mt-5 lg:mt-10">
-                {list.map((value, index) => (
-                  <li
-                    key={index}
-                    className="text-sm lg:text-base font-poppins text-darkGray font-light"
-                  >
-                    {value}
-                  </li>
-                ))}
-              </ul> */}
             </div>
           </div>
         </div>
-
-        {/* <div className="relative w-full flex flex-col lg:flex-row mt-4 lg:mt-8 gap-4 lg:gap-8 bg-orange-400 ">
-          <Image
-            src={img3}
-            alt="Football"
-            className="w-full lg:w-4/12 h-auto max-h-[270px]"
-            width={443}
-            height={270}
-          />
-          <Image
-            src={img2}
-            alt="Football"
-            className="w-full lg:w-7/12 h-auto"
-            width={817}
-            height={270}
-          />
-        </div>
- */}
       </div>
     </div>
   );

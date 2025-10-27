@@ -1,10 +1,9 @@
-import React from 'react'
+import HeroSection from '@/components/shared/HeroSection';
 import herobg from "../../../../../public/academic/back-school-educationHeroBg.jpg";
-import HeroSection from '@/components/shared/HeroSection'
-import OnlineAppointmentSection from './components/OnlineAppointmentSection';
-import LetUsCallYouBack from './components/LetUsCallYouBack';
 import BookForSchoolTourSection from './components/BookForSchoolTourSection';
+import LetUsCallYouBack from './components/LetUsCallYouBack';
 import MeetingStudentsSection from './components/MeetingStudentsSection';
+import OnlineAppointmentSection from './components/OnlineAppointmentSection';
 
 export default function OpenHouseSchoolTour() {
   return (

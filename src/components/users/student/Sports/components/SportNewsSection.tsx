@@ -3,7 +3,7 @@ import SportNewsCard from "./SportNewsCard";
 export default function SportNewsSection() {
   return (
     <div
-      className="bg-aliceBlue bg-no-repeat bg-[length:159px] lg:bg-[length:259px] bg-[top_0_left_0] py-10 lg:py-[108px]"
+      className="bg-aliceBlue bg-no-repeat bg-[length:159px] lg:bg-[length:259px] bg-[top_0_left_0] py-10 lg:py-20"
       style={{
         backgroundImage: `url(${shape.src})`,
       }}
@@ -12,11 +12,13 @@ export default function SportNewsSection() {
         <h3 className="text-main-secondary font-medium font-poppins text-sm text-center">
           Article
         </h3>
-        <h1 className="text-center text-black text-xl lg:text-5xl font-semibold mt-3 lg:mt-6">
+        <h1 className="text-center text-black text-xl lg:text-5xl font-semibold mt-3 lg:mt-4">
           Sports News
         </h1>
-        <div className="w-full mt-6 lg:mt-[72px]">
+        <div className="w-full mt-6 lg:mt-12">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            <SportNewsCard />
+            <SportNewsCard />
             <SportNewsCard />
           </div>
         </div>

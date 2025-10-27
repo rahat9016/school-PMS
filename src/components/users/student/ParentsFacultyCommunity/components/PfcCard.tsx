@@ -1,27 +1,25 @@
-import Image from "next/image";
+import Image, { StaticImageData } from "next/image";
 
 interface IPageProps {
   title: string;
   date: string;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  image: any;
+  image: StaticImageData;
 }
 
 export default function PfcCard({ title, date, image }: IPageProps) {
   return (
-    <div className="pfcCard  rounded-md  group flex flex-col gap-y-2 ">
-      <div className="relative w-full h-[12rem] rounded-md overflow-hidden   ">
+    <div className="pfcCard  rounded-md  group flex flex-col">
+      <div className="relative w-full h-[12rem] rounded-md overflow-hidden">
         <Image
           src={image}
           alt="cardImg "
-          fill
-          className="object-cover object-center"
+          width={308}
+          height={227}
+          className="object-cover object-center w-full h-full"
         />
       </div>
-
-      <p className=" font-semibold  text-black "> {title} </p>
-
-      <p className=" text-black-dark "> {date} </p>
+      <p className=" text-charcoalGray font-medium font-poppins text-lg mt-2"> {title} </p>
+      <p className=" text-black-dark font-normal font-poppins text-sm mt-2"> {date} </p>
     </div>
   );
 }
