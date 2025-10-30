@@ -12,13 +12,14 @@ const CouncilMemberCard = ({
   quote: string;
 }) => {
   return (
-    <div className="bg-white rounded-xl shadow-sm overflow-hidden w-full xl:w-[243px]">
+    <div className="bg-white rounded-xl shadow-sm overflow-hidden w-full xl:w-[243px] border">
       <div className="relative w-full h-[269px]">
         <Image
           src={image}
           alt={name}
-          layout="fill"
-          className="bg-blue-700 bg-contain"
+          width={4672}
+          height={7008}
+          className="bg-[#8B8B89] w-full h-full object-contain"
         />
       </div>
       <div className="p-4 text-center">

@@ -98,8 +98,8 @@ const Footer = () => {
                   CONTACT US
                 </h3>
                 <p className="flex items-center gap-2 text-charcoalGray text-sm font-poppins font-normal mb-2">
-                  <Image src={location} alt="location" width={24} height={24} />{" "}
-                  18 Chaloem Phrakiat not 1B Chalerm Phrakiat
+                  <Image src={location} alt="location" width={16} height={16} className="w-auto h-auto" />{" "}
+                  18 Chaloem Phrakiat Ratchakan Thi 9 Road Soi 67, Dok Mai, Prawet, Bangkok 10250 Thailand
                 </p>
                 <p className="flex items-center gap-2 text-charcoalGray hover:text-main-secondary text-sm font-poppins font-normal mb-2">
                   <Image

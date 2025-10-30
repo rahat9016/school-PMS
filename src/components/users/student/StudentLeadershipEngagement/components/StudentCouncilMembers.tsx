@@ -26,7 +26,7 @@ export const councilMembers = [
   },
   {
     id: 3,
-    name: "Sehemi Haque Ohee",
+    name: "Warut Chaochaicharoenkul ",
     role: "Secretary",
     quote:
       "The greatest glory in living lies not in never falling, but in rising every time we fall.” -Nelson Mandela",
@@ -34,32 +34,32 @@ export const councilMembers = [
   },
   {
     id: 4,
-    name: "Hassan Mashood",
-    role: "Activity Coordinator",
+    name: "Hana Khantasit",
+    role: "Treasurer",
     quote:
       "Motivation will only get you so far, Discipline is what you need to truly materialize your goals into achievements.",
     image: img4,
   },
   {
     id: 5,
-    name: "Ei Thinn Lae Aung",
-    role: "Finance",
+    name: "Phattaranan Hayioumart",
+    role: "IT",
     quote:
       "Realizing that you can only control yourself, but not external events, will help you find strength.",
     image: img5,
   },
   {
     id: 6,
-    name: "Gavin Gunsantithamrong",
-    role: "President",
+    name: "Muna Sentiyanont",
+    role: "Activity Coordinator",
     quote:
       "Without commitment you’ll never start but without consistency you’ll never finish.",
     image: img6,
   },
   {
     id: 7,
-    name: "Faridah Namata Khan",
-    role: "Council’s Advisor",
+    name: "Shanawaz Phalanan",
+    role: "Auditor",
     quote:
       "“There is a difference between having a dream and having a goal. You fantasize about your dream. A goal is a dream with a deadline.”",
     image: img7,
@@ -98,13 +98,13 @@ export default function StudentCouncilMembers() {
         <div className="container">
           <div className="-mt-52">
             <div className="mx-auto flex flex-col items-center gap-4">
-              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 justify-items-center w-full">
+              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 justify-items-center w-full gap-10 lg:gap-16">
                 {councilMembers.slice(0, 4).map((member) => (
                   <CouncilMemberCard key={member.id} {...member} />
                 ))}
               </div>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-20 mt-8 justify-center ">
+              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10 lg:gap-20 mt-8 justify-center ">
                 {councilMembers.slice(4, 8).map((member) => (
                   <CouncilMemberCard key={member.id} {...member} />
                 ))}
