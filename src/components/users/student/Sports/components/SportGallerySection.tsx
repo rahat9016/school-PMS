@@ -60,7 +60,7 @@ export default function SportGallerySection() {
                 students learn the importance of maintaining good health,
                 understanding concepts of nutrition and hygiene, participating
                 enthusiastically in sports, demonstrating sportsmanship, and
-                recognizing the dangers of drug, tobacco, and alcohol abuse. The
+                recognizing the dangers of drug, tobacco, and alcohol abuse.<br/> <br/>The
                 PAIS sports facilities provide students places to keep their
                 bodies, not just their minds, in shape. To support an active and
                 healthy lifestyle, we have upgraded our sports facilities across
@@ -74,16 +74,16 @@ export default function SportGallerySection() {
                 new volleyball court has been added just outside the gym. The
                 football pitch located beside the swimming pool and closed gym
                 has also been upgraded with new grass to provide an improved
-                playing surface. For our younger students, our primary courts
+                playing surface. <br/> <br/>For our younger students, our primary courts
                 are fully equipped for futsal and basketball. Our Kindergarten
                 students have access to a dedicated swimming pool, while primary
                 and secondary students can enjoy our half-Olympic size swimming
-                pool during PE classes to learn and practice swimming skills.
+                pool during PE classes to learn and practice swimming skills.<br/> <br/>
                 Every year, our Physical Health Education (PHE) Department
                 organizes the annual Sports Day for the whole school, including
                 facilitators and staff. Each participant is assigned a house
                 color, and students and staff compete in various games and
-                sports, fostering teamwork, school spirit, and sportsmanship.
+                sports, fostering teamwork, school spirit, and sportsmanship.<br/> <br/>
                 Through these facilities and events, PAIS provides students with
                 diverse opportunities to stay active, develop their physical
                 abilities, and cultivate a lifelong appreciation for health and

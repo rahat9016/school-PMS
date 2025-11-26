@@ -146,7 +146,7 @@ export default function AdmissionProcess() {
                     </div>
                   </div>
                 )}
-                {/* <KeyPoints points={step?.skills} /> */}
+                <KeyPoints points={step?.skills} />
                 <div className="flex flex-col gap-6">
                   {step?.skills2 &&
                     step?.skills2.map((skill, index) => {
@@ -155,7 +155,7 @@ export default function AdmissionProcess() {
                           <h3 className="text-main-primary font-medium text-base font-poppins mb-4">
                             {skill.title}
                           </h3>
-                          {/* <KeyPoints points={skill?.skills} /> */}
+                          <KeyPoints points={skill?.skills} />
                         </div>
                       );
                     })}

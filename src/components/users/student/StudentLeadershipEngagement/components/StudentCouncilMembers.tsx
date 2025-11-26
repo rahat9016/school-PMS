@@ -19,7 +19,7 @@ export const councilMembers = [
   },
   {
     id: 2,
-    name: "Soroush Salimi",
+    name: "Salsabel Nizar Khaled Hanun",
     role: "Vice President",
     quote: "You can let your dreams be dreams or you could make them reality.",
     image: img2,

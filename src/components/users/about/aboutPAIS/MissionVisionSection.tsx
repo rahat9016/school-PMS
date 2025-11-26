@@ -16,7 +16,7 @@ const missionVisionData = [
   {
     title: "Philosophy",
     description:
-      "The vision of Pan-Asia International School is to present its students with an opportunity to excel both academically and morally and to become responsible balanced future citizens of the global community.",
+      "Our educational philosophy aims at shaping the hearts and minds of our students by promoting a congenial school environment that instills in our students high morals, confidence and a pride in their identity. PAIS strives to present a new outlook in education by providing a nurturing, compassionate and loving environment.",
   },
 ];
 export default function MissionVisionSection() {

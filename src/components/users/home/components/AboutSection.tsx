@@ -32,7 +32,7 @@ export default function AboutSection() {
       <div className="lg:text-left md:w-1/2">
         <TitleTag title="About Us" />
         <h2 className="text-xl lg:text-5xl font-semibold font-poppins lg:leading-[58px] mt-6 xl:mt-12">
-          Pan Asia
+          Pan-Asia
           <br /> International School
         </h2>
         <p className="text-gray-600 mb-6 xl:mb-12 mt-7 xl:mt-14 text-darkGray font-poppins font-light leading-[24px]">

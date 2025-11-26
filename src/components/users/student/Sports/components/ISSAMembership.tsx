@@ -10,13 +10,18 @@ export default function ISSAMembershipSection() {
           <div className="w-full lg:w-1/2">
             <TitleTag title="Membership" />
             <h1 className="text-3xl lg:text-5xl text-black font-poppins font-semibold mt-4 lg:mt-8">
-              ISSA Membership
+              International Sports Athletic Association (ISAA)
+
             </h1>
             <p className="text-sm lg:text-base font-poppins text-darkGray font-light mt-6 lg:mt-14 leading-[28px]">
-              Pan-Asia International School is a proud member of the International Association of Student Support (IASS), a global network committed to promoting excellence in student well-being, academic development, and inclusive education.
+              Pan-Asia International School (PAIS) is a proud member of the International Sports Athletic Association (ISAA), founded in 2009 to promote athletic excellence, teamwork, and international sportsmanship among students. Since joining, PAIS has consistently ranked as Overall Champion in ISAA events, reflecting the school’s commitment to athletics, leadership, and character development.
             </p>
             <p className="text-sm lg:text-base font-poppins text-darkGray font-light mt-6 lg:mt-6 leading-[28px]">
-              Through our IASS membership, we gain access to international best practices, professional development opportunities, and collaborative initiatives that help us better serve our diverse student community. This affiliation reflects our ongoing commitment to supporting the whole child—academically, socially, and emotionally.
+              ISAA features a variety of sports, including basketball, volleyball, futsal, swimming, table tennis, badminton, and track and field, giving students the opportunity to enhance physical skills, build confidence, and learn teamwork and fair play. The association emphasizes balancing education and athletics, fostering holistic growth—physically, psychologically, and socially—while encouraging lasting friendships.
+
+            </p>
+            <p className="text-sm lg:text-base font-poppins text-darkGray font-light mt-6 lg:mt-6 leading-[28px]">
+              As PAIS continues to grow, the school remains committed to strong performance in ISAA and contributing positively to the wider community of affiliated schools, inspiring students to reach their full potential both on and off the field.
             </p>
           </div>
           <div className="lg:w-1/2 p-10">

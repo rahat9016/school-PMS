@@ -1,6 +1,6 @@
 import HeroSection from '@/components/shared/HeroSection'
 import React from 'react'
-import herobg from "../../../../../public/students/studentHero.jpeg";
+import herobg from "../../../../../public/students/studentHero.jpg";
 import SchoolCounsellingSection from './components/SchoolCounsellingSection';
 import GuidanceSection from './components/GuidanceSection';
 import MeetTheSchoolSection from './components/MeetTheSchoolSection';
