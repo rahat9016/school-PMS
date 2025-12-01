@@ -9,14 +9,14 @@ import img4 from "../../../../../public/apply/img4.png";
 import Image from "next/image";
 export default function PreRegister() {
   return (
-    <div className="bg-[#F2FBFD] py-32">
-      <div className="container grid grid-cols-1 xl:grid-cols-2 gap-32">
+    <div className="bg-[#F2FBFD] py-14 lg:py-32">
+      <div className="container grid grid-cols-1 xl:grid-cols-2 gap-16 lg:gap-32">
         <div>
           <TitleTag title="Apply" />
           <h1 className="text-black font-poppins font-semibold text-2xl lg:text-5xl mb-12 mt-6">
             Apply for Admission
           </h1>
-          <p className="text-base font-poppins font-light text-darkGray mb-14">
+          <p className="text-base font-poppins font-light text-darkGray mb-7 lg:mb-14">
             Pan-Asia International School is extremely proud to be a member of
             the IB MYP & DP world-wide community. PAIS completed its MYP
             verification in May 2020. PAIS now offers a complete MYP & DP
@@ -29,8 +29,8 @@ export default function PreRegister() {
             Pre-Register Now <ChevronRight size={16} />
           </Link>
         </div>
-        <div className="flex items-end gap-[25px] relative">
-          <div className="bg-white shadow-lg absolute top-8 w-[200px] h-[108px] px-19px py-15px rounded-xl left-24 flex items-center justify-center">
+        <div className="flex flex-col lg:flex-row items-end gap-[25px] relative">
+          <div className="bg-white shadow-lg absolute top-8 w-[100px] lg:w-[200px] h-[54px] lg:h-[108px] px-19px py-15px rounded-xl left-24 flex items-center justify-center">
             <Image src={img3} alt="" width={156} height={44} />
           </div>
           <Image
@@ -40,20 +40,19 @@ export default function PreRegister() {
             height={40}
             className="absolute right-4 bottom-10"
           />
-
           <Image
             src={img2}
             alt=""
             width={200}
             height={293}
-            className="mt-auto"
+            className="mt-auto w-full lg:w-[200px]"
           />
           <Image src={img} alt="" width={295} height={391} />
-          <div className="bg-white shadow-lg absolute bottom-5 w-[166px] h-[57px] px-19px py-15px text-xs font-poppins  font-normal rounded-xl -left-10 flex items-center">
+          <div className="bg-white shadow-lg absolute bottom-5 w-[166px] h-[57px] px-19px py-15px text-xs font-poppins  font-normal rounded-xl left-2 lg:-left-10 flex items-center">
             Internationally
             <br /> Trained Instructors
           </div>
-          <div className="bg-main-secondary shadow-lg absolute -bottom-8 w-[205px] h-[67px] px-19px py-15px text-xs font-poppins  font-normal rounded-xl right-44 text-white flex items-center">
+          <div className="bg-main-secondary shadow-lg absolute bottom-1/2 lg:-bottom-8 w-[180px] lg:w-[205px] h-[67px] px-19px py-15px text-xs font-poppins  font-normal rounded-xl lg:right-44 text-white flex items-center">
             Empowering future leaders through innovation.
           </div>
         </div>
