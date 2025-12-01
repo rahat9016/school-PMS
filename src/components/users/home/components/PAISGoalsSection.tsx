@@ -32,6 +32,7 @@ export default function PAISGoalsSection() {
   return (
     <div className="bg-main-secondary pt-[94px] pb-[104px]">
       <div className="container">
+          
         <Image
           src={Logo}
           alt="PAIS Goals"
