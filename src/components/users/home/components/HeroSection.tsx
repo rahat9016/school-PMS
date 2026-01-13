@@ -1,7 +1,5 @@
 "use client";
-import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
-import videoIcon from "../../../../../public/videoIcon.png";
 export default function HeroSection() {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [showContent, setShowContent] = useState(true);
@@ -34,7 +32,7 @@ export default function HeroSection() {
         //     : "#1c1e33",
         // }}
       />
-      <div className="absolute left-[12%] bottom-[32%] shadow-2xl rounded-full">
+      {/* <div className="absolute left-[12%] bottom-[32%] shadow-2xl rounded-full">
         <div className="relative w-16 lg:w-[70px] h-16 lg:h-[70px] flex items-center justify-center ">
           <span className="absolute w-full h-full rounded-full bg-[#535353] animate-pulse-ring-small"></span>
           <span className="absolute w-full h-full rounded-full bg-[#6d6d6d] animate-pulse-ring-big"></span>
@@ -42,7 +40,7 @@ export default function HeroSection() {
             <Image src={videoIcon} alt="videoIcon" width={20} height={23} />
           </div>
         </div>
-      </div>
+      </div> */}
       {showContent && (
         <div className="z-10 absolute top-[40%] left-1/2 -translate-x-1/2 -translate-y-1/2">
           <span className="block w-[1px] h-[60px] lg:h-[121px] mx-auto bg-white pt-5"></span>
