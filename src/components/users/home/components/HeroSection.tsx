@@ -16,7 +16,7 @@ export default function HeroSection() {
     return () => clearTimeout(timer);
   }, []);
   return (
-    <div className="w-full relative">
+    <div className="relative w-full h-screen overflow-hidden">
       <video
         ref={videoRef}
         src="/heroVideo.mp4"
@@ -24,7 +24,7 @@ export default function HeroSection() {
         loop
         muted={true}
         playsInline
-        className="w-full h-full"
+         className="absolute inset-0 w-full h-full object-cover"
       />
       <div
         className={`absolute inset-0 z-0 transition-all duration-1000`}
