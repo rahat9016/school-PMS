@@ -1,6 +1,4 @@
 import HeroSection from "@/components/shared/HeroSection";
-import Image from "next/image";
-import aqiGuideline from "../../../../../public/about/aqiGuideline.png";
 import herobg from "../../../../../public/about/aqiHero.jpg";
 
 import { paragraphsData } from "./data";
@@ -27,16 +25,22 @@ export default function EqiPolicyGuideline() {
             AQI Guidelines and Policy
           </h1>
           <span className="w-[140px] h-[3px] bg-main-secondary block mt-2"></span>
-
+          <iframe
+            src="/AQIforPAISWebsite.pdf"
+            width="100%"
+            height="100%"
+            style={{ minHeight: "600px", border: "none" }}
+            className=" my-6"
+          />
           {/* image section  */}
-          <div className=" mt-6 ">
+          {/* <div className=" ">
             <Image
               src={aqiGuideline}
               alt="AQI Guidelines and Policy"
               width={1280}
               height={1808}
             />
-          </div>
+          </div> */}
 
           {/* paragraph section  */}
           <div className=" mt-10 ">

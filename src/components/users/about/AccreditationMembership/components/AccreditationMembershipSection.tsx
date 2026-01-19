@@ -3,7 +3,7 @@ import AccreditationMembershipCard from "./AccreditationMembershipCard";
 import img5 from "../../../../../../public/about/accreditationMembership/ISSlogo.png";
 import img1 from "../../../../../../public/about/accreditationMembership/moe.png";
 import img6 from "../../../../../../public/about/accreditationMembership/anIb.png";
-import img7 from "../../../../../../public/about/accreditationMembership/aiws.jpg";
+import img7 from "../../../../../../public/acs-logo.png";
 import img3 from "../../../../../../public/about/accreditationMembership/onesqa.png";
 import img4 from "../../../../../../public/about/accreditationMembership/ecis.png";
 const data = [

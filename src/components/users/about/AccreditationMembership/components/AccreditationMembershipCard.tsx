@@ -13,8 +13,8 @@ export default function AccreditationMembershipCard({
         {img &&<Image
           src={img.src}
           alt="AcademicGrade"
-          width={120}
-          height={73}
+          width={315}
+          height={99}
           className="w-1/2 h-auto   mx-auto"
         />}
       </div>

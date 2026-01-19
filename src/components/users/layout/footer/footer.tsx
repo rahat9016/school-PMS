@@ -2,13 +2,13 @@
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import clock from "../../../../../public/clock.png";
+import clock from "../../../../../public/clock.svg";
 import facebook from "../../../../../public/facebook.png";
 import instagram from "../../../../../public/instagram.png";
-import location from "../../../../../public/location.png";
+import location from "../../../../../public/location.svg";
 import Logo from "../../../../../public/logo.png";
-import paperPlan from "../../../../../public/paper-plane.png";
-import smartphone from "../../../../../public/smartphone.png";
+import paperPlan from "../../../../../public/paper-plane.svg";
+import smartphone from "../../../../../public/smartphone.svg";
 import youtube from "../../../../../public/youtube.png";
 const navLinks = [
   {
@@ -50,7 +50,7 @@ const Footer = () => {
                 className="mb-4"
               />
               <p className="font-poppins font-medium text-sm text-charcoalGray">
-                Pan-Asia International School (PAIS): World-class education
+                World-class education
                 fostering excellence, safety, and global citizenship.
               </p>
               <div className="flex flex-col mt-10 lg:mt-[70px]">
