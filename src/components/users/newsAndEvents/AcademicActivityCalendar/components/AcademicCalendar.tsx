@@ -1,5 +1,5 @@
 import Image from "next/image";
-import calendar from "../../../../../../public/newsEvents/Academic/calendar2025-2026.jpg";
+import calendar from "../../../../../../public/newsEvents/Academic/calender.jpeg";
 import bg from "../../../../../../public/newsEvents/Academic/shape1.png";
 export default function AcademicCalendar() {
   return (
