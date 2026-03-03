@@ -3,7 +3,7 @@ import { IInitialState } from "./interface";
 
 const initialState: IInitialState = {
     userInformation:{
-        _id: "",
+        id: "",
         email: "",
         role: "",
         fullName: "",
@@ -22,8 +22,11 @@ const authSlice = createSlice({
         setUserInformation: (state, action) => {
             state.userInformation = { ...initialState.userInformation, ...action.payload }
         },
+            setUserId: (state, action) => {
+      state.userInformation.id = action.payload;
+    },
     }
 })
 
-export const { setUserInformation, clearUserInformation } = authSlice.actions
+export const { setUserInformation, clearUserInformation, setUserId } = authSlice.actions
 export default authSlice.reducer

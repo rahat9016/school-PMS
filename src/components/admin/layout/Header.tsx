@@ -87,7 +87,8 @@ const Header = () => {
                         <DropdownMenuItem className="text-red-600" onClick={() => {
                             clearCookie('accessToken')
                             clearCookie('refreshToken')
-                            clearCookie('user')
+                            clearCookie('userID')
+                            clearCookie('role')
                             dispatch(clearUserInformation())
                             router.push('/')
                         }}>

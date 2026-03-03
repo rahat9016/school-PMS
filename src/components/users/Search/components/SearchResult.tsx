@@ -1,28 +1,19 @@
 "use client";
 import { Input } from "@/components/ui/input";
-import useFilter from "@/hooks/useFilter";
+
 import { filterData } from "@/lib/data/data";
 import { Search } from "lucide-react";
-import Image from "next/image";
-import { useRouter, useSearchParams } from "next/navigation";
-import { useEffect } from "react";
 
 export default function SearchResult() {
-  const { filteredPosts, setSearchQuery } = useFilter();
-  const router = useRouter();
-  const searchParams = useSearchParams();
-  const query = searchParams.get("query");
-  useEffect(() => {
-    setSearchQuery(query as string);
-  }, [query, setSearchQuery]);
+  // const router = useRouter();
+  // const searchParams = useSearchParams();
+  // const query = searchParams.get("query");
 
   return (
     <div className="bg-white">
       <div className="container">
         <div className="flex items-center justify-between pt-10 lg:pt-20">
-          <h3 className=" text-sm font-medium text-[#363739]">
-            {filteredPosts.length} results found
-          </h3>
+          <h3 className=" text-sm font-medium text-[#363739]">results found</h3>
           <div className="flex flex-col lg:flex-row justify-between items-center">
             <div>
               <div>
@@ -32,7 +23,7 @@ export default function SearchResult() {
                     type="text"
                     placeholder="Search..."
                     className="border-none bg-transparent placeholder-gray-400 shadow-none py-1 placeholder:text-[#646464] group-hover:placeholder:text-white"
-                    onChange={(event) => setSearchQuery(event.target.value)}
+                    // onChange={(event) => setSearchQuery(event.target.value)}
                   />
                 </div>
               </div>
@@ -43,7 +34,7 @@ export default function SearchResult() {
       <span className="w-full h-[2px] bg-pureWhite block mt-3 mb-9"></span>
       <div className="container">
         <div className="flex flex-col-reverse md:flex-row gap-6 items-start pb-10">
-          <div className="w-full md:w-8/12 lg:w-9/12 flex flex-col gap-6 h-full">
+          {/* <div className="w-full md:w-8/12 lg:w-9/12 flex flex-col gap-6 h-full">
             {filteredPosts.length === 0 ? (
               <div className="h-full flex flex-col items-center justify-center">
                 <p>Not Found Data</p>
@@ -79,7 +70,7 @@ export default function SearchResult() {
                 </div>
               ))
             )}
-          </div>
+          </div> */}
           <div className="w-full md:w-4/12 lg:w-3/12 bg-main-primary p-10 rounded-lg">
             <h3 className="text-white font-poppins text-2xl font-semibold">
               Categories

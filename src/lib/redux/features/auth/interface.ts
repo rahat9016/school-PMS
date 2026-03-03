@@ -1,6 +1,6 @@
 export interface IInitialState {
     userInformation:{
-        _id: string;
+        id: string;
         email: string;
         role: string;
         fullName:string;

@@ -1,68 +1,39 @@
 "use client";
+import ControlledInputField from "@/components/shared/ControlledInputField";
+import { Button } from "@/components/ui/button";
+import { useAuth } from "@/hooks/useAuth";
+import { setUserInformation } from "@/lib/redux/features/auth/authSlice";
+import { useAppDispatch } from "@/lib/redux/hooks";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { LockKeyhole, UserRound } from "lucide-react";
 import Image from "next/image";
-import React from "react";
-import logo from "../../../../../public/logo.png";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { FormProvider, useForm } from "react-hook-form";
 import loginImg from "../../../../../public/loginImg.png";
 import loginShape1 from "../../../../../public/loginShape1.png";
 import loginShape2 from "../../../../../public/loginShape2.png";
-import { FormProvider, useForm } from "react-hook-form";
-import ControlledInputField from "@/components/shared/ControlledInputField";
-import { Button } from "@/components/ui/button";
-import { useMutation } from "@tanstack/react-query";
-import { loginRequest } from "@/app/api/api";
+import logo from "../../../../../public/logo.png";
 import loginValidationSchema from "./Schema";
-import { yupResolver } from "@hookform/resolvers/yup";
-import { toast } from "react-toastify";
-import { LockKeyhole, UserRound } from "lucide-react";
-import Link from "next/link";
-import { setCookie } from "@/lib/cookie";
-import { useRouter } from "next/navigation";
-import { useAppDispatch } from "@/lib/redux/hooks";
-import { setUserInformation } from "@/lib/redux/features/auth/authSlice";
 
 export default function Signing() {
-  const router = useRouter()
-  const dispatch = useAppDispatch()
-  const { isError, error, isPending, mutateAsync } = useMutation({
-    mutationFn: loginRequest,
-    onSuccess: () => {},
-  });
-
+  const router = useRouter();
+  const dispatch = useAppDispatch();
+  const { mutateAsync: login, isPending, error, isError } = useAuth();
   const methods = useForm({
     mode: "onChange",
     resolver: yupResolver(loginValidationSchema),
-    defaultValues: {},
   });
 
-  const onSubmit = (data: { email: string; password: string }) => {
-    mutateAsync(data)
-      .then((res) => {
-        if (res.success) {
-          // ============== SET ACCESS, REFRESH TOKEN AND USER INFORMATION ==============
-          const {accessToken, refreshToken, user} = res?.data
-          setCookie("accessToken", accessToken, 10000)
-          setCookie("refreshToken", refreshToken, 10000)
-          setCookie("user", user, 10000)
-          // ============== END ACCESS, REFRESH TOKEN AND USER INFORMATION ==============
-          // ============== NAVIGATE TO DASHBOARD ==============
-          if(user.role.toLowerCase() === "admin"){
-            router.push('/dashboard')
-          }
-          // ============== END NAVIGATE TO DASHBOARD ==============
-
-          // ============== SET USER INFORMATION IN REDUX ==============
-          dispatch(setUserInformation(user))
-          // ============== END USER INFORMATION IN REDUX ==============
-          toast.success("Login Successful", {
-            position: "bottom-left",
-          });
-        }
-      })
-      .catch((error) => {
-        toast.error(error?.message, {
-          position: "bottom-left",
-        });
+  const onSubmit = async (data: { email: string; password: string }) => {
+    try {
+      await login(data).then((res) => {;
+        dispatch(setUserInformation(res.user));
+        router.push("/dashboard");
       });
+    } catch (err) {
+      console.error(err);
+    }
   };
   return (
     <div>
@@ -119,7 +90,7 @@ export default function Signing() {
                 </p>
               </div>
               <FormProvider {...methods}>
-                <form onSubmit={methods?.handleSubmit(onSubmit)}>
+                <form onSubmit={methods.handleSubmit(onSubmit)}>
                   <div className="flex flex-col gap-3 lg:gap-5">
                     <div>
                       <ControlledInputField
@@ -151,13 +122,21 @@ export default function Signing() {
                     </div>
                     <div className="flex items-center justify-between">
                       <div>
-                        <label htmlFor="remeberme" className="flex items-center gap-1 text-[#1C1C1C] text-sm font-poppins font-normal">
+                        <label
+                          htmlFor="remeberme"
+                          className="flex items-center gap-1 text-[#1C1C1C] text-sm font-poppins font-normal"
+                        >
                           <input type="checkbox" id="remeberme" />
                           Remember me
                         </label>
                       </div>
                       <div>
-                        <Link href="#" className="underline text-[#0075FF] text-sm font-poppins font-normal">Forgot Password?</Link>
+                        <Link
+                          href="#"
+                          className="underline text-[#0075FF] text-sm font-poppins font-normal"
+                        >
+                          Forgot Password?
+                        </Link>
                       </div>
                     </div>
                     {isError && error && (

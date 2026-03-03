@@ -1,24 +1,46 @@
 import { useState } from "react";
-import useDebounce from "./useDebounce";
+
+interface IPaginationState {
+  currentPage: number;
+  itemsPerPage: number;
+  totalItems: number;
+}
 
 export const usePagination = () => {
-  const [page, setPage] = useState(1);
-  const [pageSize, setPageSize] = useState(10);
-  const [pageCount, setPageCount] = useState(10);
-  const [search, setSearch] = useState<string>("");
-  const [delay, setDelay] = useState<number>(300);
-  const debounceQuery = useDebounce(search, delay);
+  const [pagination, setPagination] = useState<IPaginationState>({
+    currentPage: 1,
+    itemsPerPage: 10,
+    totalItems: 0,
+  });
 
+  const setCurrentPage = (page: number) => {
+    setPagination((prev) => ({ ...prev, currentPage: page }));
+  };
+
+  const setTotalItems = (total: number) => {
+    setPagination((prev) => ({ ...prev, totalItems: total }));
+  };
+
+  const setItemsPerPage = (value: string | number) => {
+    if (value === "all") {
+      setPagination((prev) => ({
+        ...prev,
+        itemsPerPage: -1,
+        currentPage: 1,
+      }));
+    } else {
+      const num = typeof value === "string" ? parseInt(value, 10) : value;
+      setPagination((prev) => ({
+        ...prev,
+        itemsPerPage: num,
+        currentPage: 1,
+      }));
+    }
+  };
   return {
-    page,
-    pageSize,
-    pageCount,
-    setPage,
-    setPageSize,
-    setPageCount,
-    search,
-    setSearch,
-    setDelay,
-    debounceQuery,
+    ...pagination,
+    setCurrentPage,
+    setTotalItems,
+    setItemsPerPage,
   };
 };
