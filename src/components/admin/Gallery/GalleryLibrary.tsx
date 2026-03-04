@@ -1,28 +1,19 @@
 "use client";
-import React, { useState } from "react";
-import GalleryLibraryHero from "./components/GalleryLibraryHero";
 import UploadImageModal from "@/components/shared/UploadMediaImage";
-import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { mediaLibraryGalleryRequest } from "@/app/api/api";
-import { toast } from "react-toastify";
+import { useState } from "react";
+import GalleryLibraryHero from "./components/GalleryLibraryHero";
 import MediaFiles from "./components/MediaFiles";
 
 export default function GalleryLibrary() {
   const [open, setOpen] = useState(false);
-  const queryClient = useQueryClient();
-  const { mutateAsync } = useMutation({
-    mutationFn: mediaLibraryGalleryRequest,
-    onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ["Gallery"] });
-    },
-  });
+  // const { mutateAsync } = usePost("/media-library/gallery");
 
   const onSubmit = (
     data: {
       file: File;
       name: string;
       preview: string;
-    }[]
+    }[],
   ) => {
     const formData = new FormData();
 
@@ -35,14 +26,14 @@ export default function GalleryLibrary() {
       }
     });
 
-    mutateAsync(formData).then((res) => {
-      if (res.success) {
-        setOpen(false);
-        toast.success(res.message, {
-          position: "bottom-left",
-        });
-      }
-    });
+    // mutateAsync(formData).then((res) => {
+    //   if (res.success) {
+    //     setOpen(false);
+    //     toast.success(res.message, {
+    //       position: "bottom-left",
+    //     });
+    //   }
+    // });
   };
   return (
     <div>

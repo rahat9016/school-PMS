@@ -1,4 +1,5 @@
-import { ErrorType } from "@/src/types/common/common";
+
+import { ErrorType } from "@/types/common/common";
 import { FieldError } from "react-hook-form";
 
 const ErrorMessage = ({ error }: { error?: ErrorType | FieldError }) => {

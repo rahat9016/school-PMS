@@ -3,39 +3,37 @@ import ControlledInputField from "@/components/shared/ControlledInputField";
 import ControlledTextareaField from "@/components/shared/ControlledTextAreaField";
 import InputLabel from "@/components/shared/InputLabel";
 import { Button } from "@/components/ui/button";
-import React from "react";
 import { FormProvider, useForm } from "react-hook-form";
-import { IFAQ } from "../interface";
-import { faqRequest } from "@/app/api/api";
+// import { faqRequest } from "@/app/api/api";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { faqValidationSchema } from "../Schema";
-import { useMutation } from "@tanstack/react-query";
-import { toast } from "react-toastify";
 
 export default function ASKQuestion() {
-  const { mutateAsync, isPending } = useMutation({
-    mutationFn: faqRequest,
-    onSuccess: () => {},
-  });
+  // const { mutateAsync, isPending } = useMutation({
+  //   mutationFn: (data: IFAQ) => {
+  //     // return faqRequest(data);
+  //   },
+  //   onSuccess: () => {},
+  // });
   const methods = useForm({
     resolver: yupResolver(faqValidationSchema),
   });
 
-  const onSubmit = (data: IFAQ) => {
-    mutateAsync(data)
-      .then((res) => {
-        if (res.success) {
-          methods.reset();
-          toast.success(res?.message, {
-            position: "bottom-left",
-          });
-        }
-      })
-      .catch((error) => {
-        toast.error(error?.message, {
-          position: "bottom-left",
-        });
-      });
+  const onSubmit = () => {
+    // mutateAsync(data)
+    //   .then((res) => {
+    //     if (res.success) {
+    //       methods.reset();
+    //       toast.success(res?.message, {
+    //         position: "bottom-left",
+    //       });
+    //     }
+    //   })
+    //   .catch((error) => {
+    //     toast.error(error?.message, {
+    //       position: "bottom-left",
+    //     });
+    //   });
   };
   return (
     <div className="bg-aliceBlue">
@@ -98,11 +96,11 @@ export default function ASKQuestion() {
                 Clear
               </Button>
               <Button
-                disabled={isPending}
+                // disabled={isPending}
                 type="submit"
                 className="uppercase bg-main-secondary text-white rounded-none px-6 lg:px-10 py-3 h-10 lg:h-14"
               >
-                {isPending ? "Sending..." : "Submit"}
+                {/* {isPending ? "Sending..." : "Submit"} */}
               </Button>
             </div>
           </form>

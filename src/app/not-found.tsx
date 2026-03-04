@@ -2,10 +2,10 @@
 
 import dynamic from "next/dynamic";
 import Link from "next/link";
+import notFound from "../../public/notFound.json";
 
 // Dynamically import Lottie to disable SSR
-const Lottie = dynamic(() => import("lottie-react"), {ssr: false});
-import notFound from "../../public/notFound.json";
+const Lottie = dynamic(() => import("lottie-react"), { ssr: false });
 
 const NotFound = () => {
   return (
@@ -20,14 +20,16 @@ const NotFound = () => {
           Sorry, the page you are looking for could not be found.
         </p>
         <Link
-          className="flex items-center space-x-2 bg-green-700 hover:bg-primaryShade text-gray-100 px-4 py-2 mt-12 rounded transition duration-150"
+          className="flex items-center space-x-2 bg-green-700 hover:bg-main-primaryShade text-gray-100 px-4 py-2 mt-12 rounded transition duration-150"
           title="Return Home"
-          href={`/`}>
+          href={`/`}
+        >
           <svg className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
             <path
               fillRule="evenodd"
               d="M9.707 14.707a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 1.414L7.414 9H15a1 1 0 110 2H7.414l2.293 2.293a1 1 0 010 1.414z"
-              clipRule="evenodd"></path>
+              clipRule="evenodd"
+            ></path>
           </svg>
           <span>Return Home</span>
         </Link>

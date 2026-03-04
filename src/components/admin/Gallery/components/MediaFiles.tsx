@@ -1,6 +1,5 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
+ 
 "use client";
-import { getMediaLibraryGalleryRequest } from "@/app/api/api";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import {
@@ -8,25 +7,15 @@ import {
   PaginationContent,
   PaginationItem,
   PaginationLink,
-  PaginationNext,
-  PaginationPrevious,
+  PaginationPrevious
 } from "@/components/ui/pagination";
-import { useQuery } from "@tanstack/react-query";
 import Image from "next/image";
 import { useState } from "react";
 import AllVideo from "../../../../../public/dashboard/allVideo.png";
-const ITEMS_PER_PAGE = 10;
+// const ITEMS_PER_PAGE = 10;
 export default function MediaFiles() {
   const [currentPage, setCurrentPage] = useState(1);
   //   const [searchTerm, setSearchTerm] = useState("");
-  const { data } = useQuery({
-    queryKey: ["Gallery", currentPage],
-    queryFn: () =>
-      getMediaLibraryGalleryRequest({
-        page: currentPage,
-        limit: ITEMS_PER_PAGE,
-      }),
-  });
 
   const handlePageChange = (page: number) => {
     setCurrentPage(page);
@@ -55,7 +44,7 @@ export default function MediaFiles() {
           </div>
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-6 gap-5">
-          {data?.data?.map((item: any) => {
+          {/* {data?.data?.map((item: any) => {
             console.log(item);
             return (
               <div key={item?._id}>
@@ -71,7 +60,7 @@ export default function MediaFiles() {
                 </h2>
               </div>
             );
-          })}
+          })} */}
         </div>
         <Pagination className="mt-10">
           <PaginationContent>
@@ -86,7 +75,7 @@ export default function MediaFiles() {
               />
             </PaginationItem>
 
-            {[...Array(data?.meta?.total_page || 1)].map((_, index) => (
+            {[...Array(5)].map((_, index) => (
               <PaginationItem key={index}>
                 <PaginationLink
                   isActive={currentPage === index + 1}
@@ -96,23 +85,6 @@ export default function MediaFiles() {
                 </PaginationLink>
               </PaginationItem>
             ))}
-
-            <PaginationItem>
-              <PaginationNext
-                onClick={() =>
-                  handlePageChange(
-                    currentPage < data?.meta?.total_page
-                      ? currentPage + 1
-                      : data?.meta?.total_page
-                  )
-                }
-                className={
-                  currentPage === data?.meta?.total_page
-                    ? "pointer-events-none opacity-50"
-                    : ""
-                }
-              />
-            </PaginationItem>
           </PaginationContent>
         </Pagination>
       </div>

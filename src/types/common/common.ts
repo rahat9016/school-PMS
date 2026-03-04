@@ -1,3 +1,5 @@
+import { ColumnDef } from "@/components/ui/data-table";
+
 export interface User {
   id: string;
   name: string;
@@ -49,7 +51,7 @@ export enum BookingType {
   TELE = "tele",
 }
 export interface ITableProps<T> {
-  columns: unknown[];
+  columns: ColumnDef<T>[];
   data: T[];
   isLoading?: boolean;
   totalItems?: number;
@@ -65,6 +67,7 @@ export interface ITableProps<T> {
   createTitle?: string;
   routeURL?: string;
   isShowStatus?: boolean;
+  title?: string;
 }
 export interface ISelectOption {
   label: string;

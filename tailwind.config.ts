@@ -31,6 +31,7 @@ export default {
         "main-primary": "#242D65",
         "main-secondary": "#F68C25",
         aliceBlue: "#F2FBFD",
+        "light-dark": "#eeeeee",
         lightBlue: "#EFF3F4",
         greyLight: "#F2F2F2",
         pureBlack: "#000000",

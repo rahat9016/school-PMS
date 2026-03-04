@@ -1,12 +1,10 @@
 "use client";
 
-import { ChevronDown, Search } from "lucide-react";
+import { ChevronDown } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
 import Logo from "../../../../public/logo.png";
 import profile from "../../../../public/profile.png";
-import { useState } from "react";
-import { Input } from "@/components/ui/input";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -20,7 +18,6 @@ import { clearCookie } from "@/lib/cookie";
 import { useRouter } from "next/navigation";
 
 const Header = () => {
-  const [showSearch, setShowSearch] = useState(false);
   const router = useRouter()
   const dispatch = useAppDispatch()
    const { userInformation } = useAppSelector(state => state.auth)
@@ -43,21 +40,7 @@ const Header = () => {
                   </Link>
                 </div>
                 <div className="flex items-center justify-end gap-8">
-                  <div
-                    onClick={() => setShowSearch(!showSearch)}
-                    className="lg:hidden"
-                  >
-                    <Search className="w-7 h-7 text-mediumGray ml-auto" />
-                  </div>
-                  <div className="hidden lg:flex items-center gap-2 border rounded-xl px-4 h-[40px] w-full max-w-64">
-                    <Search className="w-5 h-5 text-mediumGray" />
-                    <Input
-                      type="text"
-                      placeholder="Search..."
-                      className="border-none bg-transparent placeholder-gray-400 shadow-none py-1 placeholder:text-[#646464] "
-                      // onChange={(event) => setSearch && setSearch(event.target.value)}
-                    />
-                  </div>
+                  
                   <nav className="hidden md:flex items-center space-x-5 uppercase font-poppins font-medium">
                     <DropdownMenu>
                       <DropdownMenuTrigger asChild>
@@ -100,19 +83,7 @@ const Header = () => {
                 </div>
               </div>
 
-              {showSearch && (
-                <div className="lg:hidden absolute -bottom-[40px] w-full left-0 shadow-lg">
-                  <div className="flex items-center gap-2 px-4 h-[40px] w-full bg-white">
-                    <Search className="w-5 h-5 text-mediumGray " />
-                    <Input
-                      type="text"
-                      placeholder="Search..."
-                      className="border-none bg-transparent placeholder-gray-400 shadow-none py-1 placeholder:text-[#646464] "
-                      // onChange={(event) => setSearch && setSearch(event.target.value)}
-                    />
-                  </div>
-                </div>
-              )}
+              
             </div>
           </div>
         </div>

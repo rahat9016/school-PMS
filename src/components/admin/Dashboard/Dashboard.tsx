@@ -14,7 +14,7 @@ import media from "../../../../public/dashboard/media.png";
 import school from "../../../../public/dashboard/school.png";
 import schoolb from "../../../../public/dashboard/schoolb.png";
 import summer from "../../../../public/dashboard/summer.png";
-import { Ellipsis } from "lucide-react";
+
 import { useAppSelector } from "@/lib/redux/hooks";
 import { useRouter } from "next/navigation";
 const features = [
@@ -22,7 +22,7 @@ const features = [
     title: "Manage Articles",
     desc: "Write, edit, and publish news updates.",
     icon: document,
-    location: "/dashboard/"
+    location: "/dashboard/manage-articles"
   },
   {
     title: "Media Library",
@@ -124,9 +124,9 @@ export default function Dashboard() {
           {features?.map((item, index) => (
             <div
               key={index}
-              className=" group bg-white hover:bg-main-primary duration-300 rounded-xl py-12 pr-12 pl-5 border border-[#CDCDCD] group-hover:border-none transition relative"
+              className=" group bg-white hover:bg-main-primary duration-300 rounded-xl py-12 pr-12 pl-5 border border-[#CDCDCD] group-hover:border-none transition relative cursor-pointer"
+              onClick={() => router.push(item.location) }
             >
-              <Ellipsis onClick={() => router.push(item.location)} className="absolute right-4 top-4 text-[#9B9B9C] group-hover:text-white" />
               <div className="flex items-center gap-4 relative">
                 <div className="bg-[#EFF0EF] group-hover:bg-[#F68C25] duration-300 w-[72px] h-[64px] flex items-center justify-center rounded-lg">
                   <Image
