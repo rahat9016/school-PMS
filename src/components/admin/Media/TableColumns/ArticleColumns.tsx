@@ -1,30 +1,29 @@
-
+import StatusBadge from "@/components/shared/Status/Status";
+import { Button } from "@/components/ui/button";
+import { ColumnDef } from "@/components/ui/data-table";
+import { StatusType } from "@/types/common/common";
 import { SquarePen } from "lucide-react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-import { IMediaVideo } from "../types";
-import { ColumnDef } from "@/components/ui/data-table";
-import StatusBadge from "@/components/shared/Status/Status";
-import { StatusType } from "@/types/common/common";
-import { Button } from "@/components/ui/button";
+import { IMediaImage } from "../types";
 
-export const GetMediaVideoColumns = (): ColumnDef<IMediaVideo>[] => {
+export const GetArticleColumns = (): ColumnDef<IMediaImage>[] => {
   const router = useRouter();
 
   return [
     {
-      header: "Video Thumbnail",
-      accessorKey: "videoThumbnail",
+      header: "Image",
+      accessorKey: "image",
       cell: (_value, row) => {
-        const mediaVideo = row as IMediaVideo;
+        const mediaImage = row as IMediaImage;
 
         return (
           <div className="flex items-center gap-2">
             <Image
               width={36}
               height={36}
-              src={mediaVideo.videoThumbnail}
-              alt="Media Image"
+              src={mediaImage.image}
+              alt="Article Image"
               className="w-9 h-9 rounded object-cover"
             />
           </div>
@@ -32,30 +31,23 @@ export const GetMediaVideoColumns = (): ColumnDef<IMediaVideo>[] => {
       },
     },
     {
-      header: "Title",
-      accessorKey: "title",
-    },
-    {
-      header: "Description",
-      accessorKey: "description",
-    },
-    {
-      header: "Link",
-      accessorKey: "link",
-      cell: (value) => (
-        <a
-          href={value as string}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="text-blue-600 underline"
-        >
-          {value}
-        </a>
-      ),
-    },
-    {
-      header: "Duration",
-      accessorKey: "duration",
+      header: "Updated Time",
+      accessorKey: "updatedAt",
+      cell: (value) => {
+        const date = new Date(value as string);
+
+        return (
+          <span className="text-sm">
+            {date.toLocaleDateString("en-US", {
+              year: "numeric",
+              month: "long",
+              day: "numeric",
+              hour: "2-digit",
+              minute: "2-digit",
+            })}
+          </span>
+        );
+      },
     },
     {
       header: "Status",
@@ -72,7 +64,7 @@ export const GetMediaVideoColumns = (): ColumnDef<IMediaVideo>[] => {
       header: "Actions",
       accessorKey: "actions",
       cell: (_value, row) => {
-        const mediaVideo = row as IMediaVideo;
+        const mediaImage = row as IMediaImage;
 
         return (
           <div className="flex items-center gap-3">
@@ -80,7 +72,7 @@ export const GetMediaVideoColumns = (): ColumnDef<IMediaVideo>[] => {
               className="w-9 max-h-9 bg-light hover:bg-light/90 text-secondary-foreground border border-[#E6E6E6]"
               size="sm"
               onClick={() =>
-                router.push(`/admin/update-media-video/${mediaVideo.id}`)
+                router.push(`/admin/update-article/${mediaImage.id}`)
               }
             >
               <SquarePen />

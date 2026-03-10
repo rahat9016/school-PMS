@@ -173,11 +173,11 @@ export function DataTable<T>({
           </div>
           <Table className="min-w-full border-collapse">
             <TableHeader>
-              <TableRow className="bg-main-primary hover:bg-main-primary h-15 border border-light-dark border-t-0">
+              <TableRow className="bg-main-primary hover:bg-main-primary h-[60px] border border-light-dark border-t-0">
                 {columns.map((column, index) => (
                   <TableHead
                     key={index}
-                    className="font-medium text-sm text-white px-5"
+                    className="font-bold text-sm text-white px-5 border-r border-light-dark last:border-r-0"
                   >
                     {column.header}
                   </TableHead>

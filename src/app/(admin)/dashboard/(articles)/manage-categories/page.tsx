@@ -1,7 +1,10 @@
-import React from 'react'
+"use client";
+import CategoryList from "@/components/admin/Media/CategoryList";
 
 export default function page() {
   return (
-    <div>page</div>
-  )
+    <div>
+      <CategoryList />
+    </div>
+  );
 }

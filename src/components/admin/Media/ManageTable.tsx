@@ -1,11 +1,10 @@
 "use client";
 
-
 import { DataTable } from "@/components/ui/data-table";
 import { ITableProps } from "@/types/common/common";
 import { ImageIcon } from "lucide-react";
 
-const MediaTable = <T,>({
+const ManageTable = <T,>({
   columns,
   data,
   isLoading = false,
@@ -21,7 +20,7 @@ const MediaTable = <T,>({
   showCreateButton = false,
   createTitle,
   routeURL,
-  title
+  title,
 }: ITableProps<T>) => {
   return (
     <DataTable
@@ -42,7 +41,7 @@ const MediaTable = <T,>({
       routeURL={routeURL}
       tabs={[
         { name: "Manage Articles", route: "/dashboard/manage-articles" },
-        { name: "Manage Category", route: "/admin/video-gallery" },
+        { name: "Manage Category", route: "/dashboard/manage-categories" },
       ]}
       IsCreate={showCreateButton}
       setIsModalOpen={setIsModalOpen}
@@ -50,4 +49,4 @@ const MediaTable = <T,>({
   );
 };
 
-export default MediaTable;
+export default ManageTable;

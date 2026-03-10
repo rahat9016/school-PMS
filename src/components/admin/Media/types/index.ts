@@ -19,3 +19,12 @@ export interface IMediaVideo {
   createdAt: string;
   actions?: string;
 }
+
+export interface ICategory {
+  id: string;
+  name: string;
+  status: boolean;
+  updatedAt: string;
+  createdAt: string;
+  actions?: string;
+}

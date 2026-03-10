@@ -1,4 +1,6 @@
+import ControlledInputField from "@/components/shared/ControlledInputField";
 import ErrorMessage from "@/components/shared/Errors/ErrorMessage";
+import InputLabel from "@/components/shared/InputLabel";
 import Paragraph from "@/components/shared/Paragraph";
 import SubmitButton from "@/components/shared/SubmitButton";
 import { Button } from "@/components/ui/button";
@@ -6,24 +8,22 @@ import { ErrorType } from "@/types/common/common";
 import { ClipboardMinus } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { useFormContext } from "react-hook-form";
-import { MediaImageSchemaForm } from "../Schema/mediaImageSchema";
-import { FileUploadController } from "@/components/shared/FileUploadController";
+import { CategorySchemaForm } from "../Schema/categorySchema";
 
-
-export default function MediaImageForm({
+export default function CategoryForm({
   isEditMode = false,
   onSubmit,
   error,
   isPending = false,
 }: {
   isEditMode?: boolean;
-  onSubmit: (data: MediaImageSchemaForm) => void;
+  onSubmit: (data: CategorySchemaForm) => void;
   error?: ErrorType | null;
   isPending?: boolean;
 }) {
   const router = useRouter();
 
-  const { handleSubmit, reset } = useFormContext<MediaImageSchemaForm>();
+  const { handleSubmit, reset } = useFormContext<CategorySchemaForm>();
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="w-full space-y-6">
@@ -33,12 +33,17 @@ export default function MediaImageForm({
             <ClipboardMinus className="w-4" />
           </div>
           <Paragraph className="xl:text-lg font-medium">
-            Article Information
+            Category Information
           </Paragraph>
         </div>
 
         <div className="mt-6">
-          <FileUploadController name="image" />
+          <InputLabel label="Category Name" />
+          <ControlledInputField
+            className="bg-light"
+            name="name"
+            placeholder="Enter category name..."
+          />
         </div>
       </div>
 
@@ -47,7 +52,7 @@ export default function MediaImageForm({
       <div className="flex items-center justify-end gap-4">
         <Button
           onClick={() => {
-            router.push("/admin/image-gallery");
+            router.push("/dashboard/manage-categories");
             reset();
           }}
           type="button"
@@ -58,7 +63,7 @@ export default function MediaImageForm({
 
         <SubmitButton
           isLoading={isPending}
-          label={isEditMode ? "Update Image" : "Create Image"}
+          label={isEditMode ? "Update Category" : "Create Category"}
         />
       </div>
     </form>

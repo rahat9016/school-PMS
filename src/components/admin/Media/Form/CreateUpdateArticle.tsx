@@ -1,22 +1,19 @@
 "use client";
 
 import {
-  Dialog,
-  DialogContent,
-  DialogHeader,
-  DialogTitle,
+    Dialog,
+    DialogContent,
+    DialogHeader,
+    DialogTitle,
 } from "@/components/ui/dialog";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useEffect } from "react";
 import { FormProvider, useForm } from "react-hook-form";
-import {
-  mediaImageSchema,
-  MediaImageSchemaForm,
-} from "../Schema/mediaImageSchema";
+import { articleSchema, ArticleSchemaForm } from "../Schema/articleSchema";
 import { IMediaImage } from "../types";
-import MediaImageForm from "./MediaImageForm";
+import ArticleForm from "./ArticleForm";
 
-export default function CreateUpdateMediaImage({
+export default function CreateUpdateArticle({
   isOpen,
   onClose,
   initialValues,
@@ -26,7 +23,7 @@ export default function CreateUpdateMediaImage({
   initialValues?: IMediaImage;
 }) {
   const methods = useForm({
-    resolver: yupResolver(mediaImageSchema),
+    resolver: yupResolver(articleSchema),
     defaultValues: {
       image: "",
       status: false,
@@ -42,7 +39,7 @@ export default function CreateUpdateMediaImage({
     }
   }, [initialValues, methods]);
 
-  const onSubmit = (data: MediaImageSchemaForm) => {
+  const onSubmit = (data: ArticleSchemaForm) => {
     console.log(data);
     if (initialValues) {
       // PATCH
@@ -57,11 +54,11 @@ export default function CreateUpdateMediaImage({
       <DialogContent className="bg-white min-w-[60vw] overflow-y-auto">
         <DialogHeader>
           <DialogTitle className="text-main-secondary text-2xl font-semibold">
-            {initialValues ? "Update Media Image" : "Create Media Image"}
+            {initialValues ? "Update Article" : "Create Article"}
           </DialogTitle>
         </DialogHeader>
         <FormProvider {...methods}>
-          <MediaImageForm isEditMode={!!initialValues} onSubmit={onSubmit} />
+          <ArticleForm isEditMode={!!initialValues} onSubmit={onSubmit} />
         </FormProvider>
       </DialogContent>
     </Dialog>

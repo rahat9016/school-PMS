@@ -1,15 +1,17 @@
 "use client";
 
-import { useEffect } from "react";
-import MediaTable from "./MediaTable";
-import { GetMediaVideoColumns } from "./TableColumns/MediaVideoColumns";
-import { IMediaVideo } from "./types";
+import { useGet } from "@/hooks/useGet";
+import { usePagination } from "@/hooks/usePagination";
 import { useSearchDebounce } from "@/hooks/useSearchDebounce";
 import { useAppSelector } from "@/lib/redux/hooks";
-import { usePagination } from "@/hooks/usePagination";
-import { useGet } from "@/hooks/useGet";
+import { useEffect, useState } from "react";
+import CreateUpdateCategory from "./Form/CreateUpdateCategory";
+import MediaTable from "./ManageTable";
+import { GetCategoryColumns } from "./TableColumns/CategoryColumns";
+import { ICategory } from "./types";
 
-export default function VideoGalleryList() {
+export default function CategoryList() {
+  const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
   const {
     setCurrentPage,
     itemsPerPage,
@@ -22,10 +24,10 @@ export default function VideoGalleryList() {
     useSearchDebounce(300);
   const { sortBy } = useAppSelector((state) => state.filter);
 
-  const { data, isLoading } = useGet<IMediaVideo[]>(
-    "/videos",
+  const { data, isLoading } = useGet<ICategory[]>(
+    "/categories",
     [
-      "videos",
+      "categories",
       currentPage.toString(),
       itemsPerPage.toString(),
       debouncedSearch,
@@ -38,7 +40,7 @@ export default function VideoGalleryList() {
       }),
       search: debouncedSearch,
       ...(sortBy && { status: sortBy }),
-    }
+    },
   );
 
   // Update total items whenever data changes
@@ -49,7 +51,7 @@ export default function VideoGalleryList() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [data]);
 
-  const columns = GetMediaVideoColumns();
+  const columns = GetCategoryColumns();
   return (
     <div>
       <MediaTable
@@ -64,9 +66,15 @@ export default function VideoGalleryList() {
         search={search}
         handleSearchChange={handleSearchChange}
         showCreateButton
-        createTitle="Add article"
-        title="Manage Articles"
-        // routeURL="/admin/add-media-video"
+        createTitle="Add category"
+        title="Manage Categories"
+        setIsModalOpen={setIsModalOpen}
+      />
+      <CreateUpdateCategory
+        isOpen={isModalOpen}
+        onClose={() => {
+          setIsModalOpen(false);
+        }}
       />
     </div>
   );

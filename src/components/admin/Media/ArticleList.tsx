@@ -1,17 +1,16 @@
 "use client";
 
-import { useEffect } from "react";
-import MediaTable from "./MediaTable";
-import { GetMediaImageColumns } from "./TableColumns/MediaImageColumns";
-import { IMediaImage } from "./types";
+import { useGet } from "@/hooks/useGet";
 import { usePagination } from "@/hooks/usePagination";
 import { useSearchDebounce } from "@/hooks/useSearchDebounce";
 import { useAppSelector } from "@/lib/redux/hooks";
-import { useGet } from "@/hooks/useGet";
-import CreateUpdateMediaImage from "./Form/CreateUpdateMediaImage";
-import { useState } from "react";
-export default function ImageGalleryList() {
-    const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+import { useEffect, useState } from "react";
+import CreateUpdateArticle from "./Form/CreateUpdateArticle";
+import MediaTable from "./ManageTable";
+import { GetArticleColumns } from "./TableColumns/ArticleColumns";
+import { IMediaImage } from "./types";
+export default function ArticleList() {
+  const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
   const {
     setCurrentPage,
     itemsPerPage,
@@ -40,7 +39,7 @@ export default function ImageGalleryList() {
       }),
       search: debouncedSearch,
       ...(sortBy && { status: sortBy }),
-    }
+    },
   );
 
   // Update total items whenever data changes
@@ -51,7 +50,7 @@ export default function ImageGalleryList() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [data]);
 
-  const columns = GetMediaImageColumns();
+  const columns = GetArticleColumns();
   return (
     <div>
       <MediaTable
@@ -66,11 +65,11 @@ export default function ImageGalleryList() {
         search={search}
         handleSearchChange={handleSearchChange}
         showCreateButton
-        createTitle="Add new image"
+        createTitle="Add new article"
         setIsModalOpen={setIsModalOpen}
         // routeURL="/admin/add-media-image"
       />
-      <CreateUpdateMediaImage
+      <CreateUpdateArticle
         isOpen={isModalOpen}
         onClose={() => {
           setIsModalOpen(false);
