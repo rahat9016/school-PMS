@@ -1,4 +1,4 @@
-import { StatusType } from "@/src/types/common/common";
+import { StatusType } from "@/types/common/common";
 
 export interface StatusBadgeProps {
   status: StatusType;

@@ -1,6 +1,6 @@
-import Image from "next/image";
-import calendar from "../../../../../../public/newsEvents/Academic/calender.jpeg";
 import bg from "../../../../../../public/newsEvents/Academic/shape1.png";
+
+const calendar = "/newsEvents/Academic/calender.pdf";
 export default function AcademicCalendar() {
   return (
     <div>
@@ -16,11 +16,12 @@ export default function AcademicCalendar() {
               Academic Calendar
             </h1>
             <span className="w-[140px] h-[3px] bg-main-secondary mx-auto mt-2 mb-10 block"></span>
-            <Image
+            <iframe
               src={calendar}
-              alt=" Academic Calendar"
-              width={1280}
-              height={1808}
+              title="Academic Calendar"
+              width="100%"
+              height="1080"
+              className="border border-gray-300"
             />
           </div>
         </div>

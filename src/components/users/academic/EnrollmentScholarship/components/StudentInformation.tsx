@@ -105,7 +105,7 @@ export default function StudentInformation() {
                   <ControlledSelectField
                     name="gender"
                     className="bg-[#F8F8F8]"
-                    selectLabel="-- Select Gender --"
+                    placeholder="-- Select Gender --"
                     options={[
                       { value: "Male", label: "Male" },
                       { value: "Female", label: "Female" },
@@ -152,7 +152,7 @@ export default function StudentInformation() {
                   <ControlledSelectField
                     name="gradeApplyingFor"
                     className="bg-[#F8F8F8]"
-                    selectLabel="-- Select Grade --"
+                    placeholder="-- Select Grade --"
                     options={[
                       { value: "nursery", label: "Nursery" },
                       { value: "KG-1", label: "KG-1" },
@@ -178,7 +178,7 @@ export default function StudentInformation() {
                   <ControlledSelectField
                     name="yearApplyingFor"
                     className="bg-[#F8F8F8]"
-                    selectLabel="-- Select Applying --"
+                    placeholder="-- Select Applying --"
                     options={[
                       { value: "2021-2022", label: "2021-2022" },
                       { value: "2022-2023", label: "2022-2023" },
@@ -223,7 +223,7 @@ export default function StudentInformation() {
                     <ControlledSelectField
                       className="bg-[#F8F8F8]"
                       name="parentTitle"
-                      selectLabel="-- Select Title --"
+                      placeholder="-- Select Title --"
                       options={[
                         { value: "Mr.", label: "Mr." },
                         { value: "Mrs.", label: "Mrs." },
@@ -269,7 +269,7 @@ export default function StudentInformation() {
                   <ControlledSelectField
                     className="bg-[#F8F8F8]"
                     name="parentRelation"
-                    selectLabel="-- Select Relationship --"
+                    placeholder="-- Select Relationship --"
                     options={[
                       { value: "Father", label: "Father" },
                       { value: "Mother", label: "Mother" },
@@ -331,7 +331,7 @@ export default function StudentInformation() {
                   <ControlledSelectField
                     name="referralSource"
                     className="bg-[#F8F8F8]"
-                    selectLabel="Where did you hear from our school?"
+                    placeholder="Where did you hear from our school?"
                     options={[]}
                   />
                 </div>

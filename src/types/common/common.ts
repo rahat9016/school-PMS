@@ -37,14 +37,14 @@ export type ResponseSuccessType = {
 export type ErrorType = IGenericErrorResponse | null | undefined;
 
 export enum StatusType {
-  COMPLETED = "Completed",
-  PENDING = "Pending",
-  CANCELLED = "Cancelled",
-  ACTIVE = "Active",
-  INACTIVE = "Inactive",
-  IN_PROGRESS = "In progress",
-  RESOLVED = "Resolved",
-  ON_LEAVE = "On Leave",
+  COMPLETED = "COMPLETED",
+  PENDING = "PENDING",
+  CANCELLED = "CANCELLED",
+  ACTIVE = "ACTIVE",
+  INACTIVE = "INACTIVE",
+  IN_PROGRESS = "IN_PROGRESS",
+  RESOLVED = "RESOLVED",
+  ON_LEAVE = "ON_LEAVE",
 }
 export enum BookingType {
   ONSITE = "onsite",
