@@ -9,12 +9,11 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { filterData } from "@/lib/data/data";
-import { filterPosts } from "@/lib/helper/helper";
+import { useGet } from "@/hooks/useGet";
+import { ICategory, INewsItem } from "@/types";
 import { Search } from "lucide-react";
 import Link from "next/link";
-import { useEffect, useState } from "react";
-import { IPost } from "../../LatestNewsUpdates/components/LatestNews";
+import { useMemo, useState } from "react";
 
 const dates = [
   "April 2024",
@@ -33,18 +32,53 @@ const dates = [
 ];
 
 export default function Recent() {
-  const [selectedCategory, setSelectedCategory] = useState<number | null>(null);
-  const [filteredPosts, setFilteredPosts] = useState<IPost[]>(filterData.posts);
+  const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
   const [searchQuery, setSearchQuery] = useState<string>("");
+
+  // Fetch news from API
+  const { data: newsData } = useGet<INewsItem[]>(
+    "/news-events",
+    ["news-events", "NEWS"],
+    { type: "NEWS" },
+  );
+
+  // Fetch categories from API
+  const { data: categoriesData } = useGet<ICategory[]>(
+    "/category",
+    ["categories-all"],
+    { all: true },
+  );
+
+  const posts = newsData?.data ?? [];
+  const categories = categoriesData?.data ?? [];
+
+  // Client-side filtering
+  const filteredPosts = useMemo(() => {
+    const query = searchQuery.toLowerCase().trim();
+
+    if (selectedCategory === null && query === "") {
+      return posts;
+    }
+
+    return posts.filter((post) => {
+      const categoryMatch =
+        selectedCategory === null ||
+        post.generalCategory?._id === selectedCategory;
+
+      const searchMatch =
+        query === "" ||
+        post.title.toLowerCase().includes(query) ||
+        post.description?.toLowerCase().includes(query);
+
+      return categoryMatch && searchMatch;
+    });
+  }, [posts, selectedCategory, searchQuery]);
+
   // Handler for category selection change
   const handleCategoryChange = (value: string) => {
-    setSelectedCategory(Number(value));
+    setSelectedCategory(value === "all" ? null : value);
   };
 
-  useEffect(() => {
-    const posts = filterPosts(selectedCategory, [], searchQuery);
-    setFilteredPosts(posts);
-  }, [searchQuery, selectedCategory]);
   return (
     <div>
       <div>
@@ -68,9 +102,7 @@ export default function Recent() {
           </div>
 
           <Select
-            value={
-              selectedCategory !== null ? String(selectedCategory) : undefined
-            }
+            value={selectedCategory !== null ? selectedCategory : undefined}
             onValueChange={handleCategoryChange}
           >
             <SelectTrigger className="w-full py-3">
@@ -78,8 +110,9 @@ export default function Recent() {
             </SelectTrigger>
             <SelectContent>
               <SelectGroup>
-                {filterData?.categories?.map((category) => (
-                  <SelectItem key={category.id} value={String(category.id)}>
+                <SelectItem value="all">All</SelectItem>
+                {categories?.map((category) => (
+                  <SelectItem key={category._id} value={category._id}>
                     {category.name}
                   </SelectItem>
                 ))}
@@ -90,8 +123,8 @@ export default function Recent() {
             <div className="border border-softGray px-2 py-3 mt-6 rounded-md">
               <ul className="list-disc pl-5">
                 {filteredPosts?.map((post) => (
-                  <li key={post?.id} className="underline text-[#4A7FE9] pb-2">
-                    <Link href={`/latest-news-updates/${post?.id}`}>
+                  <li key={post?._id} className="underline text-[#4A7FE9] pb-2">
+                    <Link href={`/latest-news-updates/${post?._id}`}>
                       {post?.title}
                     </Link>
                   </li>

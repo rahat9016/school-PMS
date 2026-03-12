@@ -10,22 +10,10 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import useFilter from "@/hooks/useFilter";
-import { filterData } from "@/lib/data/data";
 
 import { Search } from "lucide-react";
-import Image, { StaticImageData } from "next/image";
+import Image from "next/image";
 import { useRouter } from "next/navigation";
-export interface IPost {
-  id: number;
-  title: string;
-  date: string;
-  content: string;
-  content2: string;
-  content3: string;
-  category_ids: number[];
-  tag_ids: number[];
-  image: StaticImageData;
-}
 
 export default function LatestNews() {
   const {
@@ -36,8 +24,21 @@ export default function LatestNews() {
     selectedTags,
     setSelectedTags,
     filteredPosts,
+    tags,
+    categories,
+    isLoading,
   } = useFilter();
   const router = useRouter();
+
+  if (isLoading) {
+    return (
+      <div className="bg-white pt-10 lg:pt-20 pb-8 lg:pb-[64px]">
+        <div className="container flex items-center justify-center h-[300px]">
+          <p className="text-main-primary text-lg">Loading...</p>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="bg-white pt-10 lg:pt-20 pb-8 lg:pb-[64px]">
@@ -50,9 +51,7 @@ export default function LatestNews() {
           <div className="flex flex-row items-center mt-6 gap-1">
             <InputLabel label="Select Category:" />
             <Select
-              value={
-                selectedCategory !== null ? String(selectedCategory) : undefined
-              }
+              value={selectedCategory !== null ? selectedCategory : undefined}
               onValueChange={handleCategoryChange}
             >
               <SelectTrigger className="w-full lg:w-[180px]">
@@ -60,8 +59,9 @@ export default function LatestNews() {
               </SelectTrigger>
               <SelectContent>
                 <SelectGroup>
-                  {filterData?.categories?.map((category) => (
-                    <SelectItem key={category.id} value={String(category.id)}>
+                  <SelectItem value="all">All</SelectItem>
+                  {categories?.map((category) => (
+                    <SelectItem key={category._id} value={category._id}>
                       {category.name}
                     </SelectItem>
                   ))}
@@ -89,21 +89,21 @@ export default function LatestNews() {
         <div className="flex items-center mt-6 gap-1">
           <InputLabel label="Tags:" />
           <div className="flex space-x-2 overflow-x-auto scrollbar-hide">
-            {filterData.tags.map((tag) => (
+            {tags.map((tag) => (
               <button
-                key={tag.id}
-                onClick={() => toggleTag(tag.id)}
+                key={tag._id}
+                onClick={() => toggleTag(tag._id)}
                 className={`relative whitespace-nowrap border px-3 py-1 rounded-full text-sm transition-colors text-main-primary border-main-primary gap-2 ${
-                  selectedTags.includes(tag.id) ? "bg-[#FFF1E3]" : "bg-white"
+                  selectedTags.includes(tag._id) ? "bg-[#FFF1E3]" : "bg-white"
                 }`}
               >
                 {tag.name}
-                {selectedTags.includes(tag.id) && (
+                {selectedTags.includes(tag._id) && (
                   <span
                     onClick={(e) => {
                       e.stopPropagation();
                       setSelectedTags((prev) =>
-                        prev.filter((t) => t !== tag.id)
+                        prev.filter((t) => t !== tag._id),
                       );
                     }}
                     className="text-xs cursor-pointer"
@@ -116,19 +116,34 @@ export default function LatestNews() {
           </div>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mt-8 lg:mt-[64px]">
-          {filteredPosts.map((post, index) => (
-            <div key={index}>
+          {filteredPosts.map((post) => (
+            <div key={post._id}>
               <div
-                className="h-[227px] bg-cover"
-                onClick={() => router.push(`/latest-news-updates/${post.id}`)}
+                className="h-[227px] bg-cover cursor-pointer"
+                onClick={() => router.push(`/latest-news-updates/${post._id}`)}
               >
-                <Image src={post.image} alt="img" className="h-auto" />
+                {post.imageUrls?.[0] && (
+                  <Image
+                    src={post.imageUrls[0]}
+                    alt={post.title}
+                    width={400}
+                    height={227}
+                    className="h-full w-full object-cover"
+                  />
+                )}
               </div>
               <h3 className="text-lg text-black-dark font-medium mt-2">
                 {post.title}
               </h3>
               <p className="text-darkGray text-sm font-poppins font-normal mt-2">
-                {post.date}
+                {new Date(post.eventDate || post.createdAt).toLocaleDateString(
+                  "en-US",
+                  {
+                    year: "numeric",
+                    month: "long",
+                    day: "numeric",
+                  },
+                )}
               </p>
             </div>
           ))}

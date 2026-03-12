@@ -1,13 +1,3 @@
-import React from "react";
-import Image from "next/image";
-import Link from "next/link";
-import { IPost } from "../../LatestNewsUpdates/components/LatestNews";
-import facebook from "../../../../../../public/facebook.png";
-import google from "../../../../../../public/google-plus.png";
-import whatsapp from "../../../../../../public/whatsapp.png";
-import twitter from "../../../../../../public/twitter.png";
-import share from "../../../../../../public/share.png";
-import { scholarsData } from "./data";
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -15,8 +5,17 @@ import {
   BreadcrumbList,
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
+import { INewsItem } from "@/types";
+import Image from "next/image";
+import Link from "next/link";
+import facebook from "../../../../../../public/facebook.png";
+import google from "../../../../../../public/google-plus.png";
+import share from "../../../../../../public/share.png";
+import twitter from "../../../../../../public/twitter.png";
+import whatsapp from "../../../../../../public/whatsapp.png";
+import { scholarsData } from "./data";
 
-export default function PostDetails({ post }: { post: IPost | undefined }) {
+export default function PostDetails({ post }: { post: INewsItem | undefined }) {
   return (
     <div>
       <div>
@@ -25,13 +24,23 @@ export default function PostDetails({ post }: { post: IPost | undefined }) {
             <BreadcrumbList>
               <BreadcrumbItem>
                 <BreadcrumbLink asChild>
-                  <Link href="/latest-news-updates" className="font-poppins text-darkGray text-sm" >Latest News & Updates</Link>
+                  <Link
+                    href="/latest-news-updates"
+                    className="font-poppins text-darkGray text-sm"
+                  >
+                    Latest News & Updates
+                  </Link>
                 </BreadcrumbLink>
               </BreadcrumbItem>
               <BreadcrumbSeparator />
               <BreadcrumbItem>
                 <BreadcrumbLink asChild>
-                  <Link href={`/latest-news-updates/${post?.id}`} className="font-poppins text-darkGray text-sm" >{post?.title}</Link>
+                  <Link
+                    href={`/latest-news-updates/${post?._id}`}
+                    className="font-poppins text-darkGray text-sm"
+                  >
+                    {post?.title}
+                  </Link>
                 </BreadcrumbLink>
               </BreadcrumbItem>
             </BreadcrumbList>
@@ -44,11 +53,17 @@ export default function PostDetails({ post }: { post: IPost | undefined }) {
         <div className="flex flex-col lg:flex-row items-center justify-between">
           <div className="flex items-center gap-2">
             <span className="block py-2 px-4 bg-main-primary rounded-full text-white text-sm font-poppins">
-              School Life
+              {post?.generalCategory?.name || "General"}
             </span>{" "}
             <span className="w-[2px] h-[24px] bg-darkGray block"></span>{" "}
             <p className="text-darkGray text-sm font-poppins font-normal">
-              {post?.date}
+              {post?.eventDate
+                ? new Date(post.eventDate).toLocaleDateString("en-US", {
+                    year: "numeric",
+                    month: "long",
+                    day: "numeric",
+                  })
+                : ""}
             </p>
           </div>
           <div className="flex flex-col lg:flex-row items-center gap-4">
@@ -72,25 +87,20 @@ export default function PostDetails({ post }: { post: IPost | undefined }) {
         </div>
         <span className="w-full h-[2px] bg-pureWhite block mt-4 mb-8"></span>
         <div className="mb-[64px]">
-          <Image
-            className="w-full rounded-xl mb-6"
-            src={post?.image || ""}
-            alt={"PAIS Victorious in World Scholar’s Cup"}
-          />
-          {post?.content && (
-            <p className="font-poppins font-medium text-sm lg:text-base text-main-primary">
-              {post?.content}
-            </p>
+          {post?.imageUrls?.[0] && (
+            <Image
+              className="w-full rounded-xl mb-6"
+              src={post.imageUrls[0]}
+              alt={post?.title || "News image"}
+              width={800}
+              height={450}
+            />
           )}
-          {post?.content2 && (
-            <p className="font-poppins font-normal text-sm lg:text-base text-black-dark mt-3 lg:mt-6">
-              {post?.content2}
-            </p>
-          )}
-          {post?.content3 && (
-            <p className="font-poppins font-normal text-sm lg:text-base text-black-dark mt-3 lg:mt-6">
-              {post?.content3}
-            </p>
+          {post?.description && (
+            <div
+              className="font-poppins font-normal text-sm lg:text-base text-black-dark mt-3 lg:mt-6 prose max-w-none"
+              dangerouslySetInnerHTML={{ __html: post.description }}
+            />
           )}
         </div>
         <div>

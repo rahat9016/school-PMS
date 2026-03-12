@@ -1,6 +1,7 @@
 "use client";
 import HeroSection from "@/components/shared/HeroSection";
-import { filterData } from "@/lib/data/data";
+import { useGet } from "@/hooks/useGet";
+import { INewsItem } from "@/types";
 import { useParams } from "next/navigation";
 import herobg from "../../../../../public/newsEvents/latestNewsHeroBg.jpg";
 import PostDetails from "./components/PostDetails";
@@ -8,7 +9,24 @@ import Recent from "./components/Recent";
 
 export default function LatestNewsUpdatesDetails() {
   const { id } = useParams();
-  const post = filterData.posts.find((post) => post.id === Number(id));
+
+  const { data, isLoading } = useGet<INewsItem>(
+    `/news-events/${id}`,
+    ["news-event", id as string],
+    {},
+    { enabled: !!id },
+  );
+
+  const post = data?.data;
+
+  if (isLoading) {
+    return (
+      <div className="container h-[600px] flex items-center justify-center">
+        <p>Loading...</p>
+      </div>
+    );
+  }
+
   if (!post)
     return (
       <div className="container h-[600px] flex items-center justify-center">
