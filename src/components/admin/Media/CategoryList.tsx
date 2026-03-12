@@ -12,6 +12,7 @@ import { ICategory } from "./types";
 
 export default function CategoryList() {
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+  const [selectedItem, setSelectedItem] = useState<ICategory | undefined>(undefined);
   const {
     setCurrentPage,
     itemsPerPage,
@@ -51,7 +52,13 @@ export default function CategoryList() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [data]);
   console.log("ok", data);
-  const columns = GetCategoryColumns();
+
+  const handleEdit = (item: ICategory) => {
+    setSelectedItem(item);
+    setIsModalOpen(true);
+  };
+
+  const columns = GetCategoryColumns(handleEdit);
   return (
     <div>
       <MediaTable
@@ -74,7 +81,9 @@ export default function CategoryList() {
         isOpen={isModalOpen}
         onClose={() => {
           setIsModalOpen(false);
+          setSelectedItem(undefined);
         }}
+        initialValues={selectedItem}
       />
     </div>
   );

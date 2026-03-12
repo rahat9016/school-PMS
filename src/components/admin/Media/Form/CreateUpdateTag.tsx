@@ -1,10 +1,10 @@
 "use client";
 
 import {
-    Dialog,
-    DialogContent,
-    DialogHeader,
-    DialogTitle,
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
 } from "@/components/ui/dialog";
 import { usePatch } from "@/hooks/usePatch";
 import { usePost } from "@/hooks/usePost";
@@ -53,6 +53,7 @@ export default function CreateUpdateTag({
     error: updateError,
   } = usePatch(() => {
     toast.success("Tag updated successfully");
+    methods.reset();
     onClose();
   }, [["tags"]]);
 

@@ -2,12 +2,14 @@ import StatusBadge from "@/components/shared/Status/Status";
 import { Button } from "@/components/ui/button";
 import { ColumnDef } from "@/components/ui/data-table";
 import { StatusType } from "@/types/common/common";
-import { Trash2 } from "lucide-react";
+import { SquarePen } from "lucide-react";
 import { ITag } from "../types";
 
 let rowIndex = 0;
 
-export const GetTagColumns = (): ColumnDef<ITag>[] => {
+export const GetTagColumns = (
+  onEdit?: (item: ITag) => void,
+): ColumnDef<ITag>[] => {
   rowIndex = 0;
 
   return [
@@ -46,14 +48,11 @@ export const GetTagColumns = (): ColumnDef<ITag>[] => {
         return (
           <div className="flex items-center gap-3">
             <Button
-              className="w-9 max-h-9 bg-red-50 hover:bg-red-100 text-red-600 border border-red-200"
+              className="w-9 max-h-9 bg-light hover:bg-light/90 text-secondary-foreground border border-[#E6E6E6]"
               size="sm"
-              onClick={() => {
-                // Handle delete
-                console.log("Delete tag:", tag._id);
-              }}
+              onClick={() => onEdit?.(tag)}
             >
-              <Trash2 className="w-4 h-4" />
+              <SquarePen className="w-4 h-4" />
             </Button>
           </div>
         );

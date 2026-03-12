@@ -4,12 +4,11 @@ import { ColumnDef } from "@/components/ui/data-table";
 import { StatusType } from "@/types/common/common";
 import { SquarePen } from "lucide-react";
 import Image from "next/image";
-import { useRouter } from "next/navigation";
 import { INewsAndEvents } from "../types";
 
-export const GetNewsAndEventsColumns = (): ColumnDef<INewsAndEvents>[] => {
-  const router = useRouter();
-
+export const GetNewsAndEventsColumns = (
+  onEdit?: (item: INewsAndEvents) => void,
+): ColumnDef<INewsAndEvents>[] => {
   return [
     {
       header: "Image",
@@ -121,9 +120,7 @@ export const GetNewsAndEventsColumns = (): ColumnDef<INewsAndEvents>[] => {
             <Button
               className="w-9 max-h-9 bg-light hover:bg-light/90 text-secondary-foreground border border-[#E6E6E6]"
               size="sm"
-              onClick={() =>
-                router.push(`/admin/update-news-and-events/${newsEvent._id}`)
-              }
+              onClick={() => onEdit?.(newsEvent)}
             >
               <SquarePen />
             </Button>

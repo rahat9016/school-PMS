@@ -11,6 +11,9 @@ import { GetNewsAndEventsColumns } from "./TableColumns/NewsAndEventsColumns";
 import { INewsAndEvents } from "./types";
 export default function NewsAndEventsList() {
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+  const [selectedItem, setSelectedItem] = useState<INewsAndEvents | undefined>(
+    undefined,
+  );
   const {
     setCurrentPage,
     itemsPerPage,
@@ -50,7 +53,12 @@ export default function NewsAndEventsList() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [data]);
 
-  const columns = GetNewsAndEventsColumns();
+  const handleEdit = (item: INewsAndEvents) => {
+    setSelectedItem(item);
+    setIsModalOpen(true);
+  };
+
+  const columns = GetNewsAndEventsColumns(handleEdit);
   return (
     <div>
       <MediaTable
@@ -73,7 +81,9 @@ export default function NewsAndEventsList() {
         isOpen={isModalOpen}
         onClose={() => {
           setIsModalOpen(false);
+          setSelectedItem(undefined);
         }}
+        initialValues={selectedItem}
       />
     </div>
   );

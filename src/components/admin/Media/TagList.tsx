@@ -12,6 +12,7 @@ import { ITag } from "./types";
 
 export default function TagList() {
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+  const [selectedItem, setSelectedItem] = useState<ITag | undefined>(undefined);
   const {
     setCurrentPage,
     itemsPerPage,
@@ -50,7 +51,12 @@ export default function TagList() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [data]);
 
-  const columns = GetTagColumns();
+  const handleEdit = (item: ITag) => {
+    setSelectedItem(item);
+    setIsModalOpen(true);
+  };
+
+  const columns = GetTagColumns(handleEdit);
   return (
     <div>
       <MediaTable
@@ -73,7 +79,9 @@ export default function TagList() {
         isOpen={isModalOpen}
         onClose={() => {
           setIsModalOpen(false);
+          setSelectedItem(undefined);
         }}
+        initialValues={selectedItem}
       />
     </div>
   );

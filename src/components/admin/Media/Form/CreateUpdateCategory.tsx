@@ -53,6 +53,7 @@ export default function CreateUpdateCategory({
     error: updateError,
   } = usePatch(() => {
     toast.success("Category updated successfully");
+    methods.reset();
     onClose();
   }, [["categories"]]);
 

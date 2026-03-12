@@ -1,11 +1,15 @@
+import StatusBadge from "@/components/shared/Status/Status";
 import { Button } from "@/components/ui/button";
 import { ColumnDef } from "@/components/ui/data-table";
-import { Trash2 } from "lucide-react";
+import { StatusType } from "@/types/common/common";
+import { SquarePen } from "lucide-react";
 import { ICategory } from "../types";
 
 let rowIndex = 0;
 
-export const GetCategoryColumns = (): ColumnDef<ICategory>[] => {
+export const GetCategoryColumns = (
+  onEdit?: (item: ICategory) => void,
+): ColumnDef<ICategory>[] => {
   rowIndex = 0;
 
   return [
@@ -36,6 +40,17 @@ export const GetCategoryColumns = (): ColumnDef<ICategory>[] => {
       },
     },
     {
+      header: "Status",
+      accessorKey: "status",
+      cell: (value) => {
+        return (
+          <StatusBadge
+            status={value ? StatusType.ACTIVE : StatusType.INACTIVE}
+          />
+        );
+      },
+    },
+    {
       header: "Actions",
       accessorKey: "actions",
       cell: (_value, row) => {
@@ -44,14 +59,11 @@ export const GetCategoryColumns = (): ColumnDef<ICategory>[] => {
         return (
           <div className="flex items-center gap-3">
             <Button
-              className="w-9 max-h-9 bg-red-50 hover:bg-red-100 text-red-600 border border-red-200"
+              className="w-9 max-h-9 bg-light hover:bg-light/90 text-secondary-foreground border border-[#E6E6E6]"
               size="sm"
-              onClick={() => {
-                // Handle delete
-                console.log("Delete category:", category._id);
-              }}
+              onClick={() => onEdit?.(category)}
             >
-              <Trash2 className="w-4 h-4" />
+              <SquarePen className="w-4 h-4" />
             </Button>
           </div>
         );

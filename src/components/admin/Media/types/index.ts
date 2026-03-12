@@ -57,6 +57,7 @@ export interface ICategory {
   _id: string;
   name: string;
   description: string;
+  status: boolean;
   updatedAt: string;
   createdAt: string;
   actions?: string;
