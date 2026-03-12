@@ -1,4 +1,5 @@
-import { IPost } from "@/components/users/newsAndEvents/LatestNewsUpdates/components/LatestNews";
+
+import { IPost } from "@/types";
 import { filterData } from "../data/data";
 
 export const filterPosts = (
