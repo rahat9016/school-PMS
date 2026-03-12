@@ -16,7 +16,7 @@ export default function Paragraph({
   return (
     <Tag
       className={cn(
-        "text-sm xl:text-base text-secondary-foreground leading-relaxed",
+        "text-sm xl:text-base text-main-primary leading-relaxed",
         className
       )}
     >

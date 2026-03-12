@@ -5,7 +5,7 @@ import { IGenericErrorResponse } from "../types/common/common";
 interface IGenericResponse<T> {
   data: T;
   meta?: {
-    totalItems: number;
+    total_data: number;
     itemCount: number;
     itemsPerPage: number;
     totalPages: number;
@@ -25,12 +25,12 @@ export const useGet = <T>(
       string[]
     >,
     "queryKey" | "queryFn"
-  >
+  >,
 ) => {
   const filteredParams = Object.fromEntries(
     Object.entries(queryParams || {}).filter(([, value]) => {
       return value !== "" && value !== undefined && value !== null;
-    })
+    }),
   );
 
   const finalQueryKey = [

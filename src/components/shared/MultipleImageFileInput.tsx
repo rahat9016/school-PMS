@@ -1,0 +1,172 @@
+import { cn } from "@/lib/utils";
+import { X } from "lucide-react";
+import Image from "next/image";
+import { useState } from "react";
+import { Controller, FieldError, useFormContext } from "react-hook-form";
+
+export const SUPPORTED_FORMATS = ["image/jpg", "image/jpeg", "image/png"];
+
+interface MultipleImageUploadControllerProps {
+  name: string;
+  label?: string;
+  className?: string;
+  imgClassName?: string;
+  initialUrls?: string[];
+}
+
+const isFieldErrorMap = (error: unknown): error is Record<string, FieldError> =>
+  typeof error === "object" && error !== null && !("message" in error);
+
+export function MultipleImageUploadController({
+  name,
+  label,
+  className,
+  imgClassName,
+  initialUrls = [],
+}: MultipleImageUploadControllerProps) {
+  const { control } = useFormContext();
+  const [isLoading, setIsLoading] = useState(false);
+
+  const parseFieldErrors = (
+    fieldError: FieldError | Record<string, FieldError> | undefined,
+  ) => {
+    if (!fieldError) return { messages: [], indexes: [] };
+
+    if (isFieldErrorMap(fieldError)) {
+      return {
+        messages: Object.values(fieldError)
+          .map((e) => e.message)
+          .filter((m): m is string => typeof m === "string"),
+        indexes: Object.keys(fieldError).map(Number),
+      };
+    }
+
+    return {
+      messages: fieldError.message ? [fieldError.message] : [],
+      indexes: [],
+    };
+  };
+
+  return (
+    <Controller
+      name={name}
+      control={control}
+      defaultValue={initialUrls}
+      render={({ field, fieldState }) => {
+        const files: (File | string)[] = Array.isArray(field.value)
+          ? field.value
+          : [];
+
+        const previews = files.map((file) =>
+          file instanceof File ? URL.createObjectURL(file) : file,
+        );
+
+        const { messages, indexes } = parseFieldErrors(fieldState.error);
+
+        const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+          const selectedFiles = Array.from(e.target.files || []).filter(
+            (file) => SUPPORTED_FORMATS.includes(file.type),
+          );
+
+          if (!selectedFiles.length) return;
+
+          setIsLoading(true);
+
+          setTimeout(() => {
+            field.onChange([...files, ...selectedFiles]);
+            setIsLoading(false);
+          }, 300);
+        };
+
+        const handleDelete = (index: number) => {
+          const updated = files.filter((_, i) => i !== index);
+          field.onChange(updated);
+        };
+
+        return (
+          <div>
+            <div className="flex flex-col lg:flex-row items-start gap-4">
+              {/* Upload box */}
+              <div
+                className={cn(
+                  "w-full lg:w-44 h-40 border border-dashed border-light-silver bg-[#F7F7F7] rounded-lg hover:border-dashboard-primary shrink-0",
+                  className,
+                )}
+              >
+                <label
+                  htmlFor={`${name}-upload`}
+                  className="flex items-center justify-center h-full cursor-pointer select-none"
+                >
+                  {isLoading ? (
+                    <div className="flex flex-col items-center gap-2">
+                      <div className="w-6 h-6 border-2 border-primary border-t-transparent rounded-full animate-spin" />
+                      <span className="text-xs text-gray-400">
+                        Uploading...
+                      </span>
+                    </div>
+                  ) : (
+                    <div className="flex flex-col items-center">
+                      <Image
+                        width={40}
+                        height={40}
+                        src="/plus.svg"
+                        alt="plus"
+                        className="w-5 mb-1"
+                      />
+                      <span className="text-xs text-[#A6A6A6] text-center px-2">
+                        {label || "Upload images"}
+                      </span>
+                    </div>
+                  )}
+
+                  <input
+                    id={`${name}-upload`}
+                    type="file"
+                    multiple
+                    accept={SUPPORTED_FORMATS.join(",")}
+                    className="hidden"
+                    onChange={handleFileChange}
+                  />
+                </label>
+              </div>
+
+              {/* Preview Grid */}
+              <div className="flex flex-wrap gap-4">
+                {previews.map((src, index) => (
+                  <div
+                    key={src + index}
+                    className={cn(
+                      "relative w-32 lg:w-40 h-28 lg:h-40 rounded-lg",
+                      indexes.includes(index)
+                        ? "border-2 border-rose-600"
+                        : "border border-light",
+                    )}
+                  >
+                    <button
+                      type="button"
+                      onClick={() => handleDelete(index)}
+                      className="absolute -top-2 -right-2 w-6 h-6 bg-primary rounded-full flex items-center justify-center z-10"
+                    >
+                      <X className="w-4 h-4 text-white" />
+                    </button>
+
+                    <Image
+                      src={src}
+                      alt={`Preview ${index}`}
+                      fill
+                      className={cn("object-contain rounded-lg", imgClassName)}
+                    />
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {messages.length > 0 && (
+              <p className="text-rose-500 text-xs mt-1 pl-2">{messages[0]}</p>
+            )}
+          </div>
+        );
+      }}
+    />
+  );
+}

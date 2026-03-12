@@ -40,8 +40,12 @@ const ManageTable = <T,>({
       createTitle={createTitle}
       routeURL={routeURL}
       tabs={[
-        { name: "Manage Articles", route: "/dashboard/manage-articles" },
+        {
+          name: "Manage News And Events",
+          route: "/dashboard/manage-news-and-events",
+        },
         { name: "Manage Category", route: "/dashboard/manage-categories" },
+        { name: "Manage Tags", route: "/dashboard/manage-tags" },
       ]}
       IsCreate={showCreateButton}
       setIsModalOpen={setIsModalOpen}

@@ -14,8 +14,8 @@ interface StatusFilterProps {
 
 const defaultStatuses = [
   { label: "All Status", value: "all" },
-  { label: "Active", value: "active" },
-  { label: "Inactive", value: "inactive" },
+  { label: "Active", value: true },
+  { label: "Inactive", value: false },
 ];
 
 export default function StatusFilter({ statusOptions }: StatusFilterProps) {
@@ -41,7 +41,7 @@ export default function StatusFilter({ statusOptions }: StatusFilterProps) {
 
       <SelectContent className="text-secondary-foreground">
         {optionsToRender.map((opt) => (
-          <SelectItem key={opt.value} value={opt.value}>
+          <SelectItem key={String(opt.value)} value={String(opt.value)}>
             {opt.label}
           </SelectItem>
         ))}

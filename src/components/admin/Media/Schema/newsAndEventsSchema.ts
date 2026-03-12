@@ -55,13 +55,25 @@ export const newsAndEventsSchema = Yup.object({
 
   startTime: Yup.string().when("type", {
     is: "EVENTS",
-    then: (schema) => schema.required("Start time is required for events"),
+    then: (schema) =>
+      schema
+        .required("Start time is required for events")
+        .matches(
+          /^(0[1-9]|1[0-2]):[0-5]\d\s(AM|PM)$/,
+          "Start time must be in HH:MM AM/PM format",
+        ),
     otherwise: (schema) => schema.notRequired(),
   }),
 
   endTime: Yup.string().when("type", {
     is: "EVENTS",
-    then: (schema) => schema.required("End time is required for events"),
+    then: (schema) =>
+      schema
+        .required("End time is required for events")
+        .matches(
+          /^(0[1-9]|1[0-2]):[0-5]\d\s(AM|PM)$/,
+          "End time must be in HH:MM AM/PM format",
+        ),
     otherwise: (schema) => schema.notRequired(),
   }),
 

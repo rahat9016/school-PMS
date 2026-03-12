@@ -5,12 +5,12 @@ import { usePagination } from "@/hooks/usePagination";
 import { useSearchDebounce } from "@/hooks/useSearchDebounce";
 import { useAppSelector } from "@/lib/redux/hooks";
 import { useEffect, useState } from "react";
-import CreateUpdateCategory from "./Form/CreateUpdateCategory";
+import CreateUpdateTag from "./Form/CreateUpdateTag";
 import MediaTable from "./ManageTable";
-import { GetCategoryColumns } from "./TableColumns/CategoryColumns";
-import { ICategory } from "./types";
+import { GetTagColumns } from "./TableColumns/TagColumns";
+import { ITag } from "./types";
 
-export default function CategoryList() {
+export default function TagList() {
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
   const {
     setCurrentPage,
@@ -24,10 +24,10 @@ export default function CategoryList() {
     useSearchDebounce(300);
   const { sortBy } = useAppSelector((state) => state.filter);
 
-  const { data, isLoading } = useGet<ICategory[]>(
-    "/category",
+  const { data, isLoading } = useGet<ITag[]>(
+    "/tag",
     [
-      "categories",
+      "tags",
       currentPage.toString(),
       itemsPerPage.toString(),
       debouncedSearch,
@@ -42,7 +42,6 @@ export default function CategoryList() {
       ...(sortBy && { status: sortBy }),
     },
   );
-
   // Update total items whenever data changes
   useEffect(() => {
     if (data) {
@@ -50,8 +49,8 @@ export default function CategoryList() {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [data]);
-  console.log("ok", data);
-  const columns = GetCategoryColumns();
+
+  const columns = GetTagColumns();
   return (
     <div>
       <MediaTable
@@ -66,11 +65,11 @@ export default function CategoryList() {
         search={search}
         handleSearchChange={handleSearchChange}
         showCreateButton
-        createTitle="Add category"
-        title="Manage Categories"
+        createTitle="Add tag"
+        title="Manage Tags"
         setIsModalOpen={setIsModalOpen}
       />
-      <CreateUpdateCategory
+      <CreateUpdateTag
         isOpen={isModalOpen}
         onClose={() => {
           setIsModalOpen(false);

@@ -1,11 +1,13 @@
+import StatusBadge from "@/components/shared/Status/Status";
 import { Button } from "@/components/ui/button";
 import { ColumnDef } from "@/components/ui/data-table";
+import { StatusType } from "@/types/common/common";
 import { Trash2 } from "lucide-react";
-import { ICategory } from "../types";
+import { ITag } from "../types";
 
 let rowIndex = 0;
 
-export const GetCategoryColumns = (): ColumnDef<ICategory>[] => {
+export const GetTagColumns = (): ColumnDef<ITag>[] => {
   rowIndex = 0;
 
   return [
@@ -18,20 +20,20 @@ export const GetCategoryColumns = (): ColumnDef<ICategory>[] => {
       },
     },
     {
-      header: "Category Name",
+      header: "Tag Name",
       accessorKey: "name",
       cell: (value) => {
         return <span className="text-sm font-medium">{value as string}</span>;
       },
     },
     {
-      header: "Description",
-      accessorKey: "description",
+      header: "Status",
+      accessorKey: "status",
       cell: (value) => {
         return (
-          <span className="text-sm text-gray-600 line-clamp-2">
-            {value as string}
-          </span>
+          <StatusBadge
+            status={value ? StatusType.ACTIVE : StatusType.INACTIVE}
+          />
         );
       },
     },
@@ -39,7 +41,7 @@ export const GetCategoryColumns = (): ColumnDef<ICategory>[] => {
       header: "Actions",
       accessorKey: "actions",
       cell: (_value, row) => {
-        const category = row as ICategory;
+        const tag = row as ITag;
 
         return (
           <div className="flex items-center gap-3">
@@ -48,7 +50,7 @@ export const GetCategoryColumns = (): ColumnDef<ICategory>[] => {
               size="sm"
               onClick={() => {
                 // Handle delete
-                console.log("Delete category:", category._id);
+                console.log("Delete tag:", tag._id);
               }}
             >
               <Trash2 className="w-4 h-4" />

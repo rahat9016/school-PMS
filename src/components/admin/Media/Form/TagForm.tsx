@@ -1,5 +1,7 @@
+import ControlledInputField from "@/components/shared/ControlledInputField";
+import ControlledSelectField from "@/components/shared/ControlledSelectField";
 import ErrorMessage from "@/components/shared/Errors/ErrorMessage";
-import { FileUploadController } from "@/components/shared/FileUploadController";
+import InputLabel from "@/components/shared/InputLabel";
 import Paragraph from "@/components/shared/Paragraph";
 import SubmitButton from "@/components/shared/SubmitButton";
 import { Button } from "@/components/ui/button";
@@ -7,22 +9,22 @@ import { ErrorType } from "@/types/common/common";
 import { ClipboardMinus } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { useFormContext } from "react-hook-form";
-import { ArticleSchemaForm } from "../Schema/articleSchema";
+import { TagSchemaForm } from "../Schema/tagSchema";
 
-export default function ArticleForm({
+export default function TagForm({
   isEditMode = false,
   onSubmit,
   error,
   isPending = false,
 }: {
   isEditMode?: boolean;
-  onSubmit: (data: ArticleSchemaForm) => void;
+  onSubmit: (data: TagSchemaForm) => void;
   error?: ErrorType | null;
   isPending?: boolean;
 }) {
   const router = useRouter();
 
-  const { handleSubmit, reset } = useFormContext<ArticleSchemaForm>();
+  const { handleSubmit, reset } = useFormContext<TagSchemaForm>();
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="w-full space-y-6">
@@ -32,12 +34,31 @@ export default function ArticleForm({
             <ClipboardMinus className="w-4" />
           </div>
           <Paragraph className="xl:text-lg font-medium">
-            Article Information
+            Tag Information
           </Paragraph>
         </div>
 
-        <div className="mt-6">
-          <FileUploadController name="image" />
+        <div className="mt-6 space-y-6">
+          <div>
+            <InputLabel label="Tag Name" />
+            <ControlledInputField
+              className="bg-light"
+              name="name"
+              placeholder="Enter tag name..."
+            />
+          </div>
+
+          <div>
+            <InputLabel label="Status" />
+            <ControlledSelectField
+              name="status"
+              placeholder="Select status"
+              options={[
+                { label: "Active", value: true },
+                { label: "Inactive", value: false },
+              ]}
+            />
+          </div>
         </div>
       </div>
 
@@ -46,7 +67,7 @@ export default function ArticleForm({
       <div className="flex items-center justify-end gap-4">
         <Button
           onClick={() => {
-            router.push("/admin/image-gallery");
+            router.push("/dashboard/manage-tags");
             reset();
           }}
           type="button"
@@ -57,7 +78,7 @@ export default function ArticleForm({
 
         <SubmitButton
           isLoading={isPending}
-          label={isEditMode ? "Update Article" : "Create Article"}
+          label={isEditMode ? "Update Tag" : "Create Tag"}
         />
       </div>
     </form>

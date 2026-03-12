@@ -1,82 +1,81 @@
 "use client";
 import Image from "next/image";
-import React from "react";
-import profile from "../../../../public/profile.png";
-import gallery from "../../../../public/gallery.png";
 import Edit_light from "../../../../public/Edit_light.png";
-import document from "../../../../public/dashboard/document.png";
 import announch from "../../../../public/dashboard/announch.png";
 import callender from "../../../../public/dashboard/callender.png";
-import dgallery from "../../../../public/dashboard/gallery.png";
 import cap from "../../../../public/dashboard/cap.png";
+import document from "../../../../public/dashboard/document.png";
+import dgallery from "../../../../public/dashboard/gallery.png";
 import lunch from "../../../../public/dashboard/lunch.png";
 import media from "../../../../public/dashboard/media.png";
 import school from "../../../../public/dashboard/school.png";
 import schoolb from "../../../../public/dashboard/schoolb.png";
 import summer from "../../../../public/dashboard/summer.png";
+import gallery from "../../../../public/gallery.png";
+import profile from "../../../../public/profile.png";
 
 import { useAppSelector } from "@/lib/redux/hooks";
 import { useRouter } from "next/navigation";
 const features = [
   {
-    title: "Manage Articles",
+    title: "Manage News And Events",
     desc: "Write, edit, and publish news updates.",
     icon: document,
-    location: "/dashboard/manage-articles"
+    location: "/dashboard/manage-news-and-events",
   },
   {
     title: "Media Library",
     desc: "Upload and organize images & videos.",
     icon: media,
-    location: "/dashboard/media-library"
+    location: "/dashboard/media-library",
   },
   {
     title: "School Board",
     desc: "Update and manage school board images.",
     icon: school,
-    location: "/dashboard/"
+    location: "/dashboard/",
   },
   {
     title: "Lunch Menu",
     desc: "Write, edit, and publish news updates.",
     icon: lunch,
-    location: "/dashboard/"
+    location: "/dashboard/",
   },
   {
     title: "School Profile",
     desc: "Update and maintain school profile images.",
     icon: schoolb,
-    location: "/dashboard/"
+    location: "/dashboard/",
   },
   {
     title: "Student Council",
     desc: "Add members, update photos & details.",
     icon: cap,
-    location: "/dashboard/"
+    location: "/dashboard/",
   },
   {
     title: "Summer Camp",
     desc: "Upload images and desc. for summer camps.",
     icon: summer,
-    location: "/dashboard/"
+    location: "/dashboard/",
   },
   {
     title: "PAIS Post",
     desc: "Publish announcements and updates.",
     icon: announch,
-    location: "/dashboard/"
+    location: "/dashboard/",
   },
   {
     title: "Calendars",
     desc: "Upload and manage the academic & activity schedule.",
     icon: callender,
-    location: "/dashboard/"
+    location: "/dashboard/",
   },
   {
     title: "Gallery",
     desc: "Browse, upload, and relive student moments & memories",
     icon: dgallery,
-    location: "/dashboard/gallery"
+    location: "/dashboard/gallery",
   },
 ];
 
@@ -108,7 +107,10 @@ export default function Dashboard() {
             </div>
           </div>
           <div className="flex gap-3">
-            <button onClick={() =>  router.push('/dashboard/media-library')} className="bg-main-primary text-white px-4 py-2 font-poppins font-normal rounded-md text-sm flex items-center gap-2">
+            <button
+              onClick={() => router.push("/dashboard/media-library")}
+              className="bg-main-primary text-white px-4 py-2 font-poppins font-normal rounded-md text-sm flex items-center gap-2"
+            >
               <Image src={gallery} alt={"gallery"} width={16} height={16} />
               Manage Media
             </button>
@@ -125,7 +127,7 @@ export default function Dashboard() {
             <div
               key={index}
               className=" group bg-white hover:bg-main-primary duration-300 rounded-xl py-12 pr-12 pl-5 border border-[#CDCDCD] group-hover:border-none transition relative cursor-pointer"
-              onClick={() => router.push(item.location) }
+              onClick={() => router.push(item.location)}
             >
               <div className="flex items-center gap-4 relative">
                 <div className="bg-[#EFF0EF] group-hover:bg-[#F68C25] duration-300 w-[72px] h-[64px] flex items-center justify-center rounded-lg">

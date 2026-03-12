@@ -5,11 +5,11 @@ import { usePagination } from "@/hooks/usePagination";
 import { useSearchDebounce } from "@/hooks/useSearchDebounce";
 import { useAppSelector } from "@/lib/redux/hooks";
 import { useEffect, useState } from "react";
-import CreateUpdateArticle from "./Form/CreateUpdateArticle";
+import CreateUpdateNewsAndEvents from "./Form/CreateUpdateNewsAndEvents";
 import MediaTable from "./ManageTable";
-import { GetArticleColumns } from "./TableColumns/ArticleColumns";
-import { IMediaImage } from "./types";
-export default function ArticleList() {
+import { GetNewsAndEventsColumns } from "./TableColumns/NewsAndEventsColumns";
+import { INewsAndEvents } from "./types";
+export default function NewsAndEventsList() {
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
   const {
     setCurrentPage,
@@ -23,10 +23,10 @@ export default function ArticleList() {
     useSearchDebounce(300);
   const { sortBy } = useAppSelector((state) => state.filter);
 
-  const { data, isLoading } = useGet<IMediaImage[]>(
-    "/images",
+  const { data, isLoading } = useGet<INewsAndEvents[]>(
+    "/news-events",
     [
-      "images",
+      "news-events",
       currentPage.toString(),
       itemsPerPage.toString(),
       debouncedSearch,
@@ -45,12 +45,12 @@ export default function ArticleList() {
   // Update total items whenever data changes
   useEffect(() => {
     if (data) {
-      setTotalItems(data.meta?.totalItems || 0);
+      setTotalItems(data.meta?.total_data || 0);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [data]);
 
-  const columns = GetArticleColumns();
+  const columns = GetNewsAndEventsColumns();
   return (
     <div>
       <MediaTable
@@ -65,11 +65,11 @@ export default function ArticleList() {
         search={search}
         handleSearchChange={handleSearchChange}
         showCreateButton
-        createTitle="Add new article"
+        createTitle="Add new news and events"
         setIsModalOpen={setIsModalOpen}
         // routeURL="/admin/add-media-image"
       />
-      <CreateUpdateArticle
+      <CreateUpdateNewsAndEvents
         isOpen={isModalOpen}
         onClose={() => {
           setIsModalOpen(false);

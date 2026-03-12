@@ -12,72 +12,72 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { useEffect } from "react";
 import { FormProvider, useForm } from "react-hook-form";
 import { toast } from "react-toastify";
-import { categorySchema, CategorySchemaForm } from "../Schema/categorySchema";
-import { ICategory } from "../types";
-import CategoryForm from "./CategoryForm";
+import { tagSchema, TagSchemaForm } from "../Schema/tagSchema";
+import { ITag } from "../types";
+import TagForm from "./TagForm";
 
-export default function CreateUpdateCategory({
+export default function CreateUpdateTag({
   isOpen,
   onClose,
   initialValues,
 }: {
   isOpen: boolean;
   onClose: () => void;
-  initialValues?: ICategory;
+  initialValues?: ITag;
 }) {
   const methods = useForm({
-    resolver: yupResolver(categorySchema),
+    resolver: yupResolver(tagSchema),
     defaultValues: {
       name: "",
-      description: "",
+      status: false,
     },
   });
 
   const {
-    mutate: createCategory,
+    mutate: createTag,
     isPending: isCreating,
     error: createError,
   } = usePost(
-    "/category/create-category",
+    "/tag",
     () => {
-      toast.success("Category created successfully");
+      toast.success("Tag created successfully");
       methods.reset();
       onClose();
     },
-    [["categories"]],
+    [["tags"]],
   );
 
   const {
-    mutate: updateCategory,
+    mutate: updateTag,
     isPending: isUpdating,
     error: updateError,
   } = usePatch(() => {
-    toast.success("Category updated successfully");
+    toast.success("Tag updated successfully");
     onClose();
-  }, [["categories"]]);
+  }, [["tags"]]);
 
   useEffect(() => {
     if (initialValues) {
       methods.reset({
         name: initialValues.name,
-        description: initialValues.description,
+        status: Boolean(initialValues.status),
       });
     } else {
       methods.reset({
         name: "",
-        description: "",
+        status: false,
       });
     }
   }, [initialValues, methods]);
 
-  const onSubmit = (data: CategorySchemaForm) => {
+  const onSubmit = (data: TagSchemaForm) => {
     if (initialValues) {
-      updateCategory({
-        url: `/category/${initialValues._id}`,
+      updateTag({
+        url: `/tag/${initialValues._id}`,
         data,
       });
     } else {
-      createCategory(data);
+      createTag(data);
     }
   };
 
@@ -89,11 +89,11 @@ export default function CreateUpdateCategory({
       <DialogContent className="bg-white min-w-[60vw] overflow-y-auto">
         <DialogHeader>
           <DialogTitle className="text-main-secondary text-2xl font-semibold">
-            {initialValues ? "Update Category" : "Create Category"}
+            {initialValues ? "Update Tag" : "Create Tag"}
           </DialogTitle>
         </DialogHeader>
         <FormProvider {...methods}>
-          <CategoryForm
+          <TagForm
             isEditMode={!!initialValues}
             onSubmit={onSubmit}
             error={error}

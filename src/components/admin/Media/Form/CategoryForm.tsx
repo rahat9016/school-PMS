@@ -1,4 +1,5 @@
 import ControlledInputField from "@/components/shared/ControlledInputField";
+import ControlledTextareaField from "@/components/shared/ControlledTextAreaField";
 import ErrorMessage from "@/components/shared/Errors/ErrorMessage";
 import InputLabel from "@/components/shared/InputLabel";
 import Paragraph from "@/components/shared/Paragraph";
@@ -37,13 +38,23 @@ export default function CategoryForm({
           </Paragraph>
         </div>
 
-        <div className="mt-6">
-          <InputLabel label="Category Name" />
-          <ControlledInputField
-            className="bg-light"
-            name="name"
-            placeholder="Enter category name..."
-          />
+        <div className="mt-6 space-y-6">
+          <div>
+            <InputLabel label="Category Name" />
+            <ControlledInputField
+              className="bg-light"
+              name="name"
+              placeholder="Enter category name..."
+            />
+          </div>
+
+          <div>
+            <InputLabel label="Description" />
+            <ControlledTextareaField
+              name="description"
+              placeholder="Enter description..."
+            />
+          </div>
         </div>
       </div>
 

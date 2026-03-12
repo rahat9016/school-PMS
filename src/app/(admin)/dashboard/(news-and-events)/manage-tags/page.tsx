@@ -1,10 +1,10 @@
 "use client";
-import ArticleList from "@/components/admin/Media/ArticleList";
+import TagList from "@/components/admin/Media/TagList";
 
 export default function page() {
   return (
     <div>
-      <ArticleList />
+      <TagList />
     </div>
   );
 }
