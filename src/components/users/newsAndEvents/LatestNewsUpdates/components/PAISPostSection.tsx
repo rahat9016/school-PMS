@@ -1,24 +1,24 @@
-import Image from "next/image";
-import paisPost1 from "../../../../../../public/newsEvents/paispost/paisPost1.png";
-import paisPost2 from "../../../../../../public/newsEvents/paispost/paisPost2.png";
-import paisPost3 from "../../../../../../public/newsEvents/paispost/paisPost3.png";
-import paisPost4 from "../../../../../../public/newsEvents/paispost/paisPost4.png";
-import paisPost5 from "../../../../../../public/newsEvents/paispost/paisPost5.png";
-import paisPost6 from "../../../../../../public/newsEvents/paispost/paisPost6.png";
-import paisPost7 from "../../../../../../public/newsEvents/paispost/paisPost7.png";
-import paisPost8 from "../../../../../../public/newsEvents/paispost/paisPost8.png";
+"use client";
 
-const PAISData = [
-  paisPost1,
-  paisPost2,
-  paisPost3,
-  paisPost4,
-  paisPost5,
-  paisPost6,
-  paisPost7,
-  paisPost8,
-];
+import { Skeleton } from "@/components/ui/skeleton";
+import { useGet } from "@/hooks/useGet";
+import Image from "next/image";
+
+interface IPaisPerspective {
+  _id: string;
+  title: string;
+  image?: string;
+  imageUrl?: string;
+}
+
 export default function PAISPostSection() {
+  const { data, isLoading } = useGet<IPaisPerspective[]>("/pais-perspective", [
+    "pais-perspective",
+    "user-section",
+  ]);
+
+  const paisData = data?.data ?? [];
+
   return (
     <div
       style={{
@@ -35,9 +35,39 @@ export default function PAISPostSection() {
           The Official Newsletter of Pan-Asia International School
         </p>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-2 lg:gap-4">
-          {PAISData.map((img, index) => (
-            <Image key={index} src={img} alt={"PAISPost"} />
-          ))}
+          {isLoading
+            ? Array.from({ length: 4 }).map((_, index) => (
+                <div
+                  key={index}
+                  className="bg-[#FCFCFD] border border-[#CDCDCD] p-10 rounded-[16px]"
+                >
+                  <Skeleton className="h-[300px] w-full" />
+                  <Skeleton className="h-5 w-3/4 mt-[10px] mx-auto" />
+                </div>
+              ))
+            : paisData.map((item) => {
+                const imageSrc = item.imageUrl || item.image;
+
+                if (!imageSrc) return null;
+
+                return (
+                  <div
+                    key={item._id}
+                    className="bg-[#FCFCFD] border border-[#CDCDCD] p-10 rounded-[16px]"
+                  >
+                    <Image
+                      src={imageSrc}
+                      alt={item.title || "PAISPost"}
+                      width={400}
+                      height={300}
+                      className="w-full h-[300px] object-cover"
+                    />
+                    <h3 className="text-center mt-[10px] text-[#6B6B6B] text-[14px] font-normal line-clamp-2">
+                      {item.title}
+                    </h3>
+                  </div>
+                );
+              })}
         </div>
       </div>
     </div>
