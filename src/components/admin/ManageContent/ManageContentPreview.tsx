@@ -30,6 +30,7 @@ export const MANAGE_CONTENT_TYPES = [
   "SCHOOL_BOARD",
   "CHILD_SAFETY",
   "CHILD_PROTECTION",
+  "AQI_GUIDELINE",
   "ACADEMIC_CALENDAR",
   "PAIS_SCHOOL_PROFILE_ONE",
   "PAIS_SCHOOL_PROFILE_TWO",
@@ -48,6 +49,7 @@ const typeLabels: Record<ManageContentType, string> = {
   SCHOOL_BOARD: "School Board",
   CHILD_SAFETY: "Child Safety",
   CHILD_PROTECTION: "Child Protection",
+  AQI_GUIDELINE: "AQI Guideline",
   ACADEMIC_CALENDAR: "Academic Calendar",
   PAIS_SCHOOL_PROFILE_ONE: "PAIS School Profile One",
   PAIS_SCHOOL_PROFILE_TWO: "PAIS School Profile Two",
@@ -68,6 +70,10 @@ const pageLinks: {
   {
     label: "Academic Calendar",
     href: "/dashboard/academic-calendar",
+  },
+  {
+    label: "AQI Guideline",
+    href: "/dashboard/aqi-guideline",
   },
   {
     label: "PAIS School Profile",

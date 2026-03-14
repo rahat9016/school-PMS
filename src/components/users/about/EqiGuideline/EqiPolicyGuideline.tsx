@@ -1,10 +1,32 @@
+"use client";
+
 import HeroSection from "@/components/shared/HeroSection";
+import { Skeleton } from "@/components/ui/skeleton";
+import { useGet } from "@/hooks/useGet";
+import Image from "next/image";
 import herobg from "../../../../../public/about/aqiHero.jpg";
 
 import { paragraphsData } from "./data";
 import EqiAccordian from "./EqiAccordian";
 
+interface IManageContentItem {
+  _id: string;
+  file?: string;
+  fileUrl?: string;
+}
+
 export default function EqiPolicyGuideline() {
+  const { data, isLoading } = useGet<IManageContentItem>(
+    "/manage-content",
+    ["manage-content", "AQI_GUIDELINE", "users"],
+    { type: "AQI_GUIDELINE" },
+  );
+
+  const fallbackFile = "/AQIforPAISWebsite.pdf";
+  const contentUrl = data?.data?.fileUrl || data?.data?.file || fallbackFile;
+  const normalizedUrl = contentUrl.toLowerCase().split("?")[0].split("#")[0];
+  const isPdf = normalizedUrl.endsWith(".pdf");
+
   return (
     <div>
       <HeroSection
@@ -25,13 +47,25 @@ export default function EqiPolicyGuideline() {
             AQI Guidelines and Policy
           </h1>
           <span className="w-[140px] h-[3px] bg-main-secondary block mt-2"></span>
-          <iframe
-            src="/AQIforPAISWebsite.pdf"
-            width="100%"
-            height="100%"
-            style={{ minHeight: "600px", border: "none" }}
-            className=" my-6"
-          />
+          {isLoading ? (
+            <Skeleton className="w-full min-h-[600px] my-6 rounded-lg" />
+          ) : isPdf ? (
+            <iframe
+              src={contentUrl}
+              width="100%"
+              height="100%"
+              style={{ minHeight: "600px", border: "none" }}
+              className="my-6"
+            />
+          ) : (
+            <Image
+              src={contentUrl}
+              alt="AQI Guidelines and Policy"
+              width={1600}
+              height={1200}
+              className="my-6 w-full h-auto rounded-lg"
+            />
+          )}
           {/* image section  */}
           {/* <div className=" ">
             <Image
