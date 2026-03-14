@@ -33,7 +33,7 @@ const features = [
     title: "School Board",
     desc: "Update and manage school board images.",
     icon: school,
-    location: "/dashboard/",
+    location: "/dashboard/school-board",
   },
   {
     title: "Lunch Menu",
@@ -45,7 +45,7 @@ const features = [
     title: "School Profile",
     desc: "Update and maintain school profile images.",
     icon: schoolb,
-    location: "/dashboard/",
+    location: "/dashboard/pais-school-profile",
   },
   {
     title: "PAIS Perspective",
@@ -75,7 +75,7 @@ const features = [
     title: "Calendars",
     desc: "Upload and manage the academic & activity schedule.",
     icon: callender,
-    location: "/dashboard/",
+    location: "/dashboard/academic-calendar",
   },
   {
     title: "Gallery",
