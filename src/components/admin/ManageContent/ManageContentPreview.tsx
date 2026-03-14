@@ -157,7 +157,7 @@ export default function ManageContentPreview({
     const selectedFile = methods.getValues("image");
 
     if (!selectedFile) {
-      toast.error("Please select an image file");
+      toast.error("Please select a file");
       return;
     }
 
@@ -186,18 +186,23 @@ export default function ManageContentPreview({
     type: ManageContentType,
     item?: IManageContentItem,
   ) => {
-    const imageUrl = item?.fileUrl || item?.file;
+    const fileUrl = item?.fileUrl || item?.file;
+    const normalizedUrl = fileUrl?.toLowerCase().split("?")[0].split("#")[0];
+    const isPdf = Boolean(normalizedUrl?.endsWith(".pdf"));
     const isLoading =
       type === primaryType ? isPrimaryLoading : isSecondaryLoading;
 
     return (
       <div
         key={type}
-        className="bg-[#FCFCFD] border border-[#CDCDCD] p-6 rounded-[16px] min-h-[360px] flex items-center justify-center relative"
+        className="bg-[#FCFCFD] border border-[#CDCDCD] p-6 rounded-[16px] min-h-[360px] relative"
       >
+        <p className="text-main-primary font-semibold mb-3">
+          {typeLabels[type]}
+        </p>
         {isLoading ? (
           <Skeleton className="w-full h-[300px]" />
-        ) : imageUrl ? (
+        ) : fileUrl ? (
           <>
             <button
               type="button"
@@ -213,17 +218,26 @@ export default function ManageContentPreview({
                 <Trash2 className="w-4 h-4" />
               )}
             </button>
-            <Image
-              src={imageUrl}
-              alt={typeLabels[type]}
-              width={1000}
-              height={300}
-              className="w-full h-[300px] object-contain"
-            />
+            {isPdf ? (
+              <iframe
+                src={fileUrl}
+                title={`${typeLabels[type]} PDF preview`}
+                className="w-full h-[300px] rounded-md border border-[#CDCDCD]"
+                style={{ border: "none" }}
+              />
+            ) : (
+              <Image
+                src={fileUrl}
+                alt={typeLabels[type]}
+                width={1000}
+                height={300}
+                className="w-full h-[300px] object-contain"
+              />
+            )}
           </>
         ) : (
           <p className="text-[#6B6B6B] text-sm font-normal text-center">
-            No image found for {typeLabels[type]}.
+            No file found for {typeLabels[type]}.
           </p>
         )}
       </div>
@@ -319,9 +333,9 @@ export default function ManageContentPreview({
 
               <div className="border border-[#CDCDCD] rounded-lg p-4">
                 <p className="text-sm text-main-primary font-medium mb-3">
-                  Upload Image
+                  Upload File
                 </p>
-                <FileUploadController name="image" label="Upload image" />
+                <FileUploadController name="image" label="Upload file" />
               </div>
 
               <div className="flex justify-end">
