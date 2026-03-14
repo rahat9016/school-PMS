@@ -4,6 +4,9 @@ import ManageContentPreview from "@/components/admin/ManageContent/ManageContent
 
 export default function ChildSafetyPage() {
   return (
-    <ManageContentPreview pageTitle="Child Safety" contentType="CHILD_SAFETY" />
+    <ManageContentPreview
+      pageTitle="Child Safety"
+      contentTypes={["CHILD_SAFETY", "CHILD_PROTECTION"]}
+    />
   );
 }

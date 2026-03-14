@@ -2,17 +2,17 @@
 
 import { FileUploadController } from "@/components/shared/FileUploadController";
 import {
-    Dialog,
-    DialogContent,
-    DialogHeader,
-    DialogTitle,
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
 } from "@/components/ui/dialog";
 import {
-    Select,
-    SelectContent,
-    SelectItem,
-    SelectTrigger,
-    SelectValue,
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
 } from "@/components/ui/select";
 import { Skeleton } from "@/components/ui/skeleton";
 import { useDelete } from "@/hooks/useDelete";
@@ -29,6 +29,7 @@ import { toast } from "react-toastify";
 export const MANAGE_CONTENT_TYPES = [
   "SCHOOL_BOARD",
   "CHILD_SAFETY",
+  "CHILD_PROTECTION",
   "ACADEMIC_CALENDAR",
   "PAIS_SCHOOL_PROFILE_ONE",
   "PAIS_SCHOOL_PROFILE_TWO",
@@ -46,6 +47,7 @@ interface IManageContentItem {
 const typeLabels: Record<ManageContentType, string> = {
   SCHOOL_BOARD: "School Board",
   CHILD_SAFETY: "Child Safety",
+  CHILD_PROTECTION: "Child Protection",
   ACADEMIC_CALENDAR: "Academic Calendar",
   PAIS_SCHOOL_PROFILE_ONE: "PAIS School Profile One",
   PAIS_SCHOOL_PROFILE_TWO: "PAIS School Profile Two",
