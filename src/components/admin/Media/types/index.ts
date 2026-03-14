@@ -62,3 +62,13 @@ export interface ICategory {
   createdAt: string;
   actions?: string;
 }
+
+export interface IPaisPerspective {
+  _id: string;
+  title: string;
+  image?: string;
+  imageUrl?: string;
+  createdAt?: string;
+  updatedAt?: string;
+  actions?: string;
+}

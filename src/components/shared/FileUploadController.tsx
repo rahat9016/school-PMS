@@ -132,7 +132,7 @@ export function FileUploadController({
                       <Image
                         width={36}
                         height={36}
-                        src="/icons/plus.svg"
+                        src="/plus.svg"
                         alt="plus"
                         className="w-4.5 mb-1"
                       />

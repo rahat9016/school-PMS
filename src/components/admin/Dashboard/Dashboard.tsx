@@ -48,6 +48,12 @@ const features = [
     location: "/dashboard/",
   },
   {
+    title: "PAIS Perspective",
+    desc: "Manage PAIS perspective title and image content.",
+    icon: schoolb,
+    location: "/dashboard/pais-perspective",
+  },
+  {
     title: "Student Council",
     desc: "Add members, update photos & details.",
     icon: cap,
