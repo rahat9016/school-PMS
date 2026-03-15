@@ -1,17 +1,23 @@
 "use client";
-import React from "react";
-import Image from "next/image";
+import { cn } from "@/lib/utils";
 import useEmblaCarousel from "embla-carousel-react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import {
-  StaticImageData,
-  StaticImport,
-} from "next/dist/shared/lib/get-img-props";
-import { cn } from "@/lib/utils";
+import { StaticImport } from "next/dist/shared/lib/get-img-props";
+import Image from "next/image";
+import React from "react";
 
-export const PrevButton = ({ onClick, className }: { onClick: () => void; className?: string }) => (
+export const PrevButton = ({
+  onClick,
+  className,
+}: {
+  onClick: () => void;
+  className?: string;
+}) => (
   <button
-    className={cn("absolute left-2 top-1/2 transform -translate-y-1/2 bg-gray-800 text-black-dark bg-white p-1 lg:p-2 rounded-full shadow-lg hover:bg-gray-700", className)}
+    className={cn(
+      "absolute left-2 top-1/2 transform -translate-y-1/2 bg-gray-800 text-black-dark bg-white p-1 lg:p-2 rounded-full shadow-lg hover:bg-gray-700",
+      className,
+    )}
     onClick={onClick}
   >
     <ChevronLeft className="text-base lg:text-2xl" />
@@ -28,7 +34,7 @@ export const NextButton = ({
   <button
     className={cn(
       "absolute right-2 top-1/2 transform -translate-y-1/2 bg-gray-800 text-black-dark bg-white p-1 lg:p-2 rounded-full shadow-lg hover:bg-gray-700",
-      className
+      className,
     )}
     onClick={onClick}
   >
@@ -61,16 +67,20 @@ const Carousel = ({
   isPrimary,
   nextClassName,
   prevClassName,
+  imageClassName,
+  imageContainerClassName,
   isShowDotButton = true,
-  children
+  children,
 }: {
-  slides?: StaticImageData[];
+  slides?: Array<string | StaticImport>;
   className?: string;
   isPrimary?: boolean;
   nextClassName?: string;
   prevClassName?: string;
+  imageClassName?: string;
+  imageContainerClassName?: string;
   isShowDotButton?: boolean;
-  children?: React.ReactNode
+  children?: React.ReactNode;
 }) => {
   const [emblaRef, emblaApi] = useEmblaCarousel({
     loop: true,
@@ -86,7 +96,7 @@ const Carousel = ({
     if (emblaApi) {
       setScrollSnaps(emblaApi.scrollSnapList());
       emblaApi.on("select", () =>
-        setSelectedIndex(emblaApi.selectedScrollSnap())
+        setSelectedIndex(emblaApi.selectedScrollSnap()),
       );
     }
   }, [emblaApi]);
@@ -97,29 +107,37 @@ const Carousel = ({
     <div className="relative w-full mx-auto">
       <div className="overflow-hidden" ref={emblaRef}>
         <div className="flex">
-          
-          {
-            children ? children : slides?.map(
-              (
-                src: string | StaticImport,
-                index: React.Key | null | undefined
-              ) => (
-                <div
-                  className={cn(`flex-shrink-0 w-full px-2`, className)}
-                  key={index}
-                >
-                  <Image
-                    src={src}
-                    alt={`Slide ${index}`}
-                    layout="responsive"
-                    width={800}
-                    height={600}
-                    className="rounded-xl"
-                  />
-                </div>
-              )
-            )
-          }
+          {children
+            ? children
+            : slides?.map(
+                (
+                  src: string | StaticImport,
+                  index: React.Key | null | undefined,
+                ) => (
+                  <div
+                    className={cn(`flex-shrink-0 w-full px-2`, className)}
+                    key={index}
+                  >
+                    <div
+                      className={cn(
+                        "relative w-full aspect-[4/3] overflow-hidden rounded-xl",
+                        imageContainerClassName,
+                      )}
+                    >
+                      <Image
+                        src={src}
+                        alt={`Slide ${index}`}
+                        fill
+                        sizes="(min-width: 1280px) 1200px, 100vw"
+                        className={cn(
+                          "rounded-xl object-cover",
+                          imageClassName,
+                        )}
+                      />
+                    </div>
+                  </div>
+                ),
+              )}
         </div>
       </div>
       <PrevButton
@@ -130,16 +148,18 @@ const Carousel = ({
         onClick={() => emblaApi && emblaApi.scrollNext()}
         className={nextClassName}
       />
-      {isShowDotButton && <div className="flex justify-center absolute bottom-10 left-1/2 -translate-x-1/2">
-        {scrollSnaps.map((_, index) => (
-          <DotButton
-            key={index}
-            onClick={() => scrollTo(index)}
-            isSelected={index === selectedIndex}
-            isPrimary={isPrimary}
-          />
-        ))}
-      </div>}
+      {isShowDotButton && (
+        <div className="flex justify-center absolute bottom-10 left-1/2 -translate-x-1/2">
+          {scrollSnaps.map((_, index) => (
+            <DotButton
+              key={index}
+              onClick={() => scrollTo(index)}
+              isSelected={index === selectedIndex}
+              isPrimary={isPrimary}
+            />
+          ))}
+        </div>
+      )}
     </div>
   );
 };
