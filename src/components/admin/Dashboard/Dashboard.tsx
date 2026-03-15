@@ -39,7 +39,7 @@ const features = [
     title: "Lunch Menu",
     desc: "Write, edit, and publish news updates.",
     icon: lunch,
-    location: "/dashboard/",
+    location: "/dashboard/lunch-menu",
   },
   {
     title: "School Profile",

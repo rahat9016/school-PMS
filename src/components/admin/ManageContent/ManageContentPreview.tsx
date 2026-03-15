@@ -1,6 +1,7 @@
 "use client";
 
 import { FileUploadController } from "@/components/shared/FileUploadController";
+import { Button } from "@/components/ui/button";
 import {
   Dialog,
   DialogContent,
@@ -18,10 +19,10 @@ import { Skeleton } from "@/components/ui/skeleton";
 import { useDelete } from "@/hooks/useDelete";
 import { useGet } from "@/hooks/useGet";
 import { usePost } from "@/hooks/usePost";
-import { Trash2 } from "lucide-react";
+import { ArrowLeft, Trash2 } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { useState } from "react";
 import { FormProvider, useForm } from "react-hook-form";
 import { toast } from "react-toastify";
@@ -34,6 +35,8 @@ export const MANAGE_CONTENT_TYPES = [
   "ACADEMIC_CALENDAR",
   "PAIS_SCHOOL_PROFILE_ONE",
   "PAIS_SCHOOL_PROFILE_TWO",
+  "PRESCHOOL_AND_KINDERGARTEN_LUNCH_MENU",
+  "PRIMARY_AND_SECONDARY_LUNCH_MENU",
 ] as const;
 
 export type ManageContentType = (typeof MANAGE_CONTENT_TYPES)[number];
@@ -53,6 +56,8 @@ const typeLabels: Record<ManageContentType, string> = {
   ACADEMIC_CALENDAR: "Academic Calendar",
   PAIS_SCHOOL_PROFILE_ONE: "PAIS School Profile One",
   PAIS_SCHOOL_PROFILE_TWO: "PAIS School Profile Two",
+  PRESCHOOL_AND_KINDERGARTEN_LUNCH_MENU: "Preschool & Kindergarten Lunch Menu",
+  PRIMARY_AND_SECONDARY_LUNCH_MENU: "Primary & Secondary Lunch Menu",
 };
 
 const pageLinks: {
@@ -67,10 +72,7 @@ const pageLinks: {
     label: "Child Safety",
     href: "/dashboard/child-safety",
   },
-  {
-    label: "Academic Calendar",
-    href: "/dashboard/academic-calendar",
-  },
+
   {
     label: "AQI Guideline",
     href: "/dashboard/aqi-guideline",
@@ -85,10 +87,14 @@ export default function ManageContentPreview({
   pageTitle,
   contentType,
   contentTypes,
+  description,
+  hidePageLinks = false,
 }: {
   pageTitle: string;
   contentType?: ManageContentType;
   contentTypes?: ManageContentType[];
+  description?: string;
+  hidePageLinks?: boolean;
 }) {
   const pathname = usePathname();
   const availableTypes: ManageContentType[] =
@@ -249,115 +255,136 @@ export default function ManageContentPreview({
       </div>
     );
   };
-
+  const router = useRouter();
   return (
-    <div className="p-5 lg:p-8">
-      <div className="border border-[#CDCDCD] rounded-xl bg-white p-6">
-        <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4 mb-5">
-          <h2 className="text-main-primary text-2xl font-semibold">
-            {pageTitle}
-          </h2>
-          <button
+    <div>
+      <div className="p-5 lg:p-8">
+        <div className="pb-5">
+          <Button
             type="button"
-            onClick={() => setIsModalOpen(true)}
-            className="bg-main-primary text-white px-4 py-2 rounded-md text-sm w-fit"
+            variant="outline"
+            onClick={() => router.push("/dashboard")}
+            className="w-fit"
           >
-            Create
-          </button>
+            <ArrowLeft className="w-4 h-4 mr-2" />
+            Back
+          </Button>
         </div>
-
-        <div className="flex flex-wrap gap-2 mb-6">
-          {pageLinks.map((page) => (
-            <Link
-              key={page.href}
-              href={page.href}
-              className={`text-sm px-3 py-2 rounded-md border ${
-                page.href === pathname
-                  ? "bg-main-primary text-white border-main-primary"
-                  : "bg-white border-[#CDCDCD] text-[#363739]"
-              }`}
-            >
-              {page.label}
-            </Link>
-          ))}
-        </div>
-
-        <div
-          className={`grid gap-4 ${
-            availableTypes.length > 1
-              ? "grid-cols-1 lg:grid-cols-2"
-              : "grid-cols-1"
-          }`}
-        >
-          {renderPreviewCard(primaryType, primaryContent)}
-          {secondaryType && renderPreviewCard(secondaryType, secondaryContent)}
-        </div>
-      </div>
-
-      <Dialog
-        open={isModalOpen}
-        onOpenChange={(value) => {
-          setIsModalOpen(value);
-          if (!value) {
-            methods.reset({ image: null });
-          }
-        }}
-      >
-        <DialogContent className="bg-white min-w-[40vw] overflow-y-auto">
-          <DialogHeader>
-            <DialogTitle className="text-main-secondary text-2xl font-semibold">
-              Create {pageTitle}
-            </DialogTitle>
-          </DialogHeader>
-
-          <FormProvider {...methods}>
-            <div className="space-y-5">
-              {availableTypes.length > 1 && (
-                <div>
-                  <p className="text-sm text-main-primary font-medium mb-2">
-                    Select Type
-                  </p>
-                  <Select
-                    value={createType}
-                    onValueChange={(value) =>
-                      setCreateType(value as ManageContentType)
-                    }
-                  >
-                    <SelectTrigger>
-                      <SelectValue placeholder="Select type" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      {availableTypes.map((type) => (
-                        <SelectItem key={type} value={type}>
-                          {typeLabels[type]}
-                        </SelectItem>
-                      ))}
-                    </SelectContent>
-                  </Select>
-                </div>
-              )}
-
-              <div className="border border-[#CDCDCD] rounded-lg p-4">
-                <p className="text-sm text-main-primary font-medium mb-3">
-                  Upload File
-                </p>
-                <FileUploadController name="image" label="Upload file" />
-              </div>
-
-              <div className="flex justify-end">
-                <button
-                  type="button"
-                  onClick={handleCreate}
-                  disabled={isPending}
-                  className="bg-main-primary text-white px-4 py-2 rounded-md text-sm disabled:opacity-60"
-                >
-                  {isPending ? "Creating..." : "Create"}
-                </button>
-              </div>
+        <div className="border border-[#CDCDCD] rounded-xl bg-white p-6">
+          <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4 mb-5">
+            <div>
+              <h2 className="text-main-primary text-2xl font-semibold">
+                {pageTitle}
+              </h2>
+              {description ? (
+                <p className="text-sm text-[#6B6B6B] mt-1">{description}</p>
+              ) : null}
             </div>
-          </FormProvider>
-        </DialogContent>
-      </Dialog>
+            <button
+              type="button"
+              onClick={() => setIsModalOpen(true)}
+              className="bg-main-primary text-white px-4 py-2 rounded-md text-sm w-fit"
+            >
+              Create
+            </button>
+          </div>
+
+          {!hidePageLinks && (
+            <div className="flex flex-wrap gap-2 mb-6">
+              {pageLinks.map((page) => (
+                <Link
+                  key={page.href}
+                  href={page.href}
+                  className={`text-sm px-3 py-2 rounded-md border ${
+                    page.href === pathname
+                      ? "bg-main-primary text-white border-main-primary"
+                      : "bg-white border-[#CDCDCD] text-[#363739]"
+                  }`}
+                >
+                  {page.label}
+                </Link>
+              ))}
+            </div>
+          )}
+
+          <div
+            className={`grid gap-4 ${
+              availableTypes.length > 1
+                ? "grid-cols-1 lg:grid-cols-2"
+                : "grid-cols-1"
+            }`}
+          >
+            {renderPreviewCard(primaryType, primaryContent)}
+            {secondaryType &&
+              renderPreviewCard(secondaryType, secondaryContent)}
+          </div>
+        </div>
+
+        <Dialog
+          open={isModalOpen}
+          onOpenChange={(value) => {
+            setIsModalOpen(value);
+            if (!value) {
+              methods.reset({ image: null });
+            }
+          }}
+        >
+          <DialogContent className="bg-white min-w-[40vw] overflow-y-auto">
+            <DialogHeader>
+              <DialogTitle className="text-main-secondary text-2xl font-semibold">
+                Create {pageTitle}
+              </DialogTitle>
+            </DialogHeader>
+
+            <FormProvider {...methods}>
+              <div className="space-y-5">
+                {availableTypes.length > 1 && (
+                  <div>
+                    <p className="text-sm text-main-primary font-medium mb-2">
+                      Select Type
+                    </p>
+                    <Select
+                      value={createType}
+                      onValueChange={(value) =>
+                        setCreateType(value as ManageContentType)
+                      }
+                    >
+                      <SelectTrigger>
+                        <SelectValue placeholder="Select type" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        {availableTypes.map((type) => (
+                          <SelectItem key={type} value={type}>
+                            {typeLabels[type]}
+                          </SelectItem>
+                        ))}
+                      </SelectContent>
+                    </Select>
+                  </div>
+                )}
+
+                <div className="border border-[#CDCDCD] rounded-lg p-4">
+                  <p className="text-sm text-main-primary font-medium mb-3">
+                    Upload File
+                  </p>
+                  <FileUploadController name="image" label="Upload file" />
+                </div>
+
+                <div className="flex justify-end">
+                  <button
+                    type="button"
+                    onClick={handleCreate}
+                    disabled={isPending}
+                    className="bg-main-primary text-white px-4 py-2 rounded-md text-sm disabled:opacity-60"
+                  >
+                    {isPending ? "Creating..." : "Create"}
+                  </button>
+                </div>
+              </div>
+            </FormProvider>
+          </DialogContent>
+        </Dialog>
+      </div>
     </div>
   );
 }
