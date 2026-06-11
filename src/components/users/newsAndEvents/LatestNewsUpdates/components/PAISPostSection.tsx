@@ -29,7 +29,7 @@ export default function PAISPostSection() {
     >
       <div className="container">
         <h1 className="text-main-primary font-semibold text-[30px] font-poppins text-center">
-          PAIS<span className="text-main-secondary">Post</span>
+          PAIS<span className="text-main-secondary">Perspective</span>
         </h1>
         <p className="text-black-dark font-normal text-sm lg:text-lg font-poppins mt-4 mb-5 lg:mb-10 text-center">
           The Official Newsletter of Pan-Asia International School

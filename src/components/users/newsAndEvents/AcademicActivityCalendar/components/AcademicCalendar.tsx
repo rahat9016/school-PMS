@@ -1,6 +1,6 @@
 import bg from "../../../../../../public/newsEvents/Academic/shape1.png";
 
-const calendar = "/newsEvents/Academic/calender.pdf";
+const calendar = "/newsEvents/Academic/PaisAcademicCalendar.pdf";
 export default function AcademicCalendar() {
   return (
     <div>
