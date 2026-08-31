@@ -27,13 +27,7 @@ const steps = [
         "Complete a MAP Test if requested by the coordinator.",
       ],
     },
-    skills: [
-      "Reading Fluency (English)",
-      "Reading Comprehension (English)",
-      "Vocabulary Development (English)",
-      "Speaking and Listening Skills (English)",
-      "Writing (English)",
-    ],
+    skills: [],
   },
   {
     title: "STEP 3: Submit Documents",

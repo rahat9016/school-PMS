@@ -7,14 +7,19 @@ import icon1 from "../../../../../public/goals/icon4.png";
 import PAISGoalCard from "./PAISGoalCard";
 const paisdata = [
   {
-    title: "Certified Teachers",
+    title: "Qualified and Licensed Facilitators",
     icon: icon1,
-    count: 100,
+    count: 101,
   },
   {
     title: "Students Enrolled",
     icon: icon2,
-    count: 700,
+    count: 704,
+  },
+  {
+    title: "Graduates",
+    icon: icon3,
+    count: 385,
   },
   {
     title: "University Placements",

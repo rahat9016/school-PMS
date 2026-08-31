@@ -47,9 +47,6 @@ export default function AdmissionsProcessSection() {
     }}>
       <div className="container">
         <div className="text-center w-7/12 mx-auto">
-          <p className="text-sm font-poppins font-medium text-main-secondary mb-4">
-            Facilities
-          </p>
           <h1 className="text-black font-poppins font-semibold text-2xl lg:text-5xl mb-6">
             Admissions Process
           </h1>

@@ -20,7 +20,7 @@ export const menuData = [
     items: [
       { title: "Curriculum Overview", href: "/curriculumOverview" },
       { title: "Kindergarten & Primary", href: "/kindergarten-primary" },
-      { title: "Secondary & IB Programs", href: "/secondary-ib-programs" },
+      { title: "IB MYP and IB DP Program", href: "/secondary-ib-programs" },
       { title: "Exams & Assessments", href: "/exams-assessments" },
       { title: "After-School & Enrichment", href: "/after-school-enrichment" },
       { title: "Admissions Overview", href: "/admission-overview" },

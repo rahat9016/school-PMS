@@ -34,7 +34,7 @@ export default function GallerySection() {
         ))}
       </div>
       <div className="text-center">
-        <h2 className="text-black text-5xl font-semibold mb-5 font-poppins">Gallery</h2>
+        <h2 className="text-black text-5xl font-semibold mb-5 font-poppins">Annual Events</h2>
         <p className="mb-[72px] text-mediumGray font-light font-poppins text-base">
           Here you can review some statistics about our School
         </p>

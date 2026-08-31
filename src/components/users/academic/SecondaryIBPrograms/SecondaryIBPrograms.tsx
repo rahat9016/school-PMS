@@ -7,7 +7,7 @@ export default function SecondaryIBPrograms() {
     <div className=" bg-white">
       <HeroSection
         img={herobg}
-        title="Secondary & IB Programs"
+        title="IB MYP and IB DP Program"
         className="bg-cover h-[280px]"
       />
       <SecondaryIBProgramsSection />
